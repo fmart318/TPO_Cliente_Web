@@ -61,9 +61,9 @@
 							<div class="fix"></div>
 								<a class="btn btn-large" id="nuevoPedido" href="nuevoPedido.jsp" onClick="return popup(this, 'nuevoPedido')">Nuevo Pedido</a>
 							
-							</div>
-							<table border="1">
-								<tbody>
+						</div>
+							<table class="table">
+								<tbody class="tbody">
 									<tr>
 										<th>idPedido</th>
 										<th>idCliente</th>
@@ -78,7 +78,7 @@
 										<th>sucursalDestino</th>
 										<th>solicitaTransporteDirecto</th>
 										<th>solicitaAvionetaParticular</th>
-										<th></th>
+										<th>Cargas</th>
 									</tr>
 									<%
 									List <PedidoDTO> pedidos = (List <PedidoDTO>) request.getSession().getAttribute("pedidos");
