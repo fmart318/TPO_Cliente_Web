@@ -14,6 +14,7 @@
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
+<script src=./scripts/popup.js type="text/javascript"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -58,7 +59,7 @@
 
 							<h3>Pedidos</h3>
 							<div class="fix"></div>
-								<form action="./GenerarOC" method="post">
+								<form action="nuevoPedido.jsp" method="post">
 									<div class="form-actions">
 										<input type="submit" value="Nuevo Pedido" />
 									</div>

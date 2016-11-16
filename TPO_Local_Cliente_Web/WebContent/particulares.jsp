@@ -10,7 +10,7 @@
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
-
+<script src=./scripts/popup.js type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#ParticularTableContainer').jtable({
@@ -76,7 +76,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="pedidos.jsp">Pedidos</a></li>
+					<li><a href="./pedidos">Pedidos</a></li>
 					<li><a href="viajes.jsp">Viajes</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>
 					<li><a href="facturas.jsp">Facturas</a></li>
