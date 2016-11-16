@@ -17,10 +17,10 @@
 		$('#CargasTableContainer').jtable({
 			title : 'Lista de Cargas',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudTableCargas?action=list',
+				createAction : 'CrudTableCargas?action=create',
+				updateAction : 'CrudTableCargas?action=update',
+				deleteAction : 'CrudTableCargas?action=delete'
 			},
 			fields : {
 				idProveedor : {
@@ -81,19 +81,13 @@
 					width : '5%',
 					edit : true
 				},
-				despacho : {
-					title : 'Despacho',
+				despachado : {
+					title : 'Despachado',
 					width : '5%',
 					edit : true
 				},
 				tipoMercaderia : {
 					title : 'Tipo de Mercadería',
-					width : '5%',
-					edit : true
-				}
-				,
-				idPedido : {
-					title : 'idPedido',
 					width : '5%',
 					edit : true
 				}
@@ -128,7 +122,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos.jsp">Pedidos</a></li>
+					<li><a href="./pedidos">Pedidos</a></li>
 					<li><a href="viajes.jsp">Viajes</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>
 					<li><a href="facturas.jsp">Facturas</a></li>

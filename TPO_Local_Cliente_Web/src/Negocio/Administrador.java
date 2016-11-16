@@ -129,5 +129,13 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	public List<CargaDTO> listarCargas(){
+		try{
+			return ir.listarCargas();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }

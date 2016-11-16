@@ -33,7 +33,7 @@
 	  <div class="col-sm-6">
 	    <div class="panel panel-primary">
 	      <div class="panel-heading">
-	        Product Information
+	        Datos del Pedido
 	      </div>
 			<div class="panel-body">
 				<div class="form-group">				
