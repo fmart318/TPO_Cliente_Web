@@ -59,11 +59,7 @@
 
 							<h3>Pedidos</h3>
 							<div class="fix"></div>
-								<form action="nuevoPedido.jsp" method="post">
-									<div class="form-actions">
-										<input type="submit" value="Nuevo Pedido" />
-									</div>
-								</form>
+								<a class="btn btn-large" id="nuevoPedido" href="nuevoPedido.jsp" onClick="return popup(this, 'nuevoPedido')">Nuevo Pedido</a>
 							
 							</div>
 							<table border="1">

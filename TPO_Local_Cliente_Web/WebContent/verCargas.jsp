@@ -7,7 +7,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Items Solicitud Cotizacion | TPO AD</title>
+	<title>Cargas | TPO AD</title>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
