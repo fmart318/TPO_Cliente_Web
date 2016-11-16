@@ -17,10 +17,10 @@
 		$('#CargasTableContainer').jtable({
 			title : 'Lista de Cargas',
 			actions : {
-				listAction : 'CrudTableCarga?action=list',
-				createAction : 'CrudTableCarga?action=create',
-				updateAction : 'CrudTableCarga?action=update',
-				deleteAction : 'CrudTableCarga?action=delete'
+				listAction : 'CrudCarga?action=list',
+				createAction : 'CrudCarga?action=create',
+				updateAction : 'CrudCarga?action=update',
+				deleteAction : 'CrudCarga?action=delete'
 			},
 			fields : {
 				idProveedor : {
