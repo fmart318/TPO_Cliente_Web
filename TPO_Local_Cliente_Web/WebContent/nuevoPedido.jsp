@@ -11,9 +11,12 @@
 	<title>Nuevo Pedido | TPO AD</title>
 <!-- 	<link href="css/styles.css" rel="stylesheet" type="text/css" /> -->
 <!-- <link href="css/styles.css" rel="stylesheet" type="text/css" /> -->
+	  <link href="css/bootstrap-select.min.css" rel="stylesheet" />
 	  <link href="css/bootstrap.min.css" rel="stylesheet" />
 	  <script src="js/jquery-3.1.1.min.js"></script>
 	  <script src="js/bootstrap.min.js"></script>
+	  <script src="js/bootstrap-select.min.js"></script>
+	  
 
 </head>
 
@@ -33,14 +36,14 @@
 	        Product Information
 	      </div>
 			<div class="panel-body">
-				<div class="form-group">
-				  <label for="idCliente">idCliente</label>
+				<div class="form-group">				
+				  <label for="idCliente">Cliente</label>
 						<select class="selectpicker" data-live-search="true">
 							<%
 							List <ClienteDTO> clientes = Administrador.getInstance().obtenerClientes();
 					 		for (ClienteDTO c : clientes) {
 					        %>
-						  <option data-tokens="<%= c.getIdCliente() %>"><%= c.getNombre() %></option>
+						  <option data-tokens="<%= c.getNombre()  %>" name="<%= c.getIdCliente() %>"><%= c.getNombre() %></option>
 							<%}%>
 						</select>
 				</div>
@@ -87,6 +90,19 @@
 				<div class="form-group">
 				  <label for="sucursalDestino">Sucursal Destino</label>
 				  <input type="text" id="sucursalDestino" class="form-control" placeholder="Sucursal Destino" value="Berazategui"/>
+				</div>
+				
+				<div class="form-group">
+				  <label for="solicitaTransporteDirecto">solicitaTransporteDirecto</label>
+				  <span class="input-group-addon">
+					<input type="checkbox" aria-label="...">
+					</span>
+				</div>
+				<div class="form-group">
+				  <label for="solicitaAvionetaParticular">solicitaAvionetaParticular</label>
+				  <span class="input-group-addon">
+					<input type="checkbox" aria-label="...">
+					</span>
 				</div>
 				
 			</div>
