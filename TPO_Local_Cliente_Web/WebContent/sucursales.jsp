@@ -5,8 +5,7 @@
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
-<link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet"
-	type="text/css" />
+<link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
 <!-- Include jTable script file. -->
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
@@ -15,17 +14,17 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#SucursalTableContainer').jtable({
-			title : 'Lista de Proveedores',
+			title : 'Lista de Sucursales',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudClienteSucursal?action=list',
+				createAction : 'CrudClienteSucursal?action=create',
+				updateAction : 'CrudClienteSucursal?action=update',
+				deleteAction : 'CrudClienteSucursal?action=delete'
 			},
 			fields : {
-				idProveedor : {
-					title : 'id',
-					width : '1%',
+				idSucursal : {
+					title : 'idSucursal',
+					width : '10%',
 					key : true,
 					list : true,
 					edit : false,
@@ -38,7 +37,7 @@
 				},
 				idDireccion : {
 					title : 'idDireccion',
-					width : '5%',
+					width : '10%',
 					edit : true
 				}
 			}
@@ -77,7 +76,6 @@
 					<li><a href="envios.jsp">Envíos</a></li>
 					<li><a href="facturas.jsp">Facturas</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
-					<li><a href="viajes.jsp">Viajes</a></li>
 				</ul>
 			</div>
 

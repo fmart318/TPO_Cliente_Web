@@ -138,4 +138,40 @@ public class Administrador {
 		return null;
 	}
 	
+	
+	// Sucursales
+	
+	public  List<SucursalDTO> listarSucursales() {
+		try {
+			return ir.obtenerSucursales();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void altaSucursal(SucursalDTO sucursalDto){
+		try{
+			ir.altaSucursal(sucursalDto);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateSucursal(SucursalDTO sucursalDto){
+		try{
+			ir.updateSucursal(sucursalDto);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteSucursal(int idSucursal){
+		try{
+			ir.deleteSucursal(idSucursal);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
 }

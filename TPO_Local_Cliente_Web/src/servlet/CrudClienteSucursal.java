@@ -14,12 +14,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import Negocio.Administrador;
-import dto.EmpresaDTO;
+import dto.DireccionDTO;
+import dto.SucursalDTO;
 
-public class CrudClienteEmpresa extends HttpServlet {
+public class CrudClienteSucursal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public CrudClienteEmpresa() {
+	public CrudClienteSucursal() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,18 +32,15 @@ public class CrudClienteEmpresa extends HttpServlet {
 
 		String action = request.getParameter("action");
 
-		List<EmpresaDTO> list = Administrador.getInstance().listarClientesEmpresa();
+		List<SucursalDTO> list = Administrador.getInstance().listarSucursales();
 		Gson gson = new Gson();
 		response.setContentType("application/json");
 
 		if (action != null) {
 			if (action.equals("list")) {
 				try {
-					//
-					// list =
-					// Administrador.getInstance().listarClientesEmpresa();
 					// Convert Java Object to Json
-					JsonElement element = gson.toJsonTree(list, new TypeToken<List<EmpresaDTO>>() {
+					JsonElement element = gson.toJsonTree(list, new TypeToken<List<SucursalDTO>>() {
 					}.getType());
 					JsonArray jsonArray = element.getAsJsonArray();
 					String listData = jsonArray.toString();
@@ -50,55 +48,54 @@ public class CrudClienteEmpresa extends HttpServlet {
 					// Return Json in the format required by jTable plugin
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
+					
 				} catch (Exception e) {
 					String error = "{\"Result\":\"ERROR\",\"Message\":" + "Exception on listing records }";
 					response.getWriter().print(error);
 					System.err.println(e.getMessage());
 				}
+				
 			} else if (action.equals("create") || action.equals("update")) {
-				// Student student = new Student();
-				EmpresaDTO empresa = new EmpresaDTO();
-				if (request.getParameter("idCliente") != null) {
-					int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-					empresa.setIdCliente(idCliente);
-					;
-				}
+
+				SucursalDTO sucursal = new SucursalDTO();
 
 				if (request.getParameter("nombre") != null) {
 					String nombre = request.getParameter("nombre");
-					empresa.setNombre(nombre);
+					sucursal.setNombre(nombre);
 				}
-				if (request.getParameter("CUIT") != null) {
-					int CUIT = Integer.parseInt(request.getParameter("CUIT"));
-					empresa.setCUIT(CUIT);
+				
+				// TODO Hace falta levantar el listado de direcciones aca
+				if (request.getParameter("idDireccion") != null) {
+					int idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
+					DireccionDTO direccion = new DireccionDTO(idDireccion, "Calle 16", 5403, 2,
+							"F", "1884");
+					sucursal.setUbicacion(direccion);
 				}
-				if (request.getParameter("tipo") != null) {
-					String tipo = request.getParameter("tipo");
-					empresa.setTipo(tipo);
-				}
-				if (request.getParameter("detallePoliticas") != null) {
-					String detallePoliticas = request.getParameter("detallePoliticas");
-					empresa.setDetallePoliticas(detallePoliticas);
-				}
-				if (request.getParameter("saldoCuentaCorriente") != null) {
-					float saldoCuentaCorriente = Float.parseFloat(request.getParameter("saldoCuentaCorriente"));
-					empresa.setSaldoCuentaCorriente(saldoCuentaCorriente);
-				}
+				
+				// TODO Hace falta levantar todo los viajes que se hizo
+
 				try {
 					if (action.equals("create")) {
+						
+						sucursal.setIdSucursal(list.size()+1);
+						
 						// Create new record
-						Administrador.getInstance().altaClienteEmpresa(empresa);
+						Administrador.getInstance().altaSucursal(sucursal);
+						
 						// Convert Java Object to Json
-						String json = gson.toJson(empresa);
+						String json = gson.toJson(sucursal);
+						
 						// Return Json in the format required by jTable plugin
 						String listData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
 						response.getWriter().print(listData);
+						
 					} else if (action.equals("update")) {
+						
 						// Update existing record
-						Administrador.getInstance().updateClienteEmpresa(empresa);
+						Administrador.getInstance().updateSucursal(sucursal);
 
 						// Convert Java Object to Json
-						String json = gson.toJson(empresa);
+						String json = gson.toJson(sucursal);
 						String listData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
 						response.getWriter().print(listData);
 					}
@@ -111,9 +108,9 @@ public class CrudClienteEmpresa extends HttpServlet {
 			} else if (action.equals("delete")) {
 				try {
 					// Delete record
-					if (request.getParameter("idCliente") != null) {
-						int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-						Administrador.getInstance().deleteClienteEmpresa(idCliente);
+					if (request.getParameter("idSucursal") != null) {
+						int idSucursal = Integer.parseInt(request.getParameter("idSucursal"));
+						Administrador.getInstance().deleteSucursal(idSucursal);
 						String listData = "{\"Result\":\"OK\"}";
 						response.getWriter().print(listData);
 					}
