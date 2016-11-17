@@ -158,5 +158,11 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
-	
+	public void crearPedido(PedidoDTO p){
+		try{
+			ir.crearPedido(p);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
 }

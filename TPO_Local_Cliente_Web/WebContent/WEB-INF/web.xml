@@ -172,5 +172,12 @@
     <servlet-name>CrudCarga</servlet-name>
     <url-pattern>/CrudCarga</url-pattern>
   </servlet-mapping>
-  
+   <servlet>
+    <servlet-name>NuevoPedido</servlet-name>
+    <servlet-class>servlet.NuevoPedido</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NuevoPedido</servlet-name>
+    <url-pattern>/NuevoPedido</url-pattern>
+  </servlet-mapping>
 </web-app>

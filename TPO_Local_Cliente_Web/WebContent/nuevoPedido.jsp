@@ -17,7 +17,13 @@
 	  <script src="js/bootstrap.min.js"></script>
 	  <script src="js/bootstrap-select.min.js"></script>
 	  
+<script type="text/javascript">
+function closeSelf(){
+       document.forms['nuevoPedido'].submit();
+       window.close(), 3000;
 
+}
+</script>
 </head>
 
 <body>
@@ -35,6 +41,8 @@
 	      <div class="panel-heading">
 	        Datos del Pedido
 	      </div>
+	      <form action="./NuevoPedido" name="nuevoPedido" method="post">
+	      
 			<div class="panel-body">
 				<div class="form-group">				
 				  <label for="idCliente">Cliente</label>
@@ -53,7 +61,7 @@
 					<input type="number" id="numero" class="form-control" placeholder="Número" value="5402"/>
 					<input type="number" id="piso" class="form-control" placeholder="Piso" value="2" />
 					<input type="text" id="depto" class="form-control" placeholder="Depto" value="A" />
-					<input type="number" id="cp" class="form-control" placeholder="CP" value="1883"/>
+					<input type="text" id="cp" class="form-control" placeholder="CP" value="1883"/>
 				</div>
 				<div class="form-group">
 				  <label for="">Dirección de Destino</label>
@@ -61,7 +69,7 @@
 				  <input type="number" id="numero2" class="form-control" placeholder="Número" value="5402"/>
 				  <input type="number" id="piso2" class="form-control" placeholder="Piso" value="10" />
 				  <input type="text" id="depto2" class="form-control" placeholder="Depto" value="F" />
-				  <input type="number" id="cp2" class="form-control" placeholder="CP" value="1884"/>
+				  <input type="text" id="cp2" class="form-control" placeholder="CP" value="1884"/>
 				</div>
 				<div class="form-group">
 				  <label for="fechaCarga">Fecha Carga</label>
@@ -69,11 +77,11 @@
 				</div>
 				<div class="form-group">
 				  <label for="fechaCarga">horaInicio</label>
-				  <input type="time" id="horaInicio" class="form-control" placeholder="Hora Inicio" value="9"/>
+				  <input type="number" id="horaInicio" class="form-control" placeholder="Hora Inicio" value="9"/>
 				</div>
 				<div class="form-group">
 				  <label for="horaFin">horaFin</label>
-				  <input type="time" id="horaFin" class="form-control" placeholder="Hora Fin" value="10"/>
+				  <input type="number" id="horaFin" class="form-control" placeholder="Hora Fin" value="10"/>
 				</div>
 				<div class="form-group">
 				  <label for="fechaMaxima">Fecha Máxima</label>
@@ -95,13 +103,13 @@
 				<div class="form-group">
 				  <label for="solicitaTransporteDirecto">solicitaTransporteDirecto</label>
 				  <span class="input-group-addon">
-					<input type="checkbox" aria-label="...">
+					<input id="solicitaTransporteDirecto" type="checkbox" aria-label="...">
 					</span>
 				</div>
 				<div class="form-group">
 				  <label for="solicitaAvionetaParticular">solicitaAvionetaParticular</label>
 				  <span class="input-group-addon">
-					<input type="checkbox" aria-label="...">
+					<input id="solicitaAvionetaParticular" type="checkbox" aria-label="...">
 					</span>
 				</div>
 				
@@ -109,14 +117,13 @@
 			<div class="panel-footer">
 			 	<div class="row">
 					<div class="col-xs-12">
-						<button type="button" id="updateButton"
-					        class="btn btn-primary"
-					        onclick="updateClick();">
-					   Terminar
-					</button>
+						<div class="form-actions">
+											<input type="submit" id=add value="Finalizar"  />
+						</div>
 				</div>
 				</div>
 			</div>
+			</form>
 		</div>
 	  </div>
 	</div>
