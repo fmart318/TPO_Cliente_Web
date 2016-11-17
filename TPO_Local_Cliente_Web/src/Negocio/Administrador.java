@@ -174,4 +174,39 @@ public class Administrador {
 		}
 	}
 	
+	// Trayectos
+	
+	public  List<TrayectoDTO> listarTrayectos() {
+		try {
+			return ir.obtenerTrayectos();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void altaTrayecto(TrayectoDTO trayectoDto){
+		try{
+			ir.altaTrayecto(trayectoDto);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateTrayecto(TrayectoDTO trayectoDto){
+		try{
+			ir.updateTrayecto(trayectoDto);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteTrayecto(int idTrayecto){
+		try{
+			ir.deleteTrayecto(idTrayecto);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
 }

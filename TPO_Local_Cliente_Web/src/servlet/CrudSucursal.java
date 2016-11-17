@@ -17,10 +17,10 @@ import Negocio.Administrador;
 import dto.DireccionDTO;
 import dto.SucursalDTO;
 
-public class CrudClienteSucursal extends HttpServlet {
+public class CrudSucursal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public CrudClienteSucursal() {
+	public CrudSucursal() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

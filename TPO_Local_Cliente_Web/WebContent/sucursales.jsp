@@ -16,10 +16,10 @@
 		$('#SucursalTableContainer').jtable({
 			title : 'Lista de Sucursales',
 			actions : {
-				listAction : 'CrudClienteSucursal?action=list',
-				createAction : 'CrudClienteSucursal?action=create',
-				updateAction : 'CrudClienteSucursal?action=update',
-				deleteAction : 'CrudClienteSucursal?action=delete'
+				listAction : 'CrudSucursal?action=list',
+				createAction : 'CrudSucursal?action=create',
+				updateAction : 'CrudSucursal?action=update',
+				deleteAction : 'CrudSucursal?action=delete'
 			},
 			fields : {
 				idSucursal : {

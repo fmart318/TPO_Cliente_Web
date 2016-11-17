@@ -139,12 +139,21 @@
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>CrudClienteSucursal</servlet-name>
-    <servlet-class>servlet.CrudClienteSucursal</servlet-class>
+    <servlet-name>CrudSucursal</servlet-name>
+    <servlet-class>servlet.CrudSucursal</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CrudClienteSucursal</servlet-name>
-    <url-pattern>/CrudClienteSucursal</url-pattern>
+    <servlet-name>CrudSucursal</servlet-name>
+    <url-pattern>/CrudSucursal</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CrudTrayecto</servlet-name>
+    <servlet-class>servlet.CrudTrayecto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudTrayecto</servlet-name>
+    <url-pattern>/CrudTrayecto</url-pattern>
   </servlet-mapping>
   
   <servlet>

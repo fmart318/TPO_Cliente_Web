@@ -15,15 +15,15 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#TrayectosTableContainer').jtable({
-			title : 'Lista de Rutas',
+			title : 'Lista de Trayectos',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudTrayecto?action=list',
+				createAction : 'CrudTrayecto?action=create',
+				updateAction : 'CrudTrayecto?action=update',
+				deleteAction : 'CrudTrayecto?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idTrayecto : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -97,7 +97,6 @@
 					<li><a href="envios.jsp">Envíos</a></li>
 					<li><a href="facturas.jsp">Facturas</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
-					<li><a href="viajes.jsp">Viajes</a></li>
 				</ul>
 			</div>
 
