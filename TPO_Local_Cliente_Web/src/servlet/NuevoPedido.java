@@ -42,11 +42,8 @@ protected void doPost(HttpServletRequest request,
 String action = request.getParameter("action");
 Gson gson = new Gson();
 response.setContentType("application/json");
-
-
 			PedidoDTO p=new PedidoDTO();
 			ClienteDTO c=new ClienteDTO();
-			c.setIdCliente(1);
 			DireccionDTO dC=new DireccionDTO();
 			DireccionDTO dD=new DireccionDTO();
 			CargaDTO carga=new CargaDTO();
@@ -60,7 +57,8 @@ response.setContentType("application/json");
 			
 			if (request.getParameter("idCliente") != null) {
 			int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-			//c.setIdCliente(idCliente);
+			c.setIdCliente(idCliente);
+			
 			}
 			if (request.getParameter("calle") != null) {
 				String calle =request.getParameter("calle");
@@ -83,24 +81,24 @@ response.setContentType("application/json");
 				dC.setCP(cp);
 			}
 			
-			if (request.getParameter("calle") != null) {
-				String calle =request.getParameter("calle");
+			if (request.getParameter("calle2") != null) {
+				String calle =request.getParameter("calle2");
 				dD.setCalle(calle);
 			}
-			if (request.getParameter("numero") != null) {
-				int numero = Integer.parseInt(request.getParameter("numero"));
+			if (request.getParameter("numero2") != null) {
+				int numero = Integer.parseInt(request.getParameter("numero2"));
 				dD.setNumero(numero);
 			}
-			if (request.getParameter("piso") != null) {
-				int piso = Integer.parseInt(request.getParameter("piso"));
+			if (request.getParameter("piso2") != null) {
+				int piso = Integer.parseInt(request.getParameter("piso2"));
 				dD.setPiso(piso);
 			}
-			if (request.getParameter("depto") != null) {
-				String depto =request.getParameter("depto");
+			if (request.getParameter("depto2") != null) {
+				String depto =request.getParameter("depto2");
 				dD.setDepartamento(depto);
 			}
-			if (request.getParameter("cp") != null) {
-				String cp = request.getParameter("cp");
+			if (request.getParameter("cp2") != null) {
+				String cp = request.getParameter("cp2");
 				dD.setCP(cp);
 			}
 			
@@ -130,7 +128,7 @@ response.setContentType("application/json");
 			}
 			if (request.getParameter("sucursalDestino") != null) {
 				String sucursalDestino =request.getParameter("sucursalDestino");
-				p.setSucursalOrigen(sucursalDestino);
+				p.setSucursalDestino(sucursalDestino);
 			}
 			if (request.getParameter("solicitaTransporteDirecto") != null) {
 				String solicitaTransporteDirecto =request.getParameter("solicitaTransporteDirecto");
