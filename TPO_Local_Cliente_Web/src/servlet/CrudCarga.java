@@ -45,8 +45,6 @@ response.setContentType("application/json");
 if (action != null) {
 	if (action.equals("list")) {
 	try {
-		// 
-		//list = Administrador.getInstance().listarClientesEmpresa();
 		// Convert Java Object to Json
 		JsonElement element = gson.toJsonTree(list,
 				new TypeToken<List<CargaDTO>>() {}.getType());
@@ -64,7 +62,6 @@ if (action != null) {
 			System.err.println(e.getMessage());
 		}
 	} else if (action.equals("create") || action.equals("update")) {
-		//Student student = new Student();
 		CargaDTO carga=new CargaDTO();
 		if (request.getParameter("idCarga") != null) {
 		int idCarga = Integer.parseInt(request.getParameter("idCarga"));
@@ -102,7 +99,7 @@ if (action != null) {
 		if (request.getParameter("refrigerable") != null) {
 			String refrigerable = request.getParameter("refrigerable");
 			boolean b=false;
-			if (refrigerable.equals("si")||refrigerable.equals("1")||refrigerable.equals("Si")||refrigerable.equals("SI"))
+			if (refrigerable.equals("si")||refrigerable.equals("1")||refrigerable.equals("Si")||refrigerable.equals("SI")||refrigerable.equals("true"))
 					b=true;
 			else
 				b=false;
@@ -111,7 +108,7 @@ if (action != null) {
 		if (request.getParameter("despachado") != null) {
 			String despachado = request.getParameter("despachado");
 			boolean b=false;
-			if (despachado.equals("si")||despachado.equals("1")||despachado.equals("Si")||despachado.equals("SI"))
+			if (despachado.equals("si")||despachado.equals("1")||despachado.equals("Si")||despachado.equals("SI")||despachado.equals("true"))
 					b=true;
 			else
 				b=false;
@@ -129,7 +126,7 @@ if (action != null) {
 		try {
 			if (action.equals("create")) {
 				// Create new record
-				//Administrador.getInstance().altaClienteParticular(particular);
+				Administrador.getInstance().createCarga(carga);
 				// Convert Java Object to Json
 				String json = gson.toJson(carga);
 				// Return Json in the format required by jTable plugin
@@ -138,7 +135,7 @@ if (action != null) {
 				response.getWriter().print(listData);
 			} else if (action.equals("update")) {
 				// Update existing record
-				//Administrador.getInstance().updateClienteParticular(carga);
+				Administrador.getInstance().updateCarga(carga);
 
 				// Convert Java Object to Json
 				String json = gson.toJson(carga);
@@ -159,7 +156,7 @@ if (action != null) {
 			if (request.getParameter("idCarga") != null) {
 				int idCarga = Integer.parseInt(request
 						.getParameter("idCarga"));
-				//Administrador.getInstance().deleteClienteParticular(idCarga);
+				Administrador.getInstance().deleteCarga(idCarga);
 				String listData = "{\"Result\":\"OK\"}";
 				response.getWriter().print(listData);
 			}

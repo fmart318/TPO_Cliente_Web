@@ -137,5 +137,26 @@ public class Administrador {
 		}
 		return null;
 	}
+	public void createCarga(CargaDTO c){
+		try{
+			ir.createCarga(c);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void updateCarga(CargaDTO c){
+		try{
+			ir.updateCarga(c);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void deleteCarga(int idCarga){
+		try{
+			ir.deleteCarga(idCarga);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
 	
 }

@@ -23,7 +23,7 @@
 				deleteAction : 'CrudCarga?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idCarga : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -31,7 +31,7 @@
 					edit : false,
 					create : false
 				},
-				Peso : {
+				peso : {
 					title : 'Peso',
 					width : '5%',
 					edit : true
@@ -74,17 +74,41 @@
 				refrigerable : {
 					title : 'Refrigerable',
 					width : '5%',
-					edit : true
+					display: function (data) {
+			            if (data.record.refrigerable == true)
+			            {
+			                return '<input type="checkbox" checked>';
+			            }
+			            else
+			            {
+			                return '<input type="checkbox">';
+			            }
+				    },
+					create: true,
+					edit: true
 				},
 				condiciones : {
 					title : 'Condiciones',
 					width : '5%',
 					edit : true
+					
 				},
 				despachado : {
 					title : 'Despachado',
 					width : '5%',
-					edit : true
+					edit : true,
+					display: function (data) {
+			            if (data.record.despachado == true)
+			            {
+			                return '<input type="checkbox" checked>';
+			            }
+			            else
+			            {
+			                return '<input type="checkbox">';
+			            }
+				    },
+					create: true,
+					edit: true
 				},
 				tipoMercaderia : {
 					title : 'Tipo de Mercadería',
