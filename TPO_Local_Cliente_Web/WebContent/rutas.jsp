@@ -17,13 +17,13 @@
 		$('#RutasTableContainer').jtable({
 			title : 'Lista de Rutas',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudRuta?action=list',
+				createAction : 'CrudRuta?action=create',
+				updateAction : 'CrudRuta?action=update',
+				deleteAction : 'CrudRuta?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idRuta : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -82,7 +82,6 @@
 					<li><a href="envios.jsp">Envíos</a></li>
 					<li><a href="facturas.jsp">Facturas</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
-					<li><a href="viajes.jsp">Viajes</a></li>
 				</ul>
 			</div>
 

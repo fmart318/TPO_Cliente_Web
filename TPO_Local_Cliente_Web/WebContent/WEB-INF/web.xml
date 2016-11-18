@@ -157,6 +157,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>CrudRuta</servlet-name>
+    <servlet-class>servlet.CrudRuta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudRuta</servlet-name>
+    <url-pattern>/CrudRuta</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>CrudPedidos</servlet-name>
     <servlet-class>servlet.CrudPedidos</servlet-class>
   </servlet>

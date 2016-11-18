@@ -209,4 +209,40 @@ public class Administrador {
 		}
 	}
 	
+	// Rutas
+	
+		// TODO Mirar Mapa de Rutas
+		public  List<RutaDTO> listarRutas() {
+			try {
+				return ir.obtenerRutas();
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+		
+		public void altaRuta(RutaDTO rutaDTO){
+			try{
+				ir.altaRuta(rutaDTO);
+			}catch (RemoteException e){
+				e.printStackTrace();
+			}
+		}
+		
+		public void updateRuta(RutaDTO rutaDTO){
+			try{
+				ir.updateRuta(rutaDTO);
+			}catch (RemoteException e){
+				e.printStackTrace();
+			}
+		}
+		
+		public void deleteRuta(int idRuta){
+			try{
+				ir.deleteRuta(idRuta);
+			}catch (RemoteException e){
+				e.printStackTrace();
+			}
+		}
+	
 }
