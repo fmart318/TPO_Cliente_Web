@@ -131,8 +131,7 @@
 			</div>
 		</div>
 
-		<div id="content-wrap">
-			<div id="navigation" class="col-full">
+		<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
 					<li><a href="precioVehiculos.jsp">Precio de Vehículos</a></li>

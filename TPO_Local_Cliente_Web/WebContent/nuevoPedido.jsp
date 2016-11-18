@@ -35,6 +35,9 @@ function closeSelf(){
       </div>
     </div>
 	
+	
+	
+	
 	<div class="row">
 	  <div class="col-sm-6">
 	    <div class="panel panel-primary">
