@@ -15,6 +15,7 @@
 	$(document).ready(function() {
 		$('#EmpresaTableContainer').jtable({
 			title : 'Lista de Clientes Empresas',
+			
 			actions : {
 				listAction : 'CrudClienteEmpresa?action=list',
 				createAction : 'CrudClienteEmpresa?action=create',

@@ -65,27 +65,31 @@
 							<table class="table">
 								<tbody class="tbody">
 									<tr>
-										<th>idPedido</th>
-										<th>idCliente</th>
-										<th>idDireccionCarga</th>
-										<th>idDireccionDestino</th>
-										<th>fechaCarga</th>
-										<th>horaInicio</th>
-										<th>horaFin</th>
-										<th>fechaMaxima</th>
-										<th>precio</th>
-										<th>sucursalOrigen</th>
-										<th>sucursalDestino</th>
-										<th>solicitaTransporteDirecto</th>
-										<th>solicitaAvionetaParticular</th>
+										<th>Id Pedido</th>
+										<th>Id Cliente</th>
+										<th>Id Dir. Carga</th>
+										<th>Id Dir. Destino</th>
+										<th>Fecha Carga</th>
+										<th>Hora Inicio</th>
+										<th>Hora Fin</th>
+										<th>Fecha Máxima</th>
+										<th>Precio</th>
+										<th>Suc Origen</th>
+										<th>Suc Destino</th>
+										<th>Solicita Trans Dto.</th>
+										<th>Solicita Avioneta</th>
 										<th>Cargas</th>
 									</tr>
 									<%
 									List <PedidoDTO> pedidos = (List <PedidoDTO>) request.getSession().getAttribute("pedidos");
 							 		for (PedidoDTO pedido : pedidos) {
-							 		
-							 			
-							        %>
+							 			String checkA="false";
+							 			String checkB="false";
+							 			if (pedido.isSolicitaTransporteDirecto())
+							 				checkA="checked";
+							 			if (pedido.isSolicitaAvionetaParticular())
+							 				checkB="checked";
+						        	%>
 									<tr>
 										<td><%= pedido.getIdPedido() %></td>
 										<td><%= pedido.getCliente().getIdCliente() %></td>
@@ -98,8 +102,8 @@
 										<td><%= pedido.getPrecio() %></td>
 										<td><%= pedido.getSucursalOrigen() %></td>
 										<td><%= pedido.getSucursalDestino() %></td>
-										<td><%= pedido.isSolicitaTransporteDirecto() %></td>
-										<td><%= pedido.isSolicitaAvionetaParticular() %></td>
+										<td><input type="checkbox" <%=checkA %>></td>
+										<td><input type="checkbox" <%=checkB %>></td>
 										<td><a
 											href="verCargas.jsp?idPedido=<%=pedido.getIdPedido() %>"
 											onClick="return popup(this, 'cargas')">Ver Cargas</a>

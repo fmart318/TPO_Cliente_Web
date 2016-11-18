@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Negocio.Administrador;
 import dto.CargaDTO;
+import dto.ClienteDTO;
+import dto.DireccionDTO;
 import dto.PedidoDTO;
 
 /**
@@ -31,7 +34,9 @@ public class pedidos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List <PedidoDTO> pedidos = Administrador.getInstance().obtenerPedidos();
+		
 		request.getSession().setAttribute("pedidos", pedidos);
+		
 		
  		for (PedidoDTO pedido : pedidos) {
  			System.out.println(pedido.getIdPedido());

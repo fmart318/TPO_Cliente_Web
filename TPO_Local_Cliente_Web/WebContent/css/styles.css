@@ -989,3 +989,11 @@ tbody tr:hover td {
 	overflow-x:scroll;
 	overflow-y:scroll; display:block;
 }
+#CargasTableContainer
+{
+	height:auto; 
+	width: 1024px;
+	overflow-x:scroll;
+	overflow-y:scroll; display:block;
+}
+}

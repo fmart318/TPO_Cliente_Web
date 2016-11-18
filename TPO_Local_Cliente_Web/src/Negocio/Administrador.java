@@ -138,7 +138,6 @@ public class Administrador {
 		return null;
 	}
 	
-	
 	// Sucursales
 	
 	public  List<SucursalDTO> listarSucursales() {
@@ -245,4 +244,38 @@ public class Administrador {
 			}
 		}
 	
+	//Carga
+		
+	public void createCarga(CargaDTO c){
+		try{
+			ir.createCarga(c);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void updateCarga(CargaDTO c){
+		try{
+			ir.updateCarga(c);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void deleteCarga(int idCarga){
+		try{
+			ir.deleteCarga(idCarga);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	//Pedido
+	
+	public void crearPedido(PedidoDTO p){
+		try{
+			ir.crearPedido(p);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+
 }
