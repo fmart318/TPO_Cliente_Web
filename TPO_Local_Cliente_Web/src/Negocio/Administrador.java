@@ -277,5 +277,13 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	public CargaDTO buscarCargaPorId(int idCarga){
+		try{
+			return ir.buscarCargaPorId(idCarga);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
