@@ -17,13 +17,13 @@
 		$('#DireccionesTableContainer').jtable({
 			title : 'Lista de Direcciones',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudDireccion?action=list',
+				createAction : 'CrudDireccion?action=create',
+				updateAction : 'CrudDireccion?action=update',
+				deleteAction : 'CrudDireccion?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idDireccion : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -46,12 +46,12 @@
 					width : '5%',
 					edit : true
 				},
-				depto : {
+				departamento : {
 					title : 'Dto',
 					width : '5%',
 					edit : true
 				},
-				cp : {
+				CP : {
 					title : 'Cp',
 					width : '5%',
 					edit : true

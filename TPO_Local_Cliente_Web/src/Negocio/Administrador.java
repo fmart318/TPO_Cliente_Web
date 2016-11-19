@@ -326,4 +326,35 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	//Direcciones
+	
+	public List<DireccionDTO> listarDirecciones(){
+		try{
+			return ir.listarDirecciones();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void crearDireccion(DireccionDTO v){
+		try{
+			ir.crearDireccion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void modificarDireccion(DireccionDTO v){
+		try{
+			ir.modificarDireccion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void eliminarDireccion(DireccionDTO v){
+		try{
+			ir.eliminarDireccion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
 }
