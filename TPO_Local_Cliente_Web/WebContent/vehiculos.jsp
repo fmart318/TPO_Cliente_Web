@@ -17,10 +17,10 @@
 		$('#VehiculosTableContainer').jtable({
 			title : 'Lista de Vehículos',
 			actions : {
-				listAction : 'CrudVehiculos?action=list',
-				createAction : 'CrudVehiculos?action=create',
-				updateAction : 'CrudVehiculos?action=update',
-				deleteAction : 'CrudVehiculos?action=delete'
+				listAction : 'CrudVehiculo?action=list',
+				createAction : 'CrudVehiculo?action=create',
+				updateAction : 'CrudVehiculo?action=update',
+				deleteAction : 'CrudVehiculo?action=delete'
 			},
 			fields : {
 				idProveedor : {
@@ -166,7 +166,7 @@
 
 							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
 								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
-								<div id="#VehiculosTableContainer"></div>
+								<div id="VehiculosTableContainer"></div>
 							</div>
 							
 	
