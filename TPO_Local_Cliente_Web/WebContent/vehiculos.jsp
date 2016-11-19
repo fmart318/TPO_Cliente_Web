@@ -17,10 +17,10 @@
 		$('#VehiculosTableContainer').jtable({
 			title : 'Lista de Vehículos',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudVehiculos?action=list',
+				createAction : 'CrudVehiculos?action=create',
+				updateAction : 'CrudVehiculos?action=update',
+				deleteAction : 'CrudVehiculos?action=delete'
 			},
 			fields : {
 				idProveedor : {
@@ -79,12 +79,34 @@
 				trabajoEspecifico : {
 					title : 'Trabajo Específico',
 					width : '5%',
-					edit : true
+					display: function (data) {
+			            if (data.record.trabajoEspecifico == true)
+			            {
+			                return '<input type="checkbox" checked>';
+			            }
+			            else
+			            {
+			                return '<input type="checkbox">';
+			            }
+				    },
+					create: true,
+					edit: true
 				},
-				especificacion : {
-					title : 'Especificación',
+				enGarantia : {
+					title : 'En Garantia/Epsecificación',
 					width : '5%',
-					edit : true
+					display: function (data) {
+			            if (data.record.enGarantia == true)
+			            {
+			                return '<input type="checkbox" checked>';
+			            }
+			            else
+			            {
+			                return '<input type="checkbox">';
+			            }
+				    },
+					create: true,
+					edit: true
 				},
 				fechaUltimoControl : {
 					title : 'Fecha Ultimo Control',
@@ -144,7 +166,7 @@
 
 							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
 								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
-								<div id="VehiculosTableContainer"></div>
+								<div id="#VehiculosTableContainer"></div>
 							</div>
 							
 	

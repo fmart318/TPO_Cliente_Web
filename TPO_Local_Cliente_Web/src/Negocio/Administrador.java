@@ -277,6 +277,8 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	
+	//Carga
 	public CargaDTO buscarCargaPorId(int idCarga){
 		try{
 			return ir.buscarCargaPorId(idCarga);
@@ -285,5 +287,34 @@ public class Administrador {
 		}
 		return null;
 	}
-
+	//Vehículos
+	public List<VehiculoDTO> listarVehiculos(){
+		try{
+			return ir.obtenerVehiculos();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void crearVehiculo(VehiculoDTO v){
+		try{
+			ir.crearVehiculo(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void modificarVehiculo(VehiculoDTO v){
+		try{
+			ir.modificarVehiculo(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void eliminarVehiculo(VehiculoDTO v){
+		try{
+			ir.eliminarVehiculo(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
 }

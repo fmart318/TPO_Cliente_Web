@@ -21,13 +21,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GenerarOC</display-name>
-    <servlet-name>GenerarOC</servlet-name>
-    <servlet-class>servlet.GenerarOC</servlet-class>
+    <display-name>CrudVehiculo</display-name>
+    <servlet-name>CrudVehiculo</servlet-name>
+    <servlet-class>servlet.CrudVehiculo</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GenerarOC</servlet-name>
-    <url-pattern>/GenerarOC</url-pattern>
+    <servlet-name>CrudVehiculo</servlet-name>
+    <url-pattern>/CrudVehiculo</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
