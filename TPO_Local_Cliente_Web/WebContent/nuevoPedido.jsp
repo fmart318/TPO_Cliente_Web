@@ -67,7 +67,7 @@
 				  <label for="idCliente">Cargas</label>
 						<select class="selectpicker" name="idCarga" multiple required>
 							<%
-							List <CargaDTO> cargas = Administrador.getInstance().listarCargas();
+							List <CargaDTO> cargas = Administrador.getInstance().listarCargasSinDespachar();
 					 		for (CargaDTO c : cargas) {
 					        %>
 						  <option  data-tokens="<%= c.getIdCarga() %>" ><%= c.getIdCarga() %></option>

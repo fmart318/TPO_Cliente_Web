@@ -129,14 +129,7 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
-	public List<CargaDTO> listarCargas(){
-		try{
-			return ir.listarCargas();
-		}catch (RemoteException e){
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 	
 	// Sucursales
 	
@@ -266,6 +259,22 @@ public class Administrador {
 		}catch (RemoteException e){
 			e.printStackTrace();
 		}
+	}
+	public List<CargaDTO> listarCargas(){
+		try{
+			return ir.listarCargas();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public List<CargaDTO> listarCargasSinDespachar(){
+		try{
+			return ir.listarCargasSinDespachar();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	//Pedido

@@ -23,7 +23,7 @@
 				deleteAction : 'CrudVehiculo?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idVehiculo : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -94,7 +94,7 @@
 				},
 				enGarantia : {
 					title : 'En Garantia/Epsecificación',
-					width : '5%',
+					width : '2%',
 					display: function (data) {
 			            if (data.record.enGarantia == true)
 			            {
@@ -111,11 +111,13 @@
 				fechaUltimoControl : {
 					title : 'Fecha Ultimo Control',
 					width : '5%',
+					list: true,
 					edit : true
 				},
 				idPlanDeMantenimiento : {
 					title : 'idPlanDeMantenimiento',
 					width : '1%',
+					list: true,
 					edit : true
 				}
 			}
