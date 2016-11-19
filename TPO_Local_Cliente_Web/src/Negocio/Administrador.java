@@ -93,6 +93,15 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	
+	public void controlarEstadoEnvios(){
+		try{
+			ir.controlarEstadoDeEnvios();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
 	public void cargarDatosIniciales(){
 		try{
 			ir.cargarDatosIniciales();

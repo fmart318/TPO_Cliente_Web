@@ -41,6 +41,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>ControlarEstadoDeEnvios</display-name>
+    <servlet-name>ControlarEstadoDeEnvios</servlet-name>
+    <servlet-class>servlet.ControlarEstadoDeEnvios</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControlarEstadoDeEnvios</servlet-name>
+    <url-pattern>/ControlarEstadoDeEnvios</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ProcesarRemito</display-name>
     <servlet-name>ProcesarRemito</servlet-name>
     <servlet-class>servlet.ProcesarRemito</servlet-class>

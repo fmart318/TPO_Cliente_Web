@@ -62,6 +62,14 @@
 							</h2>
 							<br />
 							<h2>
+								<form action="./ControlarEstadoDeEnvios" method="post">
+									<div class="form-actions">
+											<input type="submit" value="ControlarEstadoDeEnvios" />
+									</div>
+								</form>
+							</h2>
+							<br />
+							<h2>
 								<strong>TPO<strong>
 							</h2>
 							<br />
