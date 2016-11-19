@@ -131,14 +131,14 @@ public class NuevoPedido extends HttpServlet {
 		if (request.getParameter("solicitaTransporteDirecto") != null) {
 			String solicitaTransporteDirecto = request.getParameter("solicitaTransporteDirecto");
 			boolean b = false;
-			if (solicitaTransporteDirecto.equals("true"))
+			if (solicitaTransporteDirecto!=null)
 				b = true;
 			p.setSolicitaTransporteDirecto(b);
 		}
 		if (request.getParameter("solicitaAvionetaParticular") != null) {
 			String solicitaAvionetaParticular = request.getParameter("solicitaAvionetaParticular");
 			boolean b = false;
-			if (solicitaAvionetaParticular.equals("true"))
+			if (solicitaAvionetaParticular!=null)
 				b = true;
 			p.setSolicitaAvionetaParticular(b);
 		}
