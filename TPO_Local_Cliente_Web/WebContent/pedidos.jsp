@@ -14,7 +14,7 @@
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
-<script src=./scripts/popup.js type="text/javascript"></script>
+<script src=scripts/popup.js type="text/javascript"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -58,8 +58,9 @@
 						<h2>Lista de Pedidos</h2>
 
 							<h3>Pedidos</h3>
-							<div class="fix"></div>
-								<a class="btn btn-large" id="nuevoPedido" href="nuevoPedido.jsp" onClick="return popup(this, 'nuevoPedido')">Nuevo Pedido</a>
+								<a id="nuevoPedido" href="nuevoPedido.jsp" onClick="return popup(this, 'nuevoPedido')">
+								<input type="submit" value="Nuevo Pedido" />
+								</a>
 							
 						</div>
 							<table class="table">
