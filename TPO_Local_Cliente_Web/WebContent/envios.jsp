@@ -1,7 +1,12 @@
+<%@ page import="dto.*"%>
+<%@ page import="Negocio.*"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Date"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> Trayectos | TPO AD </title>
+<title>Envíos | TPO AD</title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
@@ -11,65 +16,10 @@
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#TrayectosTableContainer').jtable({
-			title : 'Lista de Trayectos',
-			actions : {
-				listAction : 'CrudTrayecto?action=list',
-				createAction : 'CrudTrayecto?action=create',
-				updateAction : 'CrudTrayecto?action=update',
-				deleteAction : 'CrudTrayecto?action=delete'
-			},
-			fields : {
-				idTrayecto : {
-					title : 'id',
-					width : '1%',
-					key : true,
-					list : true,
-					edit : false,
-					create : false
-				},
-				tiempo : {
-					title : 'Tiempo',
-					width : '5%',
-					edit : true
-				},
-				km : {
-					title : 'Kilómetro',
-					width : '5%',
-					edit : true
-				},
-				precio : {
-					title : 'Precio',
-					width : '5%',
-					edit : true
-				},
-				idSucursalDestino : {
-					title : 'idSucursalDestino',
-					width : '5%',
-					edit : true
-				},
-				idSucursalOrigen : {
-					title : 'idSucursalOrigen',
-					width : '5%',
-					edit : true
-				},
-				idRuta : {
-					title : 'idRuta',
-					width : '5%',
-					edit : true
-				}
-			}
-		});
-		$('#TrayectosTableContainer').jtable('load');
-	});
-</script>
-
+<script src=scripts/popup.js type="text/javascript"></script>
 </head>
 <body>
-<div id="wrapper">
+	<div id="wrapper">
 
 		<div id="header">
 			<div class="col-full">
@@ -103,25 +53,58 @@
 			<div class="featured col-full feat-blog">
 				<div class="feat-post">
 					<div class="feat-content">
-	
+
 						<div class="entry">
 
-							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
-								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
-								<div id="TrayectosTableContainer"></div>
-							</div>
-							
-	
-	
+							<h2>Lista de Envíos</h2>
 						</div>
+						<table class="table">
+							<tbody class="tbody">
+								<tr>
+									<th>Id Envío</th>
+									<th>Fecha Salida</th>
+									<th>Fecha Llegada</th>
+									<th>Cumple Condiciones de Carga</th>
+									<th>Estado</th>
+									<th>Prioridad</th>
+									<th>Sucursal Origen</th>
+									<th>Pedidos</th>
+								</tr>
+								<%
+									List <EnvioDTO> envios = Administrador.getInstance().listarEnvios();
+							 		for (EnvioDTO e : envios) {
+							 			String checkA="false";
+							 			if (e.isCumpleCondicionesCarga())
+							 				checkA="checked";
+						        	%>
+								<tr>
+									<td><%= e.getIdEnvio() %></td>
+									<td><%= e.getFechaSalida() %></td>
+									<td><%= e.getFechaLlegada() %></td>
+									<td><input type="checkbox" <%=checkA %>></td>
+									<td><%= e.getEstado() %></td>
+									<td><%= e.getPrioridad() %></td>
+									<td><%= e.getSucursalOrigen() %></td>
+									<td><a
+										href="verPedidos.jsp?idPedido=<%=e.getPedido().getIdPedido() %>"
+										onClick="return popup(this, 'cargas')">Ver Pedidos</a></td>
 
-						<div class="fix"></div>
+
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
 					</div>
-				</div>
-			</div>
 
-			<div class="fix"></div>
+
+				</div>
+
+				<div class="fix"></div>
+			</div>
 		</div>
-</div>
+	</div>
+
+	<div class="fix"></div>
+	</div>
 </body>
 </html>

@@ -366,4 +366,71 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+
+	//Envío
+	public List<EnvioDTO> listarEnvios(){
+		try{
+			return ir.listarEnvios();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	//Viaje
+		public List<ViajeDTO> listarViajes(){
+			try{
+				return ir.listarViajes();
+			}catch (RemoteException e){
+				e.printStackTrace();
+			}
+			return null;
+		}
+		
+	//Plan de mantenimiento
+	public List<PlanDeMantenimientoDTO> listarPlanDeMantenimiento() {
+		try {
+			return ir.listarPlanesDeMantenimiento();
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void altaPlanDeMantenimiento(PlanDeMantenimientoDTO plan) {
+		try {
+			ir.altaPlanMantenimiento(plan);
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updatePlanDeMantenimiento(PlanDeMantenimientoDTO plan) {
+		try {
+			ir.updatePlanDeMantenimiento(plan);
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deletePlanDeMantenimiento(int idPlan) {
+		try {
+			ir.deletePlanDeMantenimiento(idPlan);
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Obtiene los vehiculos que deben ser enviados a mantenimiento
+	 * 
+	 * @return la lista de vehiculos
+	 */
+	public List<VehiculoAMantenerDTO> getVehiculosMantenimiento() {
+		try {
+			return ir.getVehiculosAMantener();
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

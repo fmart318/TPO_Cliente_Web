@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Planes de Mantenimiento | TPO AD </title>
+<title>Vehiculos A Mantener | TPO AD </title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
@@ -14,46 +14,45 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#PlanesDeMantenimientoTableContainer').jtable({
-			title : 'Planes de mantenimiento',
+		$('#VehiculosAMantener').jtable({
+			title : 'Vehiculos a Enviar a Mantenimiento',
+			
 			actions : {
-				listAction : 'CrudPlanDeMantenimiento?action=list',
-				createAction : 'CrudPlanDeMantenimiento?action=create',
-				updateAction : 'CrudPlanDeMantenimiento?action=update',
-				deleteAction : 'CrudPlanDeMantenimiento?action=delete'
+				listAction : 'CrudVehiculosAMantener?action=list'
 			},
+			
 			fields : {
-				idPlanDeMantenimiento : {
-					title : 'Id',
-					width : '1%',
+				idVehiculo : {
+					title : 'Vehiculo',
+					width : '2%',
 					key : true,
 					list : true,
 					edit : false,
 					create : false
 				},
-				diasProxControl : {
-					title : 'Días Próximo Control',
+				hayQueMantener : {
+					title : 'Necesita Mantenimiento',
 					width : '7%',
-					edit : true
+					edit : false
 				},
-				diasDemora : {
-					title : 'Días De Demora',
+				tipoDeTrabajo : {
+					title : 'Tipo de Trabajo',
 					width : '5%',
-					edit : true
+					edit : false
 				},
-				kmProxControl : {
-					title : 'Km del Próximo Control',
-					width : '7%',
-					edit : true
-				},
-				depto : {
-					title : 'Departamento',
+				puntoAControlar : {
+					title : 'Punto a Controlar',
 					width : '5%',
-					edit : true
+					edit : false
+				},
+				tareas : {
+					title: 'Tareas a Realizar',
+					width : '5%',
+					edit: false
 				}		
 			}
 		});
-		$('#PlanesDeMantenimientoTableContainer').jtable('load');
+		$('#VehiculosAMantener').jtable('load');
 	});
 
 </script>
@@ -100,14 +99,9 @@
 
 							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
 								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
-								<div id="PlanesDeMantenimientoTableContainer"></div>
+								<div id="VehiculosAMantener"></div>
 							</div>
 							
-							<a
-								href="vehiculosAMantener.jsp"
-								onClick="return popup(this, 'vehiculosAMantener')">Ver Vehiculos A Mantener</a>
-							</div>
-	
 						</div>
 
 						<div class="fix"></div>

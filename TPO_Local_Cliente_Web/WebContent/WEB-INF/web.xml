@@ -217,4 +217,22 @@
     <servlet-name>NuevoPedido</servlet-name>
     <url-pattern>/NuevoPedido</url-pattern>
   </servlet-mapping>
+  
+     <servlet>
+    <servlet-name>CrudPlanDeMantenimiento</servlet-name>
+    <servlet-class>servlet.CrudPlanDeMantenimiento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudPlanDeMantenimiento</servlet-name>
+    <url-pattern>/CrudPlanDeMantenimiento</url-pattern>
+  </servlet-mapping>
+  
+       <servlet>
+    <servlet-name>CrudVehiculosAMantener</servlet-name>
+    <servlet-class>servlet.CrudVehiculosAMantener</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudVehiculosAMantener</servlet-name>
+    <url-pattern>/CrudVehiculosAMantener</url-pattern>
+  </servlet-mapping>
 </web-app>
