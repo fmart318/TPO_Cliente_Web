@@ -48,6 +48,7 @@ public class CrudSucursal extends HttpServlet {
 					// Return Json in the format required by jTable plugin
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
+					System.out.println(listData);
 					
 				} catch (Exception e) {
 					String error = "{\"Result\":\"ERROR\",\"Message\":" + "Exception on listing records }";
