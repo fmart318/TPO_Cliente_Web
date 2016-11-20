@@ -34,18 +34,17 @@
 					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
-					<li><a href="planesDeMantenimiento.jsp">Planes De Mantenimiento</a></li>
+					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
 					<li><a href="vehiculos.jsp">Vehículos</a></li>
 					<li><a href="cargas.jsp">Cargas</a></li>
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
 					<li><a href="./pedidos">Pedidos</a></li>
-					<li><a href="viajes.jsp">Viajes</a></li>
-					<li><a href="envios.jsp">Envíos</a></li>
-					<li><a href="facturas.jsp">Facturas</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
-					<li><a href="viajes.jsp">Viajes</a></li>
+					<li><a href="envios.jsp">Envíos</a></li>
+					<li><a href="viajes.jsp">Viajes</a></li>					
+					<li><a href="facturas.jsp">Facturas</a></li>
 				</ul>
 			</div>
 
@@ -57,7 +56,6 @@
 
 						<h2>Lista de Pedidos</h2>
 
-							<h3>Pedidos</h3>
 								<a id="nuevoPedido" href="nuevoPedido.jsp" onClick="return popup(this, 'nuevoPedido')">
 								<input type="submit" value="Nuevo Pedido" />
 								</a>

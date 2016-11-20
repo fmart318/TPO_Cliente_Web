@@ -357,4 +357,23 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+
+	//Envío
+	public List<EnvioDTO> listarEnvios(){
+		try{
+			return ir.listarEnvios();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	//Viaje
+		public List<ViajeDTO> listarViajes(){
+			try{
+				return ir.listarViajes();
+			}catch (RemoteException e){
+				e.printStackTrace();
+			}
+			return null;
+		}
 }

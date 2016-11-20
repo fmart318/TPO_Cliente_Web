@@ -1,72 +1,21 @@
+<%@ page import="dto.*"%>
+<%@ page import="Negocio.*"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Date"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> Trayectos | TPO AD </title>
+<title> Viajes | TPO AD </title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
-<link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet"
-	type="text/css" />
+<link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
 <!-- Include jTable script file. -->
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#TrayectosTableContainer').jtable({
-			title : 'Lista de Trayectos',
-			actions : {
-				listAction : 'CrudTrayecto?action=list',
-				createAction : 'CrudTrayecto?action=create',
-				updateAction : 'CrudTrayecto?action=update',
-				deleteAction : 'CrudTrayecto?action=delete'
-			},
-			fields : {
-				idTrayecto : {
-					title : 'id',
-					width : '1%',
-					key : true,
-					list : true,
-					edit : false,
-					create : false
-				},
-				tiempo : {
-					title : 'Tiempo',
-					width : '5%',
-					edit : true
-				},
-				km : {
-					title : 'Kilómetro',
-					width : '5%',
-					edit : true
-				},
-				precio : {
-					title : 'Precio',
-					width : '5%',
-					edit : true
-				},
-				idSucursalDestino : {
-					title : 'idSucursalDestino',
-					width : '5%',
-					edit : true
-				},
-				idSucursalOrigen : {
-					title : 'idSucursalOrigen',
-					width : '5%',
-					edit : true
-				},
-				idRuta : {
-					title : 'idRuta',
-					width : '5%',
-					edit : true
-				}
-			}
-		});
-		$('#TrayectosTableContainer').jtable('load');
-	});
-</script>
-
+<script src=scripts/popup.js type="text/javascript"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -103,14 +52,45 @@
 			<div class="featured col-full feat-blog">
 				<div class="feat-post">
 					<div class="feat-content">
-	
 						<div class="entry">
-
-							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
-								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
-								<div id="TrayectosTableContainer"></div>
-							</div>
-							
+						<h2>Lista de Viajes</h2>							
+						</div>
+							<table class="table">
+								<tbody class="tbody">
+									<tr>
+										<th>Id Viaje</th>
+										<th>Fecha de Llegada</th>
+										<th>Finalizado</th>
+										<th>Sucursal Origen</th>
+										<th>Sucursal Destino</th>
+										<th>Id Vehículo</th>
+										<th>Envíos</th>
+									</tr>
+									<%
+									List <ViajeDTO> viajes = Administrador.getInstance().listarViajes();
+							 		for (ViajeDTO viaje : viajes) {
+							 			String checkA="false";
+							 			if (viaje.isFinalizado())
+							 				checkA="checked";
+						        	%>
+									<tr>
+										<td><%= viaje.getIdViaje() %></td>
+										<td><%= viaje.getFechaLlegada() %></td>
+										<td><input type="checkbox" <%=checkA %>></td>
+										<td><%= viaje.getSucursalOrigen().getNombre() %></td>
+										<td><%= viaje.getSucursalDestino().getNombre() %></td>
+										<td><%= viaje.getVehiculo().getIdVehiculo() %></td>
+										<td><a
+											href="verEnvios.jsp?idViaje=<%=viaje.getIdViaje() %>"
+											onClick="return popup(this, 'cargas')">Ver Envíos</a>
+										</td>
+										
+										
+									</tr>
+									<% } %>
+								</tbody>
+							</table>
+						</div>
 	
 	
 						</div>
@@ -122,6 +102,5 @@
 
 			<div class="fix"></div>
 		</div>
-</div>
 </body>
 </html>
