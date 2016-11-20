@@ -17,13 +17,13 @@
 		$('#DireccionesTableContainer').jtable({
 			title : 'Lista de Direcciones',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudDireccion?action=list',
+				createAction : 'CrudDireccion?action=create',
+				updateAction : 'CrudDireccion?action=update',
+				deleteAction : 'CrudDireccion?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idDireccion : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -46,12 +46,12 @@
 					width : '5%',
 					edit : true
 				},
-				depto : {
+				departamento : {
 					title : 'Dto',
 					width : '5%',
 					edit : true
 				},
-				cp : {
+				CP : {
 					title : 'Cp',
 					width : '5%',
 					edit : true
@@ -87,7 +87,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos.jsp">Pedidos</a></li>
+					<li><a href="./pedidos">Pedidos</a></li>
 					<li><a href="viajes.jsp">Viajes</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>
 					<li><a href="facturas.jsp">Facturas</a></li>

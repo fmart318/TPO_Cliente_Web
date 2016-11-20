@@ -17,13 +17,18 @@
 	  <script src="js/bootstrap.min.js"></script>
 	  <script src="js/bootstrap-select.min.js"></script>
 	  
-<script type="text/javascript">
-function closeSelf(){
-       document.forms['nuevoPedido'].submit();
-       window.close(), 3000;
-
-}
-</script>
+	  
+	<script type="text/javascript">
+	function closeSelf(){
+	       document.forms['nuevoPedido'].submit();
+	       window.close(), 3000;
+	
+	}
+	$( function() {
+	  $( "#fechaCarga" ).datepicker();
+	} );
+	
+	</script>
 </head>
 
 <body>
@@ -34,6 +39,9 @@ function closeSelf(){
         <h2>Nuevo Pedido</h2>
       </div>
     </div>
+	
+	
+	
 	
 	<div class="row">
 	  <div class="col-sm-6">
@@ -46,12 +54,23 @@ function closeSelf(){
 			<div class="panel-body">
 				<div class="form-group">				
 				  <label for="idCliente">Cliente</label>
-						<select class="selectpicker" name="idCliente" data-live-search="true">
+						<select class="selectpicker" name="idCliente" data-live-search="true" required>
 							<%
 							List <ClienteDTO> clientes = Administrador.getInstance().obtenerClientes();
 					 		for (ClienteDTO c : clientes) {
 					        %>
-						  <option  data-tokens="<%= c.getIdCliente()+", "+c.getNombre()  %>" ><%= c.getIdCliente() %></option>
+						  <option  data-tokens="<%= c.getIdCliente()+" "+c.getNombre()  %>" ><%= c.getIdCliente() %></option>
+							<%}%>
+						</select>
+				</div>
+				<div class="form-group">				
+				  <label for="idCliente">Cargas</label>
+						<select class="selectpicker" name="idCarga" multiple required>
+							<%
+							List <CargaDTO> cargas = Administrador.getInstance().listarCargasSinDespachar();
+					 		for (CargaDTO c : cargas) {
+					        %>
+						  <option  data-tokens="<%= c.getIdCarga() %>" ><%= c.getIdCarga() %></option>
 							<%}%>
 						</select>
 				</div>
@@ -73,7 +92,7 @@ function closeSelf(){
 				</div>
 				<div class="form-group">
 				  <label for="fechaCarga">Fecha Carga</label>
-				  <input type="date" name="fechaCarga" class="form-control" placeholder="Fecha" value="2016-11-17 13:54:17.897"/>
+				  <input type="date" id="fechaCarga" name="fechaCarga" class="form-control" value="2016-11-17" required/>
 				</div>
 				<div class="form-group">
 				  <label for="fechaCarga">horaInicio</label>
@@ -85,7 +104,7 @@ function closeSelf(){
 				</div>
 				<div class="form-group">
 				  <label for="fechaMaxima">Fecha Máxima</label>
-				  <input type="date" name="fechaMaxima" class="form-control" placeholder="Fecha Máx" value='2016-11-18 13:54:17.897' />
+				  <input type="date" id="fechaMaxima" name="fechaMaxima" class="form-control" value='2016-11-18' required />
 				</div>
 				<div class="form-group">
 				  <label for="precio">Precio</label>

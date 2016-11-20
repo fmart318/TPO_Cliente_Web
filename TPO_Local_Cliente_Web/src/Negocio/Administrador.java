@@ -138,14 +138,7 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
-	public List<CargaDTO> listarCargas(){
-		try{
-			return ir.listarCargas();
-		}catch (RemoteException e){
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 	
 	// Sucursales
 	
@@ -276,6 +269,22 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	public List<CargaDTO> listarCargas(){
+		try{
+			return ir.listarCargas();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public List<CargaDTO> listarCargasSinDespachar(){
+		try{
+			return ir.listarCargasSinDespachar();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	//Pedido
 	
@@ -286,5 +295,75 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//Carga
+	public CargaDTO buscarCargaPorId(int idCarga){
+		try{
+			return ir.buscarCargaPorId(idCarga);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	//Vehículos
+	public List<VehiculoDTO> listarVehiculos(){
+		try{
+			return ir.obtenerVehiculos();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void crearVehiculo(VehiculoDTO v){
+		try{
+			ir.crearVehiculo(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void modificarVehiculo(VehiculoDTO v){
+		try{
+			ir.modificarVehiculo(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void eliminarVehiculo(VehiculoDTO v){
+		try{
+			ir.eliminarVehiculo(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	//Direcciones
+	
+	public List<DireccionDTO> listarDirecciones(){
+		try{
+			return ir.listarDirecciones();
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void crearDireccion(DireccionDTO v){
+		try{
+			ir.crearDireccion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void modificarDireccion(DireccionDTO v){
+		try{
+			ir.modificarDireccion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void eliminarDireccion(DireccionDTO v){
+		try{
+			ir.eliminarDireccion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
 }

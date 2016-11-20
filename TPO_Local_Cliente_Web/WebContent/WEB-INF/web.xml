@@ -11,23 +11,23 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>ProcesarVenta</display-name>
-    <servlet-name>ProcesarVenta</servlet-name>
-    <servlet-class>servlet.ProcesarVenta</servlet-class>
+    <display-name>CrudDireccion</display-name>
+    <servlet-name>CrudDireccion</servlet-name>
+    <servlet-class>servlet.CrudDireccion</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProcesarVenta</servlet-name>
-    <url-pattern>/ProcesarVenta</url-pattern>
+    <servlet-name>CrudDireccion</servlet-name>
+    <url-pattern>/CrudDireccion</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GenerarOC</display-name>
-    <servlet-name>GenerarOC</servlet-name>
-    <servlet-class>servlet.GenerarOC</servlet-class>
+    <display-name>CrudVehiculo</display-name>
+    <servlet-name>CrudVehiculo</servlet-name>
+    <servlet-class>servlet.CrudVehiculo</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GenerarOC</servlet-name>
-    <url-pattern>/GenerarOC</url-pattern>
+    <servlet-name>CrudVehiculo</servlet-name>
+    <url-pattern>/CrudVehiculo</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

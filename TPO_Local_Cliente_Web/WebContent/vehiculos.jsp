@@ -17,13 +17,13 @@
 		$('#VehiculosTableContainer').jtable({
 			title : 'Lista de Vehículos',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudVehiculo?action=list',
+				createAction : 'CrudVehiculo?action=create',
+				updateAction : 'CrudVehiculo?action=update',
+				deleteAction : 'CrudVehiculo?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idVehiculo : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -79,21 +79,45 @@
 				trabajoEspecifico : {
 					title : 'Trabajo Específico',
 					width : '5%',
-					edit : true
+					display: function (data) {
+			            if (data.record.trabajoEspecifico == true)
+			            {
+			                return '<input type="checkbox" checked>';
+			            }
+			            else
+			            {
+			                return '<input type="checkbox">';
+			            }
+				    },
+					create: true,
+					edit: true
 				},
-				especificacion : {
-					title : 'Especificación',
-					width : '5%',
-					edit : true
+				enGarantia : {
+					title : 'En Garantia/Epsecificación',
+					width : '2%',
+					display: function (data) {
+			            if (data.record.enGarantia == true)
+			            {
+			                return '<input type="checkbox" checked>';
+			            }
+			            else
+			            {
+			                return '<input type="checkbox">';
+			            }
+				    },
+					create: true,
+					edit: true
 				},
 				fechaUltimoControl : {
 					title : 'Fecha Ultimo Control',
 					width : '5%',
+					list: true,
 					edit : true
 				},
 				idPlanDeMantenimiento : {
 					title : 'idPlanDeMantenimiento',
 					width : '1%',
+					list: true,
 					edit : true
 				}
 			}
@@ -127,7 +151,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos.jsp">Pedidos</a></li>
+					<li><a href="./pedidos">Pedidos</a></li>
 					<li><a href="viajes.jsp">Viajes</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>
 					<li><a href="facturas.jsp">Facturas</a></li>
