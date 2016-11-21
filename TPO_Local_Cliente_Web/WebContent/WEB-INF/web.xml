@@ -255,4 +255,24 @@
     <servlet-name>CrudVehiculosAMantener</servlet-name>
     <url-pattern>/CrudVehiculosAMantener</url-pattern>
   </servlet-mapping>
+  
+         <servlet>
+    <servlet-name>CrudFactura</servlet-name>
+    <servlet-class>servlet.CrudFactura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudFactura</servlet-name>
+    <url-pattern>/CrudFactura</url-pattern>
+  </servlet-mapping>
+  
+     <servlet>
+    <servlet-name>CrudRemito</servlet-name>
+    <servlet-class>servlet.CrudRemito</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudRemito</servlet-name>
+    <url-pattern>/CrudRemito</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
