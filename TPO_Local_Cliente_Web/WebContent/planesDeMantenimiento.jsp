@@ -93,11 +93,6 @@
 	
 						<div class="entry">
 								<div id="PlanesDeMantenimientoTableContainer" class="table"></div>
-							<a
-								href="vehiculosAMantener.jsp"
-								onClick="return popup(this, 'vehiculosAMantener')">Ver Vehiculos A Mantener</a>
-							</div>
-	
 						</div>
 
 						<div class="fix"></div>

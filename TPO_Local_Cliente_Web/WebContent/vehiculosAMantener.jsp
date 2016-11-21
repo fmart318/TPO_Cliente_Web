@@ -18,7 +18,8 @@
 			title : 'Vehiculos a Enviar a Mantenimiento',
 			
 			actions : {
-				listAction : 'CrudVehiculosAMantener?action=list'
+				listAction : 'CrudVehiculosAMantener?action=list',
+				updateAction : 'CrudCarga?action=update'
 			},
 			
 			fields : {
@@ -47,24 +48,18 @@
 					title: 'Tareas a Realizar',
 					edit: false
 				},
-				enviar : {
-					title : 'Enviar a Mantenimiento',
-					width : '8%',
-					display: function (data) {
-			            if (data.record.estado == 'enviado')
-			            {
-			                return '<input type="checkbox" checked>';
-			            }
-			            else
-			            {
-			                return '<input type="checkbox">';
-			            }
-				    },
+				estado : {
+					title : "Estado",
+					edit : true
 				}
 			}
 		});
 		$('#VehiculosAMantener').jtable('load');
 	});
+	
+	function updateEstadoVehiculos() {
+		
+	}
 
 </script>
 
