@@ -15,11 +15,13 @@ import com.google.gson.reflect.TypeToken;
 
 import Negocio.Administrador;
 import dto.EmpresaDTO;
+import dto.PedidoDTO;
+import dto.RemitoDTO;
 
-public class CrudClienteEmpresa extends HttpServlet {
+public class CrudRemito extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public CrudClienteEmpresa() {
+	public CrudRemito() {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,18 +33,14 @@ public class CrudClienteEmpresa extends HttpServlet {
 
 		String action = request.getParameter("action");
 
-		List<EmpresaDTO> list = Administrador.getInstance().listarClientesEmpresa();
+		List<RemitoDTO> list = Administrador.getInstance().listarRemitos();
 		Gson gson = new Gson();
 		response.setContentType("application/json");
 
 		if (action != null) {
 			if (action.equals("list")) {
 				try {
-					//
-					// list =
-					// Administrador.getInstance().listarClientesEmpresa();
-					// Convert Java Object to Json
-					JsonElement element = gson.toJsonTree(list, new TypeToken<List<EmpresaDTO>>() {
+					JsonElement element = gson.toJsonTree(list, new TypeToken<List<RemitoDTO>>() {
 					}.getType());
 					JsonArray jsonArray = element.getAsJsonArray();
 					String listData = jsonArray.toString();
@@ -56,48 +54,29 @@ public class CrudClienteEmpresa extends HttpServlet {
 					System.err.println(e.getMessage());
 				}
 			} else if (action.equals("create") || action.equals("update")) {
-				// Student student = new Student();
-				EmpresaDTO empresa = new EmpresaDTO();
-				if (request.getParameter("idCliente") != null) {
-					int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-					empresa.setIdCliente(idCliente);
+				RemitoDTO remito = new RemitoDTO();
+				if (request.getParameter("idRemito") != null) {
+					int idRemito = Integer.parseInt(request.getParameter("idRemito"));
+					remito.setIdRemito(idRemito);
 				}
 
-				if (request.getParameter("nombre") != null) {
-					String nombre = request.getParameter("nombre");
-					empresa.setNombre(nombre);
+				if (request.getParameter("pedido") != null) {
+					int idPedido = Integer.parseInt(request.getParameter("pedido"));
+					List<PedidoDTO> pedidos = Administrador.getInstance().obtenerPedidos();
+					for (PedidoDTO pedido : pedidos) {
+						if (pedido.getIdPedido() == idPedido) {
+							remito.setPedido(pedido);
+						}
+					}
 				}
-				if (request.getParameter("CUIT") != null) {
-					int CUIT = Integer.parseInt(request.getParameter("CUIT"));
-					empresa.setCUIT(CUIT);
-				}
-				if (request.getParameter("tipo") != null) {
-					String tipo = request.getParameter("tipo");
-					empresa.setTipo(tipo);
-				}
-				if (request.getParameter("detallePoliticas") != null) {
-					String detallePoliticas = request.getParameter("detallePoliticas");
-					empresa.setDetallePoliticas(detallePoliticas);
-				}
-				if (request.getParameter("saldoCuentaCorriente") != null) {
-					float saldoCuentaCorriente = Float.parseFloat(request.getParameter("saldoCuentaCorriente"));
-					empresa.setSaldoCuentaCorriente(saldoCuentaCorriente);
-				}
+				
 				try {
 					if (action.equals("create")) {
 						// Create new record
-						Administrador.getInstance().altaClienteEmpresa(empresa);
+						Administrador.getInstance().altaRemito(remito);
 						// Convert Java Object to Json
-						String json = gson.toJson(empresa);
+						String json = gson.toJson(remito);
 						// Return Json in the format required by jTable plugin
-						String listData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
-						response.getWriter().print(listData);
-					} else if (action.equals("update")) {
-						// Update existing record
-						Administrador.getInstance().updateClienteEmpresa(empresa);
-
-						// Convert Java Object to Json
-						String json = gson.toJson(empresa);
 						String listData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
 						response.getWriter().print(listData);
 					}
@@ -110,9 +89,9 @@ public class CrudClienteEmpresa extends HttpServlet {
 			} else if (action.equals("delete")) {
 				try {
 					// Delete record
-					if (request.getParameter("idCliente") != null) {
-						int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-						Administrador.getInstance().deleteClienteEmpresa(idCliente);
+					if (request.getParameter("idRemito") != null) {
+						int idRemito = Integer.parseInt(request.getParameter("idRemito"));
+						Administrador.getInstance().deleteRemito(idRemito);
 						String listData = "{\"Result\":\"OK\"}";
 						response.getWriter().print(listData);
 					}
