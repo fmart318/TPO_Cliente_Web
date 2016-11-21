@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> Precio Vehiculo | TPO AD </title>
+<title>V. Terceros | TPO AD</title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
@@ -17,13 +17,13 @@
 		$('#PrecioVehiculoTableContainer').jtable({
 			title : 'Lista de Precio de los Vehículos',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudVTercero?action=list',
+				createAction : 'CrudVTercero?action=create',
+				updateAction : 'CrudVTercero?action=update',
+				deleteAction : 'CrudVTercero?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idPrecioVehiculo : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -31,12 +31,12 @@
 					edit : false,
 					create : false
 				},
-				nombre : {
+				tipoVehiculo : {
 					title : 'Tipo Vehiculo',
 					width : '10%',
 					edit : true
 				},
-				calle : {
+				precio : {
 					title : 'Precio',
 					width : '5%',
 					edit : true
@@ -49,7 +49,7 @@
 
 </head>
 <body>
-<div id="wrapper">
+	<div id="wrapper">
 
 		<div id="header">
 			<div class="col-full">
@@ -61,13 +61,14 @@
 			<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
-					<li><a href="precioVehiculos.jsp">Precio de Vehículos</a></li>
+					<li><a href="precioVehiculos.jsp">V. Terceros</a></li>
 					<li><a href="direcciones.jsp">Direcciones</a></li>
 					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
 					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
 					<li><a href="vehiculos.jsp">Vehículos</a></li>
+					<li><a href="vehiculosAMantener.jsp">Vehículos A Mantener</a></li>
 					<li><a href="cargas.jsp">Cargas</a></li>
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
@@ -83,18 +84,10 @@
 			<div class="featured col-full feat-blog">
 				<div class="feat-post">
 					<div class="feat-content">
-	
+
 						<div class="entry">
-
-							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
-								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
-								<div id="PrecioVehiculoTableContainer"></div>
-							</div>
-							
-	
-	
+							<div id="PrecioVehiculoTableContainer" class="table"></div>
 						</div>
-
 						<div class="fix"></div>
 					</div>
 				</div>
@@ -102,6 +95,6 @@
 
 			<div class="fix"></div>
 		</div>
-</div>
+	</div>
 </body>
 </html>

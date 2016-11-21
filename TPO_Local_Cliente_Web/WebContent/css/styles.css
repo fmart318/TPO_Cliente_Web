@@ -526,7 +526,7 @@ h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover {
 }
 
 .featured .feat-index a:hover span {
-	color: #d6e3ee;
+	color: #004080;
 }
 
 .featured .feat-index .active a {
@@ -538,7 +538,7 @@ h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover {
 }
 
 .featured .feat-index .active a span {
-	color: #d6e3ee;
+	color: #004080;
 }
 
 .featured .feat-index span {

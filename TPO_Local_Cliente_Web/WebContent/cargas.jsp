@@ -134,13 +134,14 @@
 		<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
-					<li><a href="precioVehiculos.jsp">Precio de Vehículos</a></li>
+					<li><a href="precioVehiculos.jsp">V. Terceros</a></li>
 					<li><a href="direcciones.jsp">Direcciones</a></li>
 					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
 					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
 					<li><a href="vehiculos.jsp">Vehículos</a></li>
+					<li><a href="vehiculosAMantener.jsp">Vehículos A Mantener</a></li>
 					<li><a href="cargas.jsp">Cargas</a></li>
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
@@ -159,13 +160,8 @@
 	
 						<div class="entry">
 
-							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
-								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
-								<div id="CargasTableContainer"></div>
+								<div id="CargasTableContainer" class="table"></div>
 							</div>
-							
-	
-	
 						</div>
 
 						<div class="fix"></div>
@@ -175,7 +171,6 @@
 
 			<div class="fix"></div>
 		</div>
-	</div>
 
 </body>
 </html>

@@ -433,4 +433,43 @@ public class Administrador {
 		}
 		return null;
 	}
+	
+	
+	//Precio Vehiculo, Listado de precio de los vehículos a contratar
+	public List<PrecioVehiculoDTO> listarVTerceros() {
+		try {
+			return ir.listarVTerceros();
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void crearVTercero(PrecioVehiculoDTO v){
+		try{
+			ir.crearVTerceros(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void modificarVTercero(PrecioVehiculoDTO v){
+		try{
+			ir.modificarVTerceros(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void eliminarVTercero(PrecioVehiculoDTO v){
+		try{
+			ir.eliminarVTerceros(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void crearEnvioDirecto(PedidoDTO p){
+		try{
+			ir.crearEnvioDirecto(p);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
 }

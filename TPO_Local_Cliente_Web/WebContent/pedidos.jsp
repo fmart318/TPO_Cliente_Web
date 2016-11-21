@@ -1,4 +1,5 @@
 <%@ page import="dto.*"%>
+<%@ page import="Negocio.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Date"%>
 
@@ -29,13 +30,14 @@
 			<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
-					<li><a href="precioVehiculos.jsp">Precio de Vehículos</a></li>
+					<li><a href="precioVehiculos.jsp">V. Terceros</a></li>
 					<li><a href="direcciones.jsp">Direcciones</a></li>
 					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
 					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
 					<li><a href="vehiculos.jsp">Vehículos</a></li>
+					<li><a href="vehiculosAMantener.jsp">Vehículos A Mantener</a></li>
 					<li><a href="cargas.jsp">Cargas</a></li>
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
@@ -78,10 +80,14 @@
 										<th>Solicita Trans Dto.</th>
 										<th>Solicita Avioneta</th>
 										<th>Cargas</th>
+										<th>Contratar Vehículo</th>
 									</tr>
 									<%
 									List <PedidoDTO> pedidos = (List <PedidoDTO>) request.getSession().getAttribute("pedidos");
+									PrecioVehiculoDTO pv=new PrecioVehiculoDTO();
+									int idPedido=0;
 							 		for (PedidoDTO pedido : pedidos) {
+							 			idPedido=pedido.getIdPedido();
 							 			String checkA="false";
 							 			String checkB="false";
 							 			if (pedido.isSolicitaTransporteDirecto())
@@ -90,7 +96,8 @@
 							 				checkB="checked";
 						        	%>
 									<tr>
-										<td><%= pedido.getIdPedido() %></td>
+									<form action="./ContratarVehiculoTercero" name="ContratarVehiculoTercero" method="GET">
+										<td><input type="text" name="idPedido" value="<%= pedido.getIdPedido() %>"readonly size="1"></td>
 										<td><%= pedido.getCliente().getIdCliente() %></td>
 										<td><%= pedido.getDireccionCarga().getIdDireccion() %></td>
 										<td><%= pedido.getDireccionDestino().getIdDireccion() %></td>
@@ -108,6 +115,27 @@
 											onClick="return popup(this, 'cargas')">Ver Cargas</a>
 										</td>
 										
+										<% if (pedido.isSolicitaTransporteDirecto()||pedido.isSolicitaAvionetaParticular()){
+										%>
+										<td>
+										
+											<select class="selectpicker" id="idPrecioVehiculo"name="idPrecioVehiculo" required>
+												<%
+												List <PrecioVehiculoDTO> vehiculos = Administrador.getInstance().listarVTerceros();
+										 		for (PrecioVehiculoDTO v : vehiculos) {
+										        %>
+											  <option value="<%= v.getIdPrecioVehiculo()%>"><%= v.getIdPrecioVehiculo()+" Precio: $"+v.getPrecio() %></option>
+												<%}%>
+											</select>
+											<input type="submit" value="Contratar" >
+										</form>
+										</td>
+										
+										<%
+										}
+											
+										%>
+										
 										
 									</tr>
 									<% } %>
@@ -124,6 +152,5 @@
 			</div>
 
 			<div class="fix"></div>
-		</div>
 </body>
 </html>

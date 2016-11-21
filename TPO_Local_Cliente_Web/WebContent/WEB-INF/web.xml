@@ -11,6 +11,26 @@
   </welcome-file-list>
   <servlet>
     <description></description>
+    <display-name>CrudVTercero</display-name>
+    <servlet-name>CrudVTercero</servlet-name>
+    <servlet-class>servlet.CrudVTercero</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrudVTercero</servlet-name>
+    <url-pattern>/CrudVTercero</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>ContratarVehiculoTercero</display-name>
+    <servlet-name>ContratarVehiculoTercero</servlet-name>
+    <servlet-class>servlet.ContratarVehiculoTercero</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContratarVehiculoTercero</servlet-name>
+    <url-pattern>/ContratarVehiculoTercero</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>CrudDireccion</display-name>
     <servlet-name>CrudDireccion</servlet-name>
     <servlet-class>servlet.CrudDireccion</servlet-class>
