@@ -434,7 +434,7 @@ public class Administrador {
 		return null;
 	}
 	
-	
+
 	//Precio Vehiculo, Listado de precio de los vehículos a contratar
 	public List<PrecioVehiculoDTO> listarVTerceros() {
 		try {
@@ -472,4 +472,57 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+
+	//Facturas
+	public List<FacturaDTO> listarFacturas() {
+		try{ 
+			return ir.listarFacturas();
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void deleteFactura(int idFactura) {
+		try {
+			ir.deleteFactura(idFactura);
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void altaFactura(FacturaDTO factura) {
+		try {
+			ir.altaFactura(factura);
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//Remitos
+	public List<RemitoDTO> listarRemitos() {
+		try{ 
+			return ir.listarRemitos();
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void deleteRemito(int idRemito) {
+		try {
+			ir.deleteRemito(idRemito);
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void altaRemito(RemitoDTO remito) {
+		try {
+			ir.altaRemito(remito);
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
