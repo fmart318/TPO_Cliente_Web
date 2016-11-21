@@ -24,39 +24,21 @@ public class ContratarVehiculoTercero extends HttpServlet {
 
 	public ContratarVehiculoTercero() {
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		List<PedidoDTO> pedidos=Administrador.getInstance().obtenerPedidos();
-		PedidoDTO pedido=new PedidoDTO();
-		for (PedidoDTO p: pedidos){
-			if(p.getIdPedido()==Integer.valueOf(request.getParameter("idPedido"))){
-				for(PrecioVehiculoDTO pv: Administrador.getInstance().listarVTerceros()){
-					if(pv.getIdPrecioVehiculo()==Integer.valueOf(request.getParameter("idPrecioVehiculo"))){
-						pedido.setIdPedido(p.getIdPedido());
-						pedido.setCargas(p.getCargas());
-						pedido.setCliente(p.getCliente());
-						pedido.setDireccionCarga(p.getDireccionCarga());
-						pedido.setDireccionDestino(p.getDireccionDestino());
-						pedido.setFechaCarga(p.getFechaCarga());
-						pedido.setFechaMaxima(p.getFechaMaxima());
-						pedido.setPrecio(p.getPrecio()+pv.getPrecio());
-						pedido.setHoraInicio(p.getHoraInicio());
-						pedido.setHoraFin(p.getHoraFin());
-						pedido.setSolicitaTransporteDirecto(p.isSolicitaTransporteDirecto());
-						pedido.setSolicitaAvionetaParticular(p.isSolicitaAvionetaParticular());
-						pedido.setSucursalDestino(p.getSucursalDestino());
-						pedido.setSucursalOrigen(p.getSucursalOrigen());
-						Administrador.getInstance().crearEnvioDirecto(p);
-					}
-				}
-			}			
+		PedidoDTO p=new PedidoDTO();
+		PrecioVehiculoDTO pv= new PrecioVehiculoDTO();
+		if (request.getParameter("idPedido") != null && request.getParameter("idPrecioVehiculo") != null) {
+			int idPedido = Integer.valueOf(request.getParameter("idPedido"));
+
+			int idPrecioVehiculo = Integer.valueOf(request.getParameter("idPrecioVehiculo"));
+				
+			Administrador.getInstance().crearEnvioDirecto(idPedido,idPrecioVehiculo);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("envios.jsp");
+		    dispatcher.forward(request, response);	
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("envios.jsp");
-	    dispatcher.forward(request, response);	
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

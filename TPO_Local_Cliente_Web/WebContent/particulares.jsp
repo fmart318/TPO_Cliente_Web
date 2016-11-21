@@ -93,6 +93,9 @@
 						</div>
 
 						<div class="fix"></div>
+						<a id="habilitados" href="habilitados.jsp" >
+								<input type="submit" value="Ver Habilitaciones" />
+							</a>
 					</div>
 				</div>
 			</div>

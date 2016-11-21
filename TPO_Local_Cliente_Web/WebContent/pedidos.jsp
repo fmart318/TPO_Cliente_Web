@@ -97,7 +97,7 @@
 						        	%>
 									<tr>
 									<form action="./ContratarVehiculoTercero" name="ContratarVehiculoTercero" method="GET">
-										<td><input type="text" name="idPedido" value="<%= pedido.getIdPedido() %>"readonly size="1"></td>
+										<td><%= pedido.getIdPedido() %></td>
 										<td><%= pedido.getCliente().getIdCliente() %></td>
 										<td><%= pedido.getDireccionCarga().getIdDireccion() %></td>
 										<td><%= pedido.getDireccionDestino().getIdDireccion() %></td>
@@ -115,16 +115,31 @@
 											onClick="return popup(this, 'cargas')">Ver Cargas</a>
 										</td>
 										
-										<% if (pedido.isSolicitaTransporteDirecto()||pedido.isSolicitaAvionetaParticular()){
+										
+										<% 
+										boolean tieneE=true;
+										for (EnvioDTO env:Administrador.getInstance().listarEnvios()){
+											if(pedido.getIdPedido()==env.getPedido().getIdPedido()){
+												tieneE=false;
+											}
+											
+										}
+										
+										if (pedido.isSolicitaTransporteDirecto()||pedido.isSolicitaAvionetaParticular()){
+											if(tieneE){
+												
+												
+													
+												
 										%>
 										<td>
-										
+											<input type="text" name="idPedido" value="<%= pedido.getIdPedido() %>"readonly size="1">
 											<select class="selectpicker" id="idPrecioVehiculo"name="idPrecioVehiculo" required>
 												<%
 												List <PrecioVehiculoDTO> vehiculos = Administrador.getInstance().listarVTerceros();
 										 		for (PrecioVehiculoDTO v : vehiculos) {
 										        %>
-											  <option value="<%= v.getIdPrecioVehiculo()%>"><%= v.getIdPrecioVehiculo()+" Precio: $"+v.getPrecio() %></option>
+											  <option value="<%= v.getIdPrecioVehiculo()%>"><%= v.getTipoVehiculo()+" Precio: $"+v.getPrecio() %></option>
 												<%}%>
 											</select>
 											<input type="submit" value="Contratar" >
@@ -132,7 +147,11 @@
 										</td>
 										
 										<%
+										
+										
 										}
+										}
+										
 											
 										%>
 										

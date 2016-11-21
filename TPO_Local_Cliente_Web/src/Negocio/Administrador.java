@@ -465,9 +465,84 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
-	public void crearEnvioDirecto(PedidoDTO p){
+	public void crearEnvioDirecto(int idpedido, int idPrecioVehiculo){
 		try{
-			ir.crearEnvioDirecto(p);
+			ir.crearEnvioDirecto(idpedido,idPrecioVehiculo);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public PedidoDTO buscarPedidoPorId(int idPedido){
+		try{
+			return ir.buscarPedidoPorId(idPedido);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public PrecioVehiculoDTO buscarPrecioVehiculoDTO(int idPrecioVehiculo){
+		try{
+			return ir.buscarPrecioVehiculoDTO(idPrecioVehiculo);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public List<HabilitadoDTO> listarHabilitados() {
+		try {
+			return ir.listarHabilitados();
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void crearHabilitacion(HabilitadoDTO v){
+		try{
+			ir.crearHabilitacion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void modificarHabilitacion(HabilitadoDTO v){
+		try{
+			ir.modificarHabilitacion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void eliminarHabilitacion(HabilitadoDTO v){
+		try{
+			ir.eliminarHabilitacion(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public List<ProductoDTO> listarProductos() {
+		try {
+			return ir.listarProductos();
+		}catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void crearProductos(ProductoDTO v){
+		try{
+			ir.crearProducto(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void modificarProducto(ProductoDTO v){
+		try{
+			ir.modificarProducto(v);
+		}catch (RemoteException e){
+			e.printStackTrace();
+		}
+	}
+	public void eliminarProducto(ProductoDTO v){
+		try{
+			ir.eliminarProduct(v);
 		}catch (RemoteException e){
 			e.printStackTrace();
 		}

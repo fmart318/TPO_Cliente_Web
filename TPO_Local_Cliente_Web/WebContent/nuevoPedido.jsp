@@ -59,7 +59,7 @@
 							List <ClienteDTO> clientes = Administrador.getInstance().obtenerClientes();
 					 		for (ClienteDTO c : clientes) {
 					        %>
-						  <option  data-tokens="<%= c.getIdCliente()+" "+c.getNombre()  %>" ><%= c.getIdCliente() %></option>
+						  <option  data-tokens="<%= c.getIdCliente()+" "+c.getNombre() %>" value="<%= c.getIdCliente() %>"><%= c.getNombre() %></option>
 							<%}%>
 						</select>
 				</div>
@@ -70,7 +70,7 @@
 							List <CargaDTO> cargas = Administrador.getInstance().listarCargasSinDespachar();
 					 		for (CargaDTO c : cargas) {
 					        %>
-						  <option  data-tokens="<%= c.getIdCarga() %>" ><%= c.getIdCarga() %></option>
+						  <option  data-tokens="<%= c.getIdCarga() %>" value="<%= c.getIdCarga() %>"><%= "iD: "+c.getIdCarga()+" Tipo Merc:"+c.getTipoMercaderia() %></option>
 							<%}%>
 						</select>
 				</div>

@@ -69,9 +69,10 @@
 									<th>Estado</th>
 									<th>Prioridad</th>
 									<th>Sucursal Origen</th>
+									<th>Sucursal Destino</th>
 									<th>Pedidos</th>
 								</tr>
-								<%
+									<%
 									List <EnvioDTO> envios = Administrador.getInstance().listarEnvios();
 							 		for (EnvioDTO e : envios) {
 							 			String checkA="false";
@@ -86,6 +87,7 @@
 									<td><%= e.getEstado() %></td>
 									<td><%= e.getPrioridad() %></td>
 									<td><%= e.getSucursalOrigen() %></td>
+									<td><%= e.getSucursalDestino() %></td>
 									<td><a
 										href="verPedidos.jsp?idPedido=<%=e.getPedido().getIdPedido() %>"
 										onClick="return popup(this, 'cargas')">Ver Pedidos</a></td>

@@ -107,6 +107,9 @@
 						</div>
 
 						<div class="fix"></div>
+						<a id="habilitados" href="productos.jsp" >
+								<input type="submit" value="Ver Productos habilitados" />
+							</a>
 					</div>
 				</div>
 			</div>
