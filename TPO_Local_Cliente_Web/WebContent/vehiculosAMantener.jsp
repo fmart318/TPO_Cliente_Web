@@ -24,7 +24,7 @@
 			fields : {
 				idVehiculo : {
 					title : 'Vehiculo',
-					width : '2%',
+					width : '1%',
 					key : true,
 					list : true,
 					edit : false,
@@ -32,24 +32,35 @@
 				},
 				hayQueMantener : {
 					title : 'Necesita Mantenimiento',
-					width : '7%',
+					width : '10%',
 					edit : false
 				},
 				tipoDeTrabajo : {
 					title : 'Tipo de Trabajo',
-					width : '5%',
 					edit : false
 				},
 				puntoAControlar : {
 					title : 'Punto a Controlar',
-					width : '5%',
 					edit : false
 				},
 				tareas : {
 					title: 'Tareas a Realizar',
-					width : '5%',
 					edit: false
-				}		
+				},
+				enviar : {
+					title : 'Enviar a Mantenimiento',
+					width : '8%',
+					display: function (data) {
+			            if (data.record.estado == 'enviado')
+			            {
+			                return '<input type="checkbox" checked>';
+			            }
+			            else
+			            {
+			                return '<input type="checkbox">';
+			            }
+				    },
+				}
 			}
 		});
 		$('#VehiculosAMantener').jtable('load');
