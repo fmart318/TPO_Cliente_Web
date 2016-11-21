@@ -82,9 +82,9 @@
 							<br />
 							<h3>Alumnos:</h3>
 							<ul>
-								<li>Ustarroz, Martin Horacio , LU 120569</li>
-								<li>Bessone, Cristian Martin , LU 109296</li>
+								<li>Martinez, Felipe , LU 1073152</li>
 								<li>Mollo Apaza, Eleodoro , LU 107912</li>
+								<li>Sansone, Yamila , LU 1019115</li>
 							</ul>
 							<br />
 							<h2>

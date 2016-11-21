@@ -45,11 +45,6 @@
 					title : 'Km del Próximo Control',
 					width : '7%',
 					edit : true
-				},
-				depto : {
-					title : 'Departamento',
-					width : '5%',
-					edit : true
 				}		
 			}
 		});
