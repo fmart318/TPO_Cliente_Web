@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import Negocio.Administrador;
 import dto.TrayectoDTO;
 import dto.VehiculoAMantenerDTO;
+import dto.VehiculoDTO;
 
 public class CrudVehiculosAMantener extends HttpServlet {
 
@@ -46,21 +47,40 @@ public class CrudVehiculosAMantener extends HttpServlet {
 		response.setContentType("application/json");
 
 		if (action != null) {
-			try {
-				// Convert Java Object to Json
-				JsonElement element = gson.toJsonTree(list, new TypeToken<List<TrayectoDTO>>() {
-				}.getType());
-				JsonArray jsonArray = element.getAsJsonArray();
-				String listData = jsonArray.toString();
-
-				// Return Json in the format required by jTable plugin
-				listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
-				response.getWriter().print(listData);
-				
-			} catch (Exception e) {
-				String error = "{\"Result\":\"ERROR\",\"Message\":" + "Exception on listing records }";
-				response.getWriter().print(error);
-				System.err.println(e.getMessage());
+			if (action.equals("list")) {
+				try {
+					// Convert Java Object to Json
+					JsonElement element = gson.toJsonTree(list, new TypeToken<List<VehiculoAMantenerDTO>>() {
+					}.getType());
+					JsonArray jsonArray = element.getAsJsonArray();
+					String listData = jsonArray.toString();
+	
+					// Return Json in the format required by jTable plugin
+					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
+					response.getWriter().print(listData);
+					
+				} catch (Exception e) {
+					String error = "{\"Result\":\"ERROR\",\"Message\":" + "Exception on listing records }";
+					response.getWriter().print(error);
+					System.err.println(e.getMessage());
+				}
+			} else {
+				try {
+					List<VehiculoDTO> vehiculos = Administrador.getInstance().listarVehiculos();
+					for (VehiculoDTO v : vehiculos) {
+						if (Integer.parseInt(request.getParameter("idVehiculo")) == v.getIdVehiculo()) {
+							v.setEstado(request.getParameter("estado"));
+							Administrador.getInstance().modificarVehiculo(v);
+							
+							String json = gson.toJson(v);
+							String listData = "{\"Result\":\"OK\",\"Record\":"
+									+ json + "}";
+							response.getWriter().print(listData);
+						}
+					}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

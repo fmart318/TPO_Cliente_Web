@@ -1,56 +1,46 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Planes de Mantenimiento | TPO AD </title>
+<title> Empresas | TPO AD </title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
-<link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet"
-	type="text/css" />
+<link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
 <!-- Include jTable script file. -->
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
 
+
+
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#PlanesDeMantenimientoTableContainer').jtable({
-			title : 'Planes de mantenimiento',
+		$('#RemitoTable').jtable({
+			title : 'Lista de Remitos',
+			
 			actions : {
-				listAction : 'CrudPlanDeMantenimiento?action=list',
-				createAction : 'CrudPlanDeMantenimiento?action=create',
-				updateAction : 'CrudPlanDeMantenimiento?action=update',
-				deleteAction : 'CrudPlanDeMantenimiento?action=delete'
+				listAction : 'CrudRemito?action=list',
+				createAction : 'CrudRemito?action=create',
+				deleteAction : 'CrudRemito?action=delete'
 			},
 			fields : {
-				idPlanDeMantenimiento : {
-					title : 'Id',
+				idRemito : {
+					title : 'id',
 					width : '1%',
 					key : true,
 					list : true,
 					edit : false,
 					create : false
 				},
-				diasProxControl : {
-					title : 'Días Próximo Control',
-					width : '7%',
-					edit : true
-				},
-				diasDemora : {
-					title : 'Días De Demora',
-					width : '5%',
-					edit : true
-				},
-				kmProxControl : {
-					title : 'Km del Próximo Control',
-					width : '7%',
-					edit : true
-				}		
+				pedido : {
+					title : 'Pedido',
+					width : '10%',
+					create : true
+				}
 			}
 		});
-		$('#PlanesDeMantenimientoTableContainer').jtable('load');
+		$('#RemitoTable').jtable('load');
 	});
-
 </script>
 
 </head>
@@ -67,14 +57,13 @@
 			<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
-					<li><a href="precioVehiculos.jsp">V. Terceros</a></li>
+					<li><a href="precioVehiculos.jsp">Precio de Vehículos</a></li>
 					<li><a href="direcciones.jsp">Direcciones</a></li>
 					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
 					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
 					<li><a href="vehiculos.jsp">Vehículos</a></li>
-					<li><a href="vehiculosAMantener.jsp">Vehículos A Mantener</a></li>
 					<li><a href="cargas.jsp">Cargas</a></li>
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
@@ -92,7 +81,12 @@
 					<div class="feat-content">
 	
 						<div class="entry">
-								<div id="PlanesDeMantenimientoTableContainer" class="table"></div>
+
+							<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
+								<!-- <h4>AJAX based CRUD operations using jTable in Servlet and JSP</h4> -->
+								<div id="RemitoTable"></div>
+							</div>
+							
 						</div>
 
 						<div class="fix"></div>
@@ -102,5 +96,6 @@
 
 			<div class="fix"></div>
 		</div>
+</div>
 </body>
 </html>

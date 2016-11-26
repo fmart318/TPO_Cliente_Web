@@ -53,19 +53,6 @@
 						<div style="width: 100%; margin-right: 5%; margin-left: 5%;">
 							<h2>
 								<strong>Aplicaciones Distribuidas</strong>
-								<form action="./CargarDatosIniciales" method="post">
-									<div class="form-actions">
-											<input type="submit" value="CargarDatosIniciales" />
-									</div>
-								</form>
-							</h2>
-							<br />
-							<h2>
-								<form action="./ControlarEstadoDeEnvios" method="post">
-									<div class="form-actions">
-											<input type="submit" value="ControlarEstadoDeEnvios" />
-									</div>
-								</form>
 							</h2>
 							<br />
 							<h2>
@@ -87,9 +74,27 @@
 								<li>Sansone, Yamila , LU 1019115</li>
 							</ul>
 							<br />
-							<h2>
-								<strong></strong>
-							</h2>
+							<br />
+							<h3>Tutorial de Envios:</h3>
+							<br />
+							<small>1. Cargar la base de datos con datos inciales:</small>
+								<form action="./CargarDatosIniciales" method="post">
+									<div class="form-actions">
+											<input type="submit" value="Cargar Datos Iniciales" />
+									</div>
+								</form>
+							<br />
+							<small>2. Generar Nuevo Envio: (Apretar Controlar Estado de Envios una vez)</small>
+							<br />
+							<small>3. Controlar LLegada de Envio a Sucursal Intermediario:(Apretar Controlar Estado de Envios una vez)</small>
+							<br />
+							<small>4. Controlar LLegada de Envio a Sucursal Destino:(Apretar Controlar Estado de Envios una vez)</small>
+							<br />
+							<form action="./ControlarEstadoDeEnvios" method="post">
+									<div class="form-actions">
+											<input type="submit" value="Controlar Estado Envios" />
+									</div>
+							</form>
 						</div>
 
 						<div class="fix"></div>

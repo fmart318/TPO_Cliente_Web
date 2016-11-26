@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Planes de Mantenimiento | TPO AD </title>
+<title> Habilitaciones | TPO AD </title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
@@ -14,43 +14,32 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#PlanesDeMantenimientoTableContainer').jtable({
-			title : 'Planes de mantenimiento',
+		$('#HabilitadosTableContainer').jtable({
+			title : 'Lista Habilitaciones',
 			actions : {
-				listAction : 'CrudPlanDeMantenimiento?action=list',
-				createAction : 'CrudPlanDeMantenimiento?action=create',
-				updateAction : 'CrudPlanDeMantenimiento?action=update',
-				deleteAction : 'CrudPlanDeMantenimiento?action=delete'
+				listAction : 'CrudHabilitado?action=list',
+				createAction : 'CrudHabilitado?action=create',
+				updateAction : 'CrudHabilitado?action=update',
+				deleteAction : 'CrudHabilitado?action=delete'
 			},
 			fields : {
-				idPlanDeMantenimiento : {
-					title : 'Id',
+				dniHabilitado : {
+					title : 'id',
 					width : '1%',
 					key : true,
 					list : true,
 					edit : false,
 					create : false
 				},
-				diasProxControl : {
-					title : 'Días Próximo Control',
-					width : '7%',
-					edit : true
-				},
-				diasDemora : {
-					title : 'Días De Demora',
+				nombre : {
+					title : 'nombre',
 					width : '5%',
 					edit : true
-				},
-				kmProxControl : {
-					title : 'Km del Próximo Control',
-					width : '7%',
-					edit : true
-				}		
+				}						
 			}
 		});
-		$('#PlanesDeMantenimientoTableContainer').jtable('load');
+		$('#HabilitadosTableContainer').jtable('load');
 	});
-
 </script>
 
 </head>
@@ -92,7 +81,7 @@
 					<div class="feat-content">
 	
 						<div class="entry">
-								<div id="PlanesDeMantenimientoTableContainer" class="table"></div>
+								<div id="HabilitadosTableContainer" class="table"></div>
 						</div>
 
 						<div class="fix"></div>
@@ -102,5 +91,6 @@
 
 			<div class="fix"></div>
 		</div>
+</div>
 </body>
 </html>
