@@ -48,8 +48,8 @@ public class pedidos extends HttpServlet {
  			System.out.println(pedido.getHoraFin());
  			System.out.println(pedido.getFechaMaxima());
  			System.out.println(pedido.getPrecio());
- 			System.out.println(pedido.getSucursalOrigen());
- 			System.out.println(pedido.getSucursalDestino());
+ 			System.out.println(pedido.getSucursalOrigenId());
+ 			System.out.println(pedido.getSucursalDestinoId());
  			System.out.println(pedido.isSolicitaTransporteDirecto());
  			System.out.println(pedido.isSolicitaAvionetaParticular());
  			for (CargaDTO carga: pedido.getCargas()){

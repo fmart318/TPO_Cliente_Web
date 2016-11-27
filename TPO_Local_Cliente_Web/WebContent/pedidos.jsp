@@ -106,8 +106,8 @@
 										<td><%= pedido.getHoraFin() %></td>
 										<td><%= pedido.getFechaMaxima() %></td>
 										<td><%= pedido.getPrecio() %></td>
-										<td><%= pedido.getSucursalOrigen() %></td>
-										<td><%= pedido.getSucursalDestino() %></td>
+										<td><%= pedido.getSucursalOrigenId() %></td>
+										<td><%= pedido.getSucursalDestinoId() %></td>
 										<td><input type="checkbox" <%=checkA %>></td>
 										<td><input type="checkbox" <%=checkB %>></td>
 										<td><a

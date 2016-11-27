@@ -16,6 +16,7 @@ import dto.CargaDTO;
 import dto.ClienteDTO;
 import dto.DireccionDTO;
 import dto.PedidoDTO;
+import dto.SucursalDTO;
 
 public class NuevoPedido extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -121,12 +122,12 @@ public class NuevoPedido extends HttpServlet {
 			p.setPrecio(precio);
 		}
 		if (request.getParameter("sucursalOrigen") != null) {
-			String sucursalOrigen = request.getParameter("sucursalOrigen");
-			p.setSucursalOrigen(sucursalOrigen);
+			int sucursalOrigenId = Integer.valueOf(request.getParameter("sucursalOrigen"));
+			p.setSucursalOrigenId(sucursalOrigenId);
 		}
 		if (request.getParameter("sucursalDestino") != null) {
-			String sucursalDestino = request.getParameter("sucursalDestino");
-			p.setSucursalDestino(sucursalDestino);
+			int sucursalDestinoId = Integer.valueOf(request.getParameter("sucursalDestino"));
+			p.setSucursalOrigenId(sucursalDestinoId);
 		}
 		if (request.getParameter("solicitaTransporteDirecto") != null) {
 			String solicitaTransporteDirecto = request.getParameter("solicitaTransporteDirecto");

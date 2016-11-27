@@ -86,8 +86,8 @@
 									<td><input type="checkbox" <%=checkA %>></td>
 									<td><%= e.getEstado() %></td>
 									<td><%= e.getPrioridad() %></td>
-									<td><%= e.getSucursalOrigen() %></td>
-									<td><%= e.getSucursalDestino() %></td>
+									<td><%= e.getSucursalOrigen().getNombre() %></td>
+									<td><%= e.getSucursalDestino().getNombre() %></td>
 									<td><a
 										href="verPedidos.jsp?idPedido=<%=e.getPedido().getIdPedido() %>"
 										onClick="return popup(this, 'cargas')">Ver Pedidos</a></td>
