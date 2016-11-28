@@ -44,8 +44,7 @@
 					<li><a href="trayectos.jsp">Trayectos</a></li>
 					<li><a href="./pedidos">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
-					<li><a href="envios.jsp">Envíos</a></li>
-					<li><a href="viajes.jsp">Viajes</a></li>					
+					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>
 				</ul>
 			</div>
@@ -119,7 +118,7 @@
 										<% 
 										boolean tieneE=true;
 										for (EnvioDTO env:Administrador.getInstance().listarEnvios()){
-											if(pedido.getIdPedido()==env.getPedido().getIdPedido()){
+											if(pedido.getIdPedido()==env.getPedidos().get(0).getIdPedido()){
 												tieneE=false;
 											}
 											

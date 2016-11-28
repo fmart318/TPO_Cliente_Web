@@ -45,8 +45,7 @@
 					<li><a href="trayectos.jsp">Trayectos</a></li>
 					<li><a href="./pedidos">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
-					<li><a href="envios.jsp">Envíos</a></li>
-					<li><a href="viajes.jsp">Viajes</a></li>					
+					<li><a href="envios.jsp">Envíos</a></li>					
 					<li><a href="facturas.jsp">Facturas</a></li>
 				</ul>
 			</div>
@@ -89,10 +88,8 @@
 									<td><%= e.getSucursalOrigen().getNombre() %></td>
 									<td><%= e.getSucursalDestino().getNombre() %></td>
 									<td><a
-										href="verPedidos.jsp?idPedido=<%=e.getPedido().getIdPedido() %>"
+										href="verPedidos.jsp?idPedido=<%=e.getPedidos().get(0).getIdPedido() %>"
 										onClick="return popup(this, 'cargas')">Ver Pedidos</a></td>
-
-
 								</tr>
 								<% } %>
 							</tbody>
