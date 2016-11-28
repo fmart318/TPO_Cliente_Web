@@ -318,7 +318,6 @@ public class Administrador {
 	}
 
 	// Pedido
-
 	public void crearPedido(PedidoDTO p) {
 		try {
 			ir.crearPedido(p);
@@ -337,7 +336,7 @@ public class Administrador {
 		return null;
 	}
 
-	// Veh�culos
+	// Vehiculos
 	public List<VehiculoDTO> listarVehiculos() {
 		try {
 			return ir.obtenerVehiculos();
@@ -370,8 +369,8 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	
 	// Direcciones
-
 	public List<DireccionDTO> listarDirecciones() {
 		try {
 			return ir.listarDirecciones();
@@ -405,7 +404,7 @@ public class Administrador {
 		}
 	}
 
-	// Env�o
+	// Envio
 	public List<EnvioDTO> listarEnvios() {
 		try {
 			return ir.listarEnvios();
