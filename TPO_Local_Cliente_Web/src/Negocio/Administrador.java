@@ -447,12 +447,12 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	
+	public void actualizarEstadoVehiculo(VehiculoDTO vehiculo) {
+		vehiculo.setEstado("En Mantenimiento");
+		modificarVehiculo(vehiculo);
+	}
 
-	/**
-	 * Obtiene los vehiculos que deben ser enviados a mantenimiento
-	 * 
-	 * @return la lista de vehiculos
-	 */
 	public List<VehiculoAMantenerDTO> getVehiculosMantenimiento() {
 		try {
 			return ir.getVehiculosAMantener();
