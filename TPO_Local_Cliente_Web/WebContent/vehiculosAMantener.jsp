@@ -1,3 +1,8 @@
+<%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
+<%@page import="dto.VehiculoDTO"%>
+<%@page import="Negocio.Administrador"%>
+<%@page import="dto.VehiculoAMantenerDTO"%>
+<%@page import="java.util.List"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,52 +18,25 @@
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#VehiculosAMantener').jtable({
-			title : 'Vehiculos a Enviar a Mantenimiento',
-			
-			actions : {
-				listAction : 'CrudVehiculosAMantener?action=list',
-				updateAction : 'CrudCarga?action=update'
-			},
-			
-			fields : {
-				idVehiculo : {
-					title : 'Vehiculo',
-					width : '1%',
-					key : true,
-					list : true,
-					edit : false,
-					create : false
-				},
-				hayQueMantener : {
-					title : 'Necesita Mantenimiento',
-					width : '10%',
-					edit : false
-				},
-				tipoDeTrabajo : {
-					title : 'Tipo de Trabajo',
-					edit : false
-				},
-				puntoAControlar : {
-					title : 'Punto a Controlar',
-					edit : false
-				},
-				tareas : {
-					title: 'Tareas a Realizar',
-					edit: false
-				},
-				estado : {
-					title : "Estado",
-					edit : true
-				}
+	function actualizar() {
+		<%
+		if (request.getParameter("idVehiculo") != null) {
+			int numeroVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+			List<VehiculoAMantenerDTO> vehiculosAMantener = Administrador.getInstance().getVehiculosMantenimiento();
+			for (VehiculoAMantenerDTO aMantener : vehiculosAMantener) {
+				if (aMantener.getIdVehiculo() == numeroVehiculo) {
+					if (aMantener.getEstado().toLowerCase().equals("libre")) {
+						aMantener.setEstado("En Mantenimiento");
+						aMantener.getVehiculo().setEstado("En Mantenimiento");
+						Administrador.getInstance().modificarVehiculo(aMantener.getVehiculo());
+					} else { %>
+						window.alert("El vehiculo no puede ser enviado a mantenimiento")
+					<%}%>
+					window.location.replace("http://localhost:8080/TPO_Local_Cliente_Web/vehiculosAMantener.jsp")
+					<%}
 			}
-		});
-		$('#VehiculosAMantener').jtable('load');
-	});
-	
-	function updateEstadoVehiculos() {
-		
+		}
+		%>
 	}
 
 </script>
@@ -101,13 +79,48 @@
 					<div class="feat-content">
 	
 						<div class="entry">
-								<div id="VehiculosAMantener" class="table"></div>
-						</div>
 
-						<div class="fix"></div>
-					</div>
-				</div>
-			</div>
+						<h2>Vehiculos a Mantener</h2>
+							
+						</div>
+							<table class="table">
+								<tbody class="tbody">
+									<tr>
+										<th>Id Vehiculo</th>
+										<th>Necesita Mantenimiento</th>
+										<th>Tipo de Trabajo</th>
+										<th>Punto a Controlar</th>
+										<th>Tareas a Realizar</th>
+										<th>Estado</th>
+										<th></th>
+									</tr>
+									<%
+									List <VehiculoAMantenerDTO> vehiculos = Administrador.getInstance().getVehiculosMantenimiento();
+									int idVehiculo = 0;
+							 		for (VehiculoAMantenerDTO vehiculo : vehiculos) {
+							 			idVehiculo = vehiculo.getIdVehiculo();
+						        	%>
+									<tr>
+										<td><%= idVehiculo %></td>
+										<td>Si</td>
+										<td><%= vehiculo.getTipoDeTrabajo() %></td>
+										<td><%= vehiculo.getPuntoAControlar() %></td>
+										<td><%= vehiculo.getTareas() %></td>
+										<td><%= vehiculo.getEstado() %></td>
+										<td><a
+											href="vehiculosAMantener.jsp?idVehiculo=<%=vehiculo.getIdVehiculo()%>"
+											onClick="actualizar()">Enviar a Mantenimiento</a>
+										</td>
+										<%
+										}
+										%>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+	
+	
+						</div>
 
 			<div class="fix"></div>
 		</div>
