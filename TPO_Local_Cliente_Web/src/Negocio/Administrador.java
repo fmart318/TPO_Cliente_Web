@@ -441,6 +441,14 @@ public class Administrador {
 		}
 		return null;
 	}
+	public VehiculoTerceroDTO buscarVehiculoTerceroDTO(int idVehiculoTerceroDTO){
+		try {
+			return ir.buscarVehiculoTerceroDTO(idVehiculoTerceroDTO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public void crearVTercero(VehiculoTerceroDTO v) {
 		try {

@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
@@ -32,7 +36,7 @@ public class CrudVTercero extends HttpServlet {
 		String action = request.getParameter("action");
 
 		List<VehiculoTerceroDTO> list = Administrador.getInstance().listarVTerceros();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		response.setContentType("application/json");
 
 		if (action != null) {
@@ -66,6 +70,25 @@ public class CrudVTercero extends HttpServlet {
 					float precio = Float.valueOf(request.getParameter("precio"));
 					vehiculo.setPrecio(precio);
 				}
+				if (request.getParameter("estado") != null) {
+					String estado = request.getParameter("estado");
+					vehiculo.setEstado(estado);
+				}
+				if (request.getParameter("fechaLlegada") != "") {
+
+					String startDateStr = request.getParameter("fechaLlegada");
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					// surround below line with try catch block as below code
+					// throws checked exception
+					Date startDate;
+					try {
+						startDate = sdf.parse(startDateStr);
+						vehiculo.setFechaLlegada(startDate);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				try {
 					if (action.equals("create")) {
 						// Create new record
@@ -94,10 +117,8 @@ public class CrudVTercero extends HttpServlet {
 				try {
 					// Delete record
 					if (request.getParameter("idVehiculoTercero") != null) {
-						int idVehiculoTercero = Integer.parseInt(request.getParameter("idVehiculoTercero"));
-						VehiculoTerceroDTO v = new VehiculoTerceroDTO();
-						v.setIdVehiculoTercero(idVehiculoTercero);
-						Administrador.getInstance().eliminarVTercero(v);
+						int idVehiculoTerceroDTO = Integer.parseInt(request.getParameter("idVehiculoTercero"));
+						Administrador.getInstance().eliminarVTercero(Administrador.getInstance().buscarVehiculoTerceroDTO(idVehiculoTerceroDTO));
 						String listData = "{\"Result\":\"OK\"}";
 						response.getWriter().print(listData);
 					}

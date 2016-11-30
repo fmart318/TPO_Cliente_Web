@@ -11,10 +11,10 @@
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
-
+<script src="scripts/popup.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#PrecioVehiculoTableContainer').jtable({
+		$('#VTerceroTableContainer').jtable({
 			title : 'Lista de Vehiculos Terceros',
 			actions : {
 				listAction : 'CrudVTercero?action=list',
@@ -23,8 +23,8 @@
 				deleteAction : 'CrudVTercero?action=delete'
 			},
 			fields : {
-				idPrecioVehiculo : {
-					title : 'id',
+				idVehiculoTercero : {
+					title : 'idVehiculoTercero',
 					width : '1%',
 					key : true,
 					list : true,
@@ -32,18 +32,67 @@
 					create : false
 				},
 				tipoVehiculo : {
-					title : 'Tipo Vehiculo',
+					title : 'Tipo',
 					width : '10%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="tipoVehiculo" style="width:200px" value="' + data.record.tipoVehiculo + '" />';
+						} else {
+							return '<input type="text" name="tipoVehiculo" style="width:200px" value="Camioneta" />';
+						}
+					}
 				},
 				precio : {
 					title : 'Precio',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="precio" style="width:200px" value="' + data.record.precio + '" />';
+						} else {
+							return '<input type="text" name="precio" style="width:200px" value="1500" />';
+						}
+					}
+				},
+				estado : {
+					title : 'Ancho',
+					width : '5%',
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="estado" style="width:200px" value="' + data.record.estado + '" />';
+						} else {
+							return '<input type="text" name="estado" style="width:200px" value="Libre" />';
+						}
+					}
+				},
+				fechaLlegada  : {
+					title : 'Fecha Llegada',
+					width : '5%',
+					edit : true,
+					create : true,
+					type : 'date',
+					displayFormat : 'yy-mm-dd'
+					
+				},
+				verPedido  : {
+					title : 'idSucursal',
+					width : '5%',
+					list: true,
+					create: false,
+					edit: false,
+					display:function(data){
+						if(data.record)
+                            return $('<a href="verPedidosVTerecero.jsp?idVehiculoTercero=' +data.record.idVehiculoTercero+'"onClick="return popup(this)">Pedidos</a>');
+		        	}
 				}
+
+				
 			}
 		});
-		$('#PrecioVehiculoTableContainer').jtable('load');
+		$("#fechaLlegada").datepicker();
+		$('#VTerceroTableContainer').jtable('load');
 	});
 </script>
 
@@ -84,7 +133,7 @@
 					<div class="feat-content">
 
 						<div class="entry">
-							<div id="PrecioVehiculoTableContainer" class="table"></div>
+							<div id="VTerceroTableContainer" class="table"></div>
 						</div>
 						<div class="fix"></div>
 					</div>
