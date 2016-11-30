@@ -1,3 +1,5 @@
+<%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
+<%@page import="dto.VehiculoDTO"%>
 <%@page import="Negocio.Administrador"%>
 <%@page import="dto.VehiculoAMantenerDTO"%>
 <%@page import="java.util.List"%>
@@ -16,7 +18,26 @@
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-	
+	function actualizar() {
+		<%
+		if (request.getParameter("idVehiculo") != null) {
+			int numeroVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+			List<VehiculoAMantenerDTO> vehiculosAMantener = Administrador.getInstance().getVehiculosMantenimiento();
+			for (VehiculoAMantenerDTO aMantener : vehiculosAMantener) {
+				if (aMantener.getIdVehiculo() == numeroVehiculo) {
+					if (aMantener.getEstado().toLowerCase().equals("libre")) {
+						aMantener.setEstado("En Mantenimiento");
+						aMantener.getVehiculo().setEstado("En Mantenimiento");
+						Administrador.getInstance().modificarVehiculo(aMantener.getVehiculo());
+					} else { %>
+						window.alert("El vehiculo no puede ser enviado a mantenimiento")
+					<%}%>
+					window.location.replace("http://localhost:8080/TPO_Local_Cliente_Web/vehiculosAMantener.jsp")
+					<%}
+			}
+		}
+		%>
+	}
 
 </script>
 
