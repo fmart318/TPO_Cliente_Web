@@ -38,9 +38,6 @@ public class CrudClienteEmpresa extends HttpServlet {
 		if (action != null) {
 			if (action.equals("list")) {
 				try {
-					//
-					// list =
-					// Administrador.getInstance().listarClientesEmpresa();
 					// Convert Java Object to Json
 					JsonElement element = gson.toJsonTree(list, new TypeToken<List<EmpresaDTO>>() {
 					}.getType());

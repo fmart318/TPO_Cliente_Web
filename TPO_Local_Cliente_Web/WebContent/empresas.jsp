@@ -78,9 +78,8 @@
 			<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
-					<li><a href="precioVehiculos.jsp">V. Terceros</a></li>
+					<li><a href="vehiculosTerceros.jsp">Vehiculos Terceros</a></li>
 					<li><a href="direcciones.jsp">Direcciones</a></li>
-					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
 					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
@@ -106,9 +105,6 @@
 						</div>
 
 						<div class="fix"></div>
-						<a id="habilitados" href="productos.jsp" >
-								<input type="submit" value="Ver Productos habilitados" />
-							</a>
 					</div>
 				</div>
 			</div>

@@ -30,9 +30,8 @@
 			<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
-					<li><a href="precioVehiculos.jsp">V. Terceros</a></li>
+					<li><a href="vehiculosTerceros.jsp">Vehiculos Terceros</a></li>
 					<li><a href="direcciones.jsp">Direcciones</a></li>
-					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
 					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
@@ -83,7 +82,7 @@
 									</tr>
 									<%
 									List <PedidoDTO> pedidos = (List <PedidoDTO>) request.getSession().getAttribute("pedidos");
-									PrecioVehiculoDTO pv=new PrecioVehiculoDTO();
+									VehiculoTerceroDTO pv=new VehiculoTerceroDTO();
 									int idPedido=0;
 							 		for (PedidoDTO pedido : pedidos) {
 							 			idPedido=pedido.getIdPedido();
@@ -135,10 +134,10 @@
 											<input type="text" name="idPedido" value="<%= pedido.getIdPedido() %>"readonly size="1">
 											<select class="selectpicker" id="idPrecioVehiculo"name="idPrecioVehiculo" required>
 												<%
-												List <PrecioVehiculoDTO> vehiculos = Administrador.getInstance().listarVTerceros();
-										 		for (PrecioVehiculoDTO v : vehiculos) {
+												List <VehiculoTerceroDTO> vehiculos = Administrador.getInstance().listarVTerceros();
+										 		for (VehiculoTerceroDTO v : vehiculos) {
 										        %>
-											  <option value="<%= v.getIdPrecioVehiculo()%>"><%= v.getTipoVehiculo()+" Precio: $"+v.getPrecio() %></option>
+											  <option value="<%= v.getIdVehiculoTercero()%>"><%= v.getTipoVehiculo()+" Precio: $"+v.getPrecio() %></option>
 												<%}%>
 											</select>
 											<input type="submit" value="Contratar" >

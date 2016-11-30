@@ -14,7 +14,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import Negocio.Administrador;
-import dto.EmpresaDTO;
 import dto.FacturaDTO;
 import dto.PedidoDTO;
 
@@ -69,7 +68,7 @@ public class CrudFactura extends HttpServlet {
 						}
 					}
 				}
-				
+
 				if (request.getParameter("precio") != null) {
 					int precio = Integer.parseInt(request.getParameter("precio"));
 					factura.setPrecio(precio);

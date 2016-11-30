@@ -49,13 +49,13 @@ public class CrudSucursal extends HttpServlet {
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
 					System.out.println(listData);
-					
+
 				} catch (Exception e) {
 					String error = "{\"Result\":\"ERROR\",\"Message\":" + "Exception on listing records }";
 					response.getWriter().print(error);
 					System.err.println(e.getMessage());
 				}
-				
+
 			} else if (action.equals("create") || action.equals("update")) {
 
 				SucursalDTO sucursal = new SucursalDTO();
@@ -64,34 +64,33 @@ public class CrudSucursal extends HttpServlet {
 					String nombre = request.getParameter("nombre");
 					sucursal.setNombre(nombre);
 				}
-				
+
 				// TODO Hace falta levantar el listado de direcciones aca
 				if (request.getParameter("idDireccion") != null) {
 					int idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
-					DireccionDTO direccion = new DireccionDTO(idDireccion, "Calle 16", 5403, 2,
-							"F", "1884");
+					DireccionDTO direccion = new DireccionDTO(idDireccion, "Calle 16", 5403, 2, "F", "1884");
 					sucursal.setUbicacion(direccion);
 				}
-				
+
 				// TODO Hace falta levantar todo los viajes que se hizo
 
 				try {
 					if (action.equals("create")) {
-						
-						sucursal.setIdSucursal(list.size()+1);
-						
+
+						sucursal.setIdSucursal(list.size() + 1);
+
 						// Create new record
 						Administrador.getInstance().altaSucursal(sucursal);
-						
+
 						// Convert Java Object to Json
 						String json = gson.toJson(sucursal);
-						
+
 						// Return Json in the format required by jTable plugin
 						String listData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
 						response.getWriter().print(listData);
-						
+
 					} else if (action.equals("update")) {
-						
+
 						// Update existing record
 						Administrador.getInstance().updateSucursal(sucursal);
 

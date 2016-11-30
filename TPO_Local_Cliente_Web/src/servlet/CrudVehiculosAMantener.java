@@ -14,32 +14,35 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import Negocio.Administrador;
-import dto.TrayectoDTO;
 import dto.VehiculoAMantenerDTO;
 import dto.VehiculoDTO;
 
 public class CrudVehiculosAMantener extends HttpServlet {
 
 	private static final long serialVersionUID = -5940448396481255443L;
-	
-	 /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CrudVehiculosAMantener() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CrudVehiculosAMantener() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Administrador.getInstance().getVehiculosMantenimiento();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String action = request.getParameter("action");
 
 		List<VehiculoAMantenerDTO> list = Administrador.getInstance().getVehiculosMantenimiento();
@@ -54,11 +57,11 @@ public class CrudVehiculosAMantener extends HttpServlet {
 					}.getType());
 					JsonArray jsonArray = element.getAsJsonArray();
 					String listData = jsonArray.toString();
-	
+
 					// Return Json in the format required by jTable plugin
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
-					
+
 				} catch (Exception e) {
 					String error = "{\"Result\":\"ERROR\",\"Message\":" + "Exception on listing records }";
 					response.getWriter().print(error);
@@ -71,14 +74,13 @@ public class CrudVehiculosAMantener extends HttpServlet {
 						if (Integer.parseInt(request.getParameter("idVehiculo")) == v.getIdVehiculo()) {
 							v.setEstado(request.getParameter("estado"));
 							Administrador.getInstance().modificarVehiculo(v);
-							
+
 							String json = gson.toJson(v);
-							String listData = "{\"Result\":\"OK\",\"Record\":"
-									+ json + "}";
+							String listData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
 							response.getWriter().print(listData);
 						}
 					}
-				}catch (Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}

@@ -49,13 +49,13 @@ public class CrudTrayecto extends HttpServlet {
 					// Return Json in the format required by jTable plugin
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
-					
+
 				} catch (Exception e) {
 					String error = "{\"Result\":\"ERROR\",\"Message\":" + "Exception on listing records }";
 					response.getWriter().print(error);
 					System.err.println(e.getMessage());
 				}
-				
+
 			} else if (action.equals("create") || action.equals("update")) {
 
 				TrayectoDTO trayecto = new TrayectoDTO();
@@ -64,54 +64,56 @@ public class CrudTrayecto extends HttpServlet {
 					float tiempo = Float.parseFloat(request.getParameter("tiempo"));
 					trayecto.setTiempo(tiempo);
 				}
-				
+
 				if (request.getParameter("km") != null) {
 					int km = Integer.parseInt(request.getParameter("km"));
 					trayecto.setKm(km);
 				}
-				
+
 				if (request.getParameter("precio") != null) {
 					float precio = Float.parseFloat(request.getParameter("precio"));
 					trayecto.setPrecio(precio);
 				}
-				
-				// TODO Hace falta levantar el listado de direcciones y viajes de la sucursal aca
+
+				// TODO Hace falta levantar el listado de direcciones y viajes
+				// de la sucursal aca
 				if (request.getParameter("idSucursalDestino") != null) {
 					int idSucursalDestino = Integer.parseInt(request.getParameter("idSucursalDestino"));
-					DireccionDTO direccionSucursalDestino = new DireccionDTO(1, "Calle 16", 5403, 2,
-							"F", "1884");
-					SucursalDTO sucursalDestino = new SucursalDTO(idSucursalDestino, "Felipe", direccionSucursalDestino, null);
+					DireccionDTO direccionSucursalDestino = new DireccionDTO(1, "Calle 16", 5403, 2, "F", "1884");
+					SucursalDTO sucursalDestino = new SucursalDTO(idSucursalDestino, "Felipe", direccionSucursalDestino,
+							null);
 					trayecto.setSucursalDestino(sucursalDestino);
 				}
-				
-				// TODO Hace falta levantar el listado de direcciones y viajes de la sucursal aca
+
+				// TODO Hace falta levantar el listado de direcciones y viajes
+				// de la sucursal aca
 				if (request.getParameter("idSucursalOrigen") != null) {
 					int idSucursalOrigen = Integer.parseInt(request.getParameter("idSucursalOrigen"));
-					DireccionDTO direccionSucursalOrigen = new DireccionDTO(1, "Calle 16", 5403, 2,
-							"F", "1884");
-					SucursalDTO sucursalOrigen = new SucursalDTO(idSucursalOrigen, "Felipe", direccionSucursalOrigen, null);
+					DireccionDTO direccionSucursalOrigen = new DireccionDTO(1, "Calle 16", 5403, 2, "F", "1884");
+					SucursalDTO sucursalOrigen = new SucursalDTO(idSucursalOrigen, "Felipe", direccionSucursalOrigen,
+							null);
 					trayecto.setSucursalOrigen(sucursalOrigen);
 				}
-				
+
 				// TODO Hace falta levantar el listado de rutas
 
 				try {
 					if (action.equals("create")) {
-						
-						trayecto.setIdTrayecto(list.size()+1);
-						
+
+						trayecto.setIdTrayecto(list.size() + 1);
+
 						// Create new record
 						Administrador.getInstance().altaTrayecto(trayecto);
-						
+
 						// Convert Java Object to Json
 						String json = gson.toJson(trayecto);
-						
+
 						// Return Json in the format required by jTable plugin
 						String listData = "{\"Result\":\"OK\",\"Record\":" + json + "}";
 						response.getWriter().print(listData);
-						
+
 					} else if (action.equals("update")) {
-						
+
 						// Update existing record
 						Administrador.getInstance().updateTrayecto(trayecto);
 

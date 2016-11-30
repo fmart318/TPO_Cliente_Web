@@ -7,23 +7,20 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import dto.CargaDTO;
-import dto.ClienteDTO;
 import dto.DireccionDTO;
 import dto.EmpresaDTO;
 import dto.EnvioDTO;
 import dto.FacturaDTO;
-import dto.HabilitadoDTO;
 import dto.ParticularDTO;
 import dto.PedidoDTO;
 import dto.PlanDeMantenimientoDTO;
-import dto.PrecioVehiculoDTO;
-import dto.ProductoDTO;
 import dto.RemitoDTO;
 import dto.RutaDTO;
 import dto.SucursalDTO;
 import dto.TrayectoDTO;
 import dto.VehiculoAMantenerDTO;
 import dto.VehiculoDTO;
+import dto.VehiculoTerceroDTO;
 import rmi.RemoteInterface;
 
 public class Administrador {
@@ -46,15 +43,6 @@ public class Administrador {
 		}
 	}
 
-	public List<ClienteDTO> listarClientes() {
-
-		try {
-			return ir.obtenerClientes();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 	public List<EmpresaDTO> listarClientesEmpresa() {
 
@@ -70,24 +58,6 @@ public class Administrador {
 
 		try {
 			return ir.obtenerClientesParticular();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public void altaCliente(ClienteDTO clienteDto) {
-		try {
-			ir.altaCliente(clienteDto);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public List<ClienteDTO> obtenerClientes() {
-		try {
-			return ir.obtenerClientes();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -407,7 +377,7 @@ public class Administrador {
 	// Envio
 	public List<EnvioDTO> listarEnvios() {
 		try {
-			return ir.listarEnvios();
+			return ir.obtenerEnvios();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -463,7 +433,7 @@ public class Administrador {
 	}
 
 	// Precio Vehiculo, Listado de precio de los veh�culos a contratar
-	public List<PrecioVehiculoDTO> listarVTerceros() {
+	public List<VehiculoTerceroDTO> listarVTerceros() {
 		try {
 			return ir.listarVTerceros();
 		} catch (RemoteException e) {
@@ -472,7 +442,7 @@ public class Administrador {
 		return null;
 	}
 
-	public void crearVTercero(PrecioVehiculoDTO v) {
+	public void crearVTercero(VehiculoTerceroDTO v) {
 		try {
 			ir.crearVTerceros(v);
 		} catch (RemoteException e) {
@@ -480,7 +450,7 @@ public class Administrador {
 		}
 	}
 
-	public void modificarVTercero(PrecioVehiculoDTO v) {
+	public void modificarVTercero(VehiculoTerceroDTO v) {
 		try {
 			ir.modificarVTerceros(v);
 		} catch (RemoteException e) {
@@ -488,7 +458,7 @@ public class Administrador {
 		}
 	}
 
-	public void eliminarVTercero(PrecioVehiculoDTO v) {
+	public void eliminarVTercero(VehiculoTerceroDTO v) {
 		try {
 			ir.eliminarVTerceros(v);
 		} catch (RemoteException e) {
@@ -496,93 +466,9 @@ public class Administrador {
 		}
 	}
 
-	public void crearEnvioDirecto(int idpedido, int idPrecioVehiculo) {
+	public void crearEnvioDirecto(int idPedido) {
 		try {
-			ir.crearEnvioDirecto(idpedido, idPrecioVehiculo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public PedidoDTO buscarPedidoPorId(int idPedido) {
-		try {
-			return ir.buscarPedidoPorId(idPedido);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public PrecioVehiculoDTO buscarPrecioVehiculoDTO(int idPrecioVehiculo) {
-		try {
-			return ir.buscarPrecioVehiculoDTO(idPrecioVehiculo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public List<HabilitadoDTO> listarHabilitados() {
-		try {
-			return ir.listarHabilitados();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public void crearHabilitacion(HabilitadoDTO v) {
-		try {
-			ir.crearHabilitacion(v);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void modificarHabilitacion(HabilitadoDTO v) {
-		try {
-			ir.modificarHabilitacion(v);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void eliminarHabilitacion(HabilitadoDTO v) {
-		try {
-			ir.eliminarHabilitacion(v);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public List<ProductoDTO> listarProductos() {
-		try {
-			return ir.listarProductos();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public void crearProductos(ProductoDTO v) {
-		try {
-			ir.crearProducto(v);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void modificarProducto(ProductoDTO v) {
-		try {
-			ir.modificarProducto(v);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void eliminarProducto(ProductoDTO v) {
-		try {
-			ir.eliminarProduct(v);
+			ir.crearEnvioDirecto(idPedido);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

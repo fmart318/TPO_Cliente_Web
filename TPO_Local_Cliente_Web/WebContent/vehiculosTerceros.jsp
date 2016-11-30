@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> Proveedores | TPO AD </title>
+<title>V. Terceros | TPO AD</title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
@@ -14,16 +14,16 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#ProveedorTableContainer').jtable({
-			title : 'Lista de Proveedores',
+		$('#PrecioVehiculoTableContainer').jtable({
+			title : 'Lista de Vehiculos Terceros',
 			actions : {
-				listAction : 'CrudProveedor?action=list',
-				createAction : 'CrudProveedor?action=create',
-				updateAction : 'CrudProveedor?action=update',
-				deleteAction : 'CrudProveedor?action=delete'
+				listAction : 'CrudVTercero?action=list',
+				createAction : 'CrudVTercero?action=create',
+				updateAction : 'CrudVTercero?action=update',
+				deleteAction : 'CrudVTercero?action=delete'
 			},
 			fields : {
-				idProveedor : {
+				idPrecioVehiculo : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -31,32 +31,25 @@
 					edit : false,
 					create : false
 				},
-				compania : {
-					title : 'Compañia',
+				tipoVehiculo : {
+					title : 'Tipo Vehiculo',
 					width : '10%',
 					edit : true
 				},
-				tipoMercaderia : {
-					title : 'Tipo Mercadería',
-					width : '5%',
-					edit : true
-				},
-				tipoTransporte : {
-					title : 'Tipo Transporte',
+				precio : {
+					title : 'Precio',
 					width : '5%',
 					edit : true
 				}
 			}
 		});
-		$('#ProveedorTableContainer').jtable('load');
+		$('#PrecioVehiculoTableContainer').jtable('load');
 	});
 </script>
 
 </head>
 <body>
-<div id="wrapper">
-
-
+	<div id="wrapper">
 
 		<div id="header">
 			<div class="col-full">
@@ -68,9 +61,8 @@
 			<div id="navigation" class="col-full">
 				<ul id="main-nav" class="nav fl">
 					<li><a href="index.jsp">Inicio</a></li>
-					<li><a href="precioVehiculos.jsp">V. Terceros</a></li>
+					<li><a href="vehiculosTerceros.jsp">Vehiculos Terceros</a></li>
 					<li><a href="direcciones.jsp">Direcciones</a></li>
-					<li><a href="proveedores.jsp">Proveedores</a></li>
 					<li><a href="empresas.jsp">Empresas</a></li>
 					<li><a href="particulares.jsp">Particulares</a></li>
 					<li><a href="planesDeMantenimiento.jsp">Mantenimientos</a></li>
@@ -90,11 +82,10 @@
 			<div class="featured col-full feat-blog">
 				<div class="feat-post">
 					<div class="feat-content">
-	
-						<div class="entry">
-								<div id="ProveedorTableContainer" class="table"></div>
-						</div>
 
+						<div class="entry">
+							<div id="PrecioVehiculoTableContainer" class="table"></div>
+						</div>
 						<div class="fix"></div>
 					</div>
 				</div>
@@ -102,6 +93,6 @@
 
 			<div class="fix"></div>
 		</div>
-</div>
+	</div>
 </body>
 </html>

@@ -14,7 +14,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import Negocio.Administrador;
-import dto.EmpresaDTO;
 import dto.PedidoDTO;
 import dto.RemitoDTO;
 
@@ -69,7 +68,7 @@ public class CrudRemito extends HttpServlet {
 						}
 					}
 				}
-				
+
 				try {
 					if (action.equals("create")) {
 						// Create new record
