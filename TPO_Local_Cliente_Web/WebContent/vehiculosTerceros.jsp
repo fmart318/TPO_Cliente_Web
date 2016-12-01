@@ -77,7 +77,7 @@
 					
 				},
 				verPedido  : {
-					title : 'idSucursal',
+					title : 'Pedidos',
 					width : '5%',
 					list: true,
 					create: false,

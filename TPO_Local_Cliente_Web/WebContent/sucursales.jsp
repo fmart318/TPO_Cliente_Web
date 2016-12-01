@@ -52,7 +52,7 @@
                             return $('<a href="verDireccion.jsp?idDireccion=' +data.record.direccion.idDireccion+'"onClick="return popup(this)">'+data.record.direccion.idDireccion+'</a>');
 		        	},
 		        	input: function (data) {
-				        if (data.record) {
+				        if (data.record.direccion) {
 				            return '<input type="text" name="idDireccion" style="width:200px" value="' +data.record.direccion.idDireccion+ '" />';
 				        } else {
 				            return '<input type="text" name="idDireccion" style="width:200px" value="" />';

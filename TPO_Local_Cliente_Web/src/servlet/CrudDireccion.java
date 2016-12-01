@@ -104,9 +104,7 @@ public class CrudDireccion extends HttpServlet {
 					// Delete record
 					if (request.getParameter("idDireccion") != null) {
 						int idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
-						DireccionDTO dir = new DireccionDTO();
-						dir.setIdDireccion(idDireccion);
-						Administrador.getInstance().eliminarDireccion(dir);
+						Administrador.getInstance().eliminarDireccion(Administrador.getInstance().obtenerDireccionPorId(idDireccion));
 						String listData = "{\"Result\":\"OK\"}";
 						response.getWriter().print(listData);
 					}
