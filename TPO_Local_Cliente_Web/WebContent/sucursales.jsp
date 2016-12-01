@@ -10,7 +10,7 @@
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
-
+<script src="scripts/popup.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#SucursalTableContainer').jtable({
@@ -33,12 +33,42 @@
 				nombre : {
 					title : 'Nombre',
 					width : '10%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="nombre" style="width:200px" value="' + data.record.nombre + '" />';
+						} else {
+							return '<input type="text" name="nombre" style="width:200px" value="Sucursal Palermo" />';
+						}
+					}
 				},
 				idDireccion : {
 					title : 'idDireccion',
 					width : '10%',
-					edit : true
+					edit : true,
+					create: true,
+					display:function(data){
+						if(data.record.direccion)
+                            return $('<a href="verDireccion.jsp?idDireccion=' +data.record.direccion.idDireccion+'"onClick="return popup(this)">'+data.record.direccion.idDireccion+'</a>');
+		        	},
+		        	input: function (data) {
+				        if (data.record) {
+				            return '<input type="text" name="idDireccion" style="width:200px" value="' +data.record.direccion.idDireccion+ '" />';
+				        } else {
+				            return '<input type="text" name="idDireccion" style="width:200px" value="" />';
+				        }
+				    }
+				},
+				verPedido  : {
+					title : 'Pedidos',
+					width : '5%',
+					list: true,
+					create: false,
+					edit: false,
+					display:function(data){
+						if(data.record)
+                            return $('<a href="verPedido.jsp?idSucursal=' +data.record.idSucursal+'"onClick="return popup(this)">Pedidos</a>');
+		        	}
 				}
 			}
 		});

@@ -349,6 +349,14 @@ public class Administrador {
 		}
 		return null;
 	}
+	public DireccionDTO obtenerDireccionPorId(int idDireccion) {
+		try {
+			return ir.obtenerDireccionPorId(idDireccion);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public void crearDireccion(DireccionDTO v) {
 		try {
