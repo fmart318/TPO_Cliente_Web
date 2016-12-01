@@ -55,21 +55,26 @@ public class CrudDireccion extends HttpServlet {
 			} else if (action.equals("create") || action.equals("update")) {
 				DireccionDTO dir = new DireccionDTO();
 				if (request.getParameter("idDireccion") != null) {
-					int idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
+					int idDireccion = Integer.valueOf(request.getParameter("idDireccion"));
 					dir.setIdDireccion(idDireccion);
 				}
 				if (request.getParameter("calle") != null) {
 					String calle = request.getParameter("calle");
 					dir.setCalle(calle);
 				}
-				if (request.getParameter("departamento") != null) {
-					String departamento = request.getParameter("departamento");
-					dir.setDepartamento(departamento);
-				}
 				if (request.getParameter("numero") != null) {
 					int numero = Integer.valueOf(request.getParameter("numero"));
 					dir.setNumero(numero);
 				}
+				if (request.getParameter("piso") != null) {
+					int piso = Integer.valueOf(request.getParameter("piso"));
+					dir.setPiso(piso);
+				}
+				if (request.getParameter("departamento") != null) {
+					String departamento = request.getParameter("departamento");
+					dir.setDepartamento(departamento);
+				}
+				
 				if (request.getParameter("CP") != null) {
 					String cp = request.getParameter("CP");
 					dir.setCP(cp);
@@ -104,9 +109,7 @@ public class CrudDireccion extends HttpServlet {
 					// Delete record
 					if (request.getParameter("idDireccion") != null) {
 						int idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
-						DireccionDTO dir = new DireccionDTO();
-						dir.setIdDireccion(idDireccion);
-						Administrador.getInstance().eliminarDireccion(dir);
+						Administrador.getInstance().eliminarDireccion(Administrador.getInstance().obtenerDireccionPorId(idDireccion));
 						String listData = "{\"Result\":\"OK\"}";
 						response.getWriter().print(listData);
 					}

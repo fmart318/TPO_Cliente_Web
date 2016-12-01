@@ -66,10 +66,9 @@ public class CrudSucursal extends HttpServlet {
 				}
 
 				// TODO Hace falta levantar el listado de direcciones aca
-				if (request.getParameter("idDireccion") != null) {
+				if (request.getParameter("idDireccion") != "") {
 					int idDireccion = Integer.parseInt(request.getParameter("idDireccion"));
-					DireccionDTO direccion = new DireccionDTO(idDireccion, "Calle 16", 5403, 2, "F", "1884");
-					sucursal.setUbicacion(direccion);
+					sucursal.setUbicacion(Administrador.getInstance().obtenerDireccionPorId(idDireccion));
 				}
 
 				// TODO Hace falta levantar todo los viajes que se hizo
@@ -77,8 +76,7 @@ public class CrudSucursal extends HttpServlet {
 				try {
 					if (action.equals("create")) {
 
-						sucursal.setIdSucursal(list.size() + 1);
-
+						//sucursal.setIdSucursal(list.size() + 1);
 						// Create new record
 						Administrador.getInstance().altaSucursal(sucursal);
 

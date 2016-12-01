@@ -41,7 +41,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>
@@ -74,14 +74,18 @@
 										<th>Fecha Máxima</th>
 										<th>Precio</th>
 										<th>Suc Origen</th>
+										<th>Suc Actual</th>
 										<th>Suc Destino</th>
+										<th>Estado</th>
+										<th>Vol Total Cargas</th>
 										<th>Solicita Trans Dto.</th>
 										<th>Solicita Avioneta</th>
 										<th>Cargas</th>
 										<th>Contratar Vehículo</th>
+										
 									</tr>
 									<%
-									List <PedidoDTO> pedidos = (List <PedidoDTO>) request.getSession().getAttribute("pedidos");
+									List <PedidoDTO> pedidos = Administrador.getInstance().obtenerPedidos();
 									VehiculoTerceroDTO pv=new VehiculoTerceroDTO();
 									int idPedido=0;
 							 		for (PedidoDTO pedido : pedidos) {
@@ -105,7 +109,10 @@
 										<td><%= pedido.getFechaMaxima() %></td>
 										<td><%= pedido.getPrecio() %></td>
 										<td><%= pedido.getSucursalOrigenId() %></td>
+										<td><%= pedido.getSucursalActualId() %></td>
 										<td><%= pedido.getSucursalDestinoId() %></td>
+										<td><%= pedido.getEstado() %></td>
+										<td><%= pedido.getVolumenoTotalCargas() %></td>
 										<td><input type="checkbox" <%=checkA %>></td>
 										<td><input type="checkbox" <%=checkB %>></td>
 										<td><a
@@ -117,38 +124,41 @@
 										<% 
 										boolean tieneE=true;
 										for (EnvioDTO env:Administrador.getInstance().listarEnvios()){
-											if(pedido.getIdPedido()==env.getPedidos().get(0).getIdPedido()){
-												tieneE=false;
+												for(PedidoDTO p: env.getPedidos()){
+													if(p.getIdPedido()==pedido.getIdPedido()){
+														if (pedido.isSolicitaTransporteDirecto()||pedido.isSolicitaAvionetaParticular()){
+															if(tieneE){
+																
+																
+																	
+																
+														%>
+														<td>
+															<input type="text" name="idPedido" value="<%= pedido.getIdPedido() %>"readonly size="1">
+															<select class="selectpicker" id="idPrecioVehiculo"name="idPrecioVehiculo" required>
+																<%
+																List <VehiculoTerceroDTO> vehiculos = Administrador.getInstance().listarVTerceros();
+														 		for (VehiculoTerceroDTO v : vehiculos) {
+														        %>
+															  <option value="<%= v.getIdVehiculoTercero()%>"><%= v.getTipoVehiculo()+" Precio: $"+v.getPrecio() %></option>
+																<%}%>
+															</select>
+															<input type="submit" value="Contratar" >
+														</form>
+														</td>
+														
+														<%
+														
+														
+														}
+														}
+												}
+											
 											}
 											
 										}
 										
-										if (pedido.isSolicitaTransporteDirecto()||pedido.isSolicitaAvionetaParticular()){
-											if(tieneE){
-												
-												
-													
-												
-										%>
-										<td>
-											<input type="text" name="idPedido" value="<%= pedido.getIdPedido() %>"readonly size="1">
-											<select class="selectpicker" id="idPrecioVehiculo"name="idPrecioVehiculo" required>
-												<%
-												List <VehiculoTerceroDTO> vehiculos = Administrador.getInstance().listarVTerceros();
-										 		for (VehiculoTerceroDTO v : vehiculos) {
-										        %>
-											  <option value="<%= v.getIdVehiculoTercero()%>"><%= v.getTipoVehiculo()+" Precio: $"+v.getPrecio() %></option>
-												<%}%>
-											</select>
-											<input type="submit" value="Contratar" >
-										</form>
-										</td>
 										
-										<%
-										
-										
-										}
-										}
 										
 											
 										%>

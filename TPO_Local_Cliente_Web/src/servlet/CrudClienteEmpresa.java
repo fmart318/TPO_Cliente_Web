@@ -56,7 +56,7 @@ public class CrudClienteEmpresa extends HttpServlet {
 				// Student student = new Student();
 				EmpresaDTO empresa = new EmpresaDTO();
 				if (request.getParameter("idCliente") != null) {
-					int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+					int idCliente = Integer.valueOf(request.getParameter("idCliente"));
 					empresa.setIdCliente(idCliente);
 				}
 
@@ -65,7 +65,7 @@ public class CrudClienteEmpresa extends HttpServlet {
 					empresa.setNombre(nombre);
 				}
 				if (request.getParameter("CUIT") != null) {
-					int CUIT = Integer.parseInt(request.getParameter("CUIT"));
+					int CUIT = Integer.valueOf(request.getParameter("CUIT"));
 					empresa.setCUIT(CUIT);
 				}
 				if (request.getParameter("tipo") != null) {
@@ -77,7 +77,7 @@ public class CrudClienteEmpresa extends HttpServlet {
 					empresa.setDetallePoliticas(detallePoliticas);
 				}
 				if (request.getParameter("saldoCuentaCorriente") != null) {
-					float saldoCuentaCorriente = Float.parseFloat(request.getParameter("saldoCuentaCorriente"));
+					float saldoCuentaCorriente = Float.valueOf(request.getParameter("saldoCuentaCorriente"));
 					empresa.setSaldoCuentaCorriente(saldoCuentaCorriente);
 				}
 				try {

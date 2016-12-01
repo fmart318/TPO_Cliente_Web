@@ -33,17 +33,38 @@
 				nombre : {
 					title : 'Nombre',
 					width : '10%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="nombre" style="width:200px" value="' + data.record.nombre + '" />';
+						} else {
+							return '<input type="text" name="nombre" style="width:200px" value="Eugenia" />';
+						}
+					}
 				},
 				DNI : {
 					title : 'DNI',
 					width : '10%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="DNI" style="width:200px" value="' + data.record.DNI + '" />';
+						} else {
+							return '<input type="text" name="DNI" style="width:200px" value="12345678" />';
+						}
+					}
 				},
 				apellido : {
 					title : 'Apellido',
 					width : '10%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="apellido" style="width:200px" value="' + data.record.apellido + '" />';
+						} else {
+							return '<input type="text" name="apellido" style="width:200px" value="Rios" />';
+						}
+					}
 				}
 			}
 		});
@@ -76,7 +97,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

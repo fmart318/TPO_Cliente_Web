@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
@@ -33,7 +36,7 @@ public class CrudVehiculo extends HttpServlet {
 		String action = request.getParameter("action");
 
 		List<VehiculoDTO> list = Administrador.getInstance().listarVehiculos();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		response.setContentType("application/json");
 
 		if (action != null) {
@@ -44,7 +47,7 @@ public class CrudVehiculo extends HttpServlet {
 					}.getType());
 					JsonArray jsonArray = element.getAsJsonArray();
 					String listData = jsonArray.toString();
-
+					System.out.println(listData);
 					// Return Json in the format required by jTable plugin
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
@@ -56,7 +59,7 @@ public class CrudVehiculo extends HttpServlet {
 			} else if (action.equals("create") || action.equals("update")) {
 				VehiculoDTO vehiculo = new VehiculoDTO();
 				if (request.getParameter("idVehiculo") != null) {
-					int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+					int idVehiculo = Integer.valueOf(request.getParameter("idVehiculo"));
 					vehiculo.setIdVehiculo(idVehiculo);
 				}
 
@@ -72,14 +75,15 @@ public class CrudVehiculo extends HttpServlet {
 					float alto = Float.valueOf(request.getParameter("alto"));
 					vehiculo.setAlto(alto);
 				}
-				if (request.getParameter("volumen") != null) {
-					float volumen = Float.valueOf(request.getParameter("volumen"));
-					vehiculo.setVolumen(volumen);
-				}
 				if (request.getParameter("profundidad") != null) {
 					int profundidad = Integer.valueOf(request.getParameter("profundidad"));
 					vehiculo.setProfundidad(profundidad);
 				}
+				if (request.getParameter("volumen") != null) {
+					//float volumen = Float.valueOf(request.getParameter("volumen"));
+					vehiculo.setVolumen(vehiculo.getAlto()*vehiculo.getAlto()*vehiculo.getProfundidad());
+				}
+				
 				if (request.getParameter("tara") != null) {
 					float tara = Float.valueOf(request.getParameter("tara"));
 					vehiculo.setTara(tara);
@@ -95,9 +99,7 @@ public class CrudVehiculo extends HttpServlet {
 				if (request.getParameter("trabajoEspecifico") != null) {
 					String trabajoEspecifico = request.getParameter("trabajoEspecifico");
 					boolean b = false;
-					if (trabajoEspecifico.equals("si") || trabajoEspecifico.equals("1")
-							|| trabajoEspecifico.equals("Si") || trabajoEspecifico.equals("SI")
-							|| trabajoEspecifico.equals("true"))
+					if (trabajoEspecifico.equals("true"))
 						b = true;
 					else
 						b = false;
@@ -106,20 +108,30 @@ public class CrudVehiculo extends HttpServlet {
 				if (request.getParameter("enGarantia") != null) {
 					String enGarantia = request.getParameter("enGarantia");
 					boolean b = false;
-					if (enGarantia.equals("si") || enGarantia.equals("1") || enGarantia.equals("Si")
-							|| enGarantia.equals("SI") || enGarantia.equals("true"))
+					if (enGarantia.equals("true"))
 						b = true;
 					else
 						b = false;
 					vehiculo.setEnGarantia(b);
 				}
 				if (request.getParameter("fechaUltimoControl") != null) {
-					Date fechaUltimoControl = java.sql.Date.valueOf(request.getParameter("fechaUltimoControl"));
-					vehiculo.setFechaUltimoControl(fechaUltimoControl);
+
+					String startDateStr = request.getParameter("fechaUltimoControl");
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					// surround below line with try catch block as below code
+					// throws checked exception
+					Date startDate;
+					try {
+						startDate = sdf.parse(startDateStr);
+						vehiculo.setFechaUltimoControl(startDate);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-				if (request.getParameter("idPlanDeMantenimiento") != null) {
+				if (request.getParameter("idPlanDeMantenimiento") != "") {
 					int idPlanDeMantenimiento = Integer.valueOf(request.getParameter("idPlanDeMantenimiento"));
-					vehiculo.setKilometraje(idPlanDeMantenimiento);
+					vehiculo.setPlanDeMantenimiento(Administrador.getInstance().obtenerPlanDeMantenimientoPorID(idPlanDeMantenimiento));
 				}
 
 				try {

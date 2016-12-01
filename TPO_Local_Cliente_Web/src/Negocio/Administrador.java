@@ -148,6 +148,14 @@ public class Administrador {
 		return null;
 	}
 
+	public SucursalDTO obtenerSucursalPorId(int idSucursal) {
+		try {
+			return ir.obtenerSucursalPorId(idSucursal);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public void altaSucursal(SucursalDTO sucursalDto) {
 		try {
 			ir.altaSucursal(sucursalDto);
@@ -349,6 +357,14 @@ public class Administrador {
 		}
 		return null;
 	}
+	public DireccionDTO obtenerDireccionPorId(int idDireccion) {
+		try {
+			return ir.obtenerDireccionPorId(idDireccion);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public void crearDireccion(DireccionDTO v) {
 		try {
@@ -393,7 +409,16 @@ public class Administrador {
 		}
 		return null;
 	}
-
+	
+	
+	public PlanDeMantenimientoDTO obtenerPlanDeMantenimientoPorID(int idPlanDeMantenimiento){
+		try {
+			return ir.obtenerPlanDeMantenimientoPorId(idPlanDeMantenimiento);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public void altaPlanDeMantenimiento(PlanDeMantenimientoDTO plan) {
 		try {
 			ir.altaPlanMantenimiento(plan);
@@ -436,6 +461,14 @@ public class Administrador {
 	public List<VehiculoTerceroDTO> listarVTerceros() {
 		try {
 			return ir.listarVTerceros();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public VehiculoTerceroDTO buscarVehiculoTerceroDTO(int idVehiculoTerceroDTO){
+		try {
+			return ir.buscarVehiculoTerceroDTO(idVehiculoTerceroDTO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

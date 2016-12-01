@@ -36,27 +36,62 @@
 				nombre : {
 					title : 'Nombre',
 					width : '10%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="nombre" style="width:200px" value="' + data.record.nombre + '" />';
+						} else {
+							return '<input type="text" name="nombre" style="width:200px" value="Cruz Del Sur SRL" />';
+						}
+					}
 				},
 				CUIT : {
 					title : 'CUIT',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="CUIT" style="width:200px" value="' + data.record.CUIT + '" />';
+						} else {
+							return '<input type="text" name="CUIT" style="width:200px" value="34028" />';
+						}
+					}
 				},
 				tipo : {
 					title : 'Tipo',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="tipo" style="width:200px" value="' + data.record.tipo + '" />';
+						} else {
+							return '<input type="text" name="tipo" style="width:200px" value="Inscripto" />';
+						}
+					}
 				},
 				detallePoliticas : {
 					title : 'Detalle Políticas',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="detallePoliticas" style="width:200px" value="' + data.record.detallePoliticas + '" />';
+						} else {
+							return '<input type="text" name="detallePoliticas" style="width:200px" value="Política 1283" />';
+						}
+					}
 				},
 				saldoCuentaCorriente : {
 					title : 'Saldo CC',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="saldoCuentaCorriente" style="width:200px" value="' + data.record.saldoCuentaCorriente + '" />';
+						} else {
+							return '<input type="text" name="saldoCuentaCorriente" style="width:200px" value="2400" />';
+						}
+					}
 				}
 			}
 		});
@@ -89,7 +124,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

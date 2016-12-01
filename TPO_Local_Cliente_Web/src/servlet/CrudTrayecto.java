@@ -14,8 +14,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import Negocio.Administrador;
-import dto.DireccionDTO;
-import dto.SucursalDTO;
 import dto.TrayectoDTO;
 
 public class CrudTrayecto extends HttpServlet {
@@ -45,7 +43,7 @@ public class CrudTrayecto extends HttpServlet {
 					}.getType());
 					JsonArray jsonArray = element.getAsJsonArray();
 					String listData = jsonArray.toString();
-
+					System.out.print(listData);
 					// Return Json in the format required by jTable plugin
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
@@ -59,40 +57,37 @@ public class CrudTrayecto extends HttpServlet {
 			} else if (action.equals("create") || action.equals("update")) {
 
 				TrayectoDTO trayecto = new TrayectoDTO();
-
+				if (request.getParameter("idTrayecto") != null) {
+					int idTrayecto = Integer.valueOf(request.getParameter("idTrayecto"));
+					trayecto.setIdTrayecto(idTrayecto);
+				}
 				if (request.getParameter("tiempo") != null) {
-					float tiempo = Float.parseFloat(request.getParameter("tiempo"));
+					float tiempo = Float.valueOf(request.getParameter("tiempo"));
 					trayecto.setTiempo(tiempo);
 				}
 
 				if (request.getParameter("km") != null) {
-					int km = Integer.parseInt(request.getParameter("km"));
+					int km = Integer.valueOf(request.getParameter("km"));
 					trayecto.setKm(km);
 				}
 
 				if (request.getParameter("precio") != null) {
-					float precio = Float.parseFloat(request.getParameter("precio"));
+					float precio = Float.valueOf(request.getParameter("precio"));
 					trayecto.setPrecio(precio);
 				}
 
 				// TODO Hace falta levantar el listado de direcciones y viajes
 				// de la sucursal aca
-				if (request.getParameter("idSucursalDestino") != null) {
-					int idSucursalDestino = Integer.parseInt(request.getParameter("idSucursalDestino"));
-					DireccionDTO direccionSucursalDestino = new DireccionDTO(1, "Calle 16", 5403, 2, "F", "1884");
-					SucursalDTO sucursalDestino = new SucursalDTO(idSucursalDestino, "Felipe", direccionSucursalDestino,
-							null);
-					trayecto.setSucursalDestino(sucursalDestino);
+				if (request.getParameter("idSucursalDestino") != "") {
+					int idSucursalDestino = Integer.valueOf(request.getParameter("idSucursalDestino"));
+					trayecto.setSucursalDestino(Administrador.getInstance().obtenerSucursalPorId(idSucursalDestino));
 				}
 
 				// TODO Hace falta levantar el listado de direcciones y viajes
 				// de la sucursal aca
-				if (request.getParameter("idSucursalOrigen") != null) {
-					int idSucursalOrigen = Integer.parseInt(request.getParameter("idSucursalOrigen"));
-					DireccionDTO direccionSucursalOrigen = new DireccionDTO(1, "Calle 16", 5403, 2, "F", "1884");
-					SucursalDTO sucursalOrigen = new SucursalDTO(idSucursalOrigen, "Felipe", direccionSucursalOrigen,
-							null);
-					trayecto.setSucursalOrigen(sucursalOrigen);
+				if (request.getParameter("idSucursalOrigen") != "") {
+					int idSucursalOrigen = Integer.valueOf(request.getParameter("idSucursalOrigen"));
+					trayecto.setSucursalOrigen(Administrador.getInstance().obtenerSucursalPorId(idSucursalOrigen));
 				}
 
 				// TODO Hace falta levantar el listado de rutas
@@ -100,7 +95,7 @@ public class CrudTrayecto extends HttpServlet {
 				try {
 					if (action.equals("create")) {
 
-						trayecto.setIdTrayecto(list.size() + 1);
+						
 
 						// Create new record
 						Administrador.getInstance().altaTrayecto(trayecto);

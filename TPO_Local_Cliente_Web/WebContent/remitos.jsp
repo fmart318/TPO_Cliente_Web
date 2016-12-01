@@ -68,7 +68,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

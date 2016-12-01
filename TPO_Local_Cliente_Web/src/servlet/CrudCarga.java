@@ -79,6 +79,10 @@ public class CrudCarga extends HttpServlet {
 					String fragilidad = request.getParameter("fragilidad");
 					carga.setFragilidad(fragilidad);
 				}
+				if (request.getParameter("profundidad") != null) {
+					int profundidad = Integer.valueOf(request.getParameter("profundidad"));
+					carga.setProfundidad(profundidad);
+				}
 				if (request.getParameter("tratamiento") != null) {
 					String tratamiento = request.getParameter("tratamiento");
 					carga.setTratamiento(tratamiento);
@@ -89,23 +93,16 @@ public class CrudCarga extends HttpServlet {
 				}
 				if (request.getParameter("refrigerable") != null) {
 					String refrigerable = request.getParameter("refrigerable");
-					boolean b = false;
-					if (refrigerable.equals("si") || refrigerable.equals("1") || refrigerable.equals("Si")
-							|| refrigerable.equals("SI") || refrigerable.equals("true"))
+					boolean b;
+					if (refrigerable.equals("true"))
 						b = true;
 					else
 						b = false;
 					carga.setRefrigerable(b);
 				}
 				if (request.getParameter("despachado") != null) {
-					String despachado = request.getParameter("despachado");
-					boolean b = false;
-					if (despachado.equals("si") || despachado.equals("1") || despachado.equals("Si")
-							|| despachado.equals("SI") || despachado.equals("true"))
-						b = true;
-					else
-						b = false;
-					carga.setDespachado(b);
+					Boolean despachado = Boolean.getBoolean(request.getParameter("despachado"));
+					carga.setDespachado(despachado);
 				}
 				if (request.getParameter("condiciones") != null) {
 					String condiciones = request.getParameter("condiciones");

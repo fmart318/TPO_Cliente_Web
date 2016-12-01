@@ -34,27 +34,62 @@
 				calle : {
 					title : 'Calle',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="calle" style="width:200px" value="' + data.record.calle + '" />';
+						} else {
+							return '<input type="text" name="calle" style="width:200px" value="Av. Corrientes" />';
+						}
+					}
 				},
 				numero : {
 					title : 'Nro',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="numero" style="width:200px" value="' + data.record.numero + '" />';
+						} else {
+							return '<input type="text" name="numero" style="width:200px" value="4203" />';
+						}
+					}
 				},
 				piso : {
 					title : 'Piso',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="piso" style="width:200px" value="' + data.record.piso + '" />';
+						} else {
+							return '<input type="text" name="piso" style="width:200px" value="2" />';
+						}
+					}
 				},
 				departamento : {
 					title : 'Dto',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="departamento" style="width:200px" value="' + data.record.departamento + '" />';
+						} else {
+							return '<input type="text" name="departamento" style="width:200px" value="A" />';
+						}
+					}
 				},
 				CP : {
 					title : 'Cp',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="CP" style="width:200px" value="' + data.record.CP + '" />';
+						} else {
+							return '<input type="text" name="CP" style="width:200px" value="1417" />';
+						}
+					}
 				}				
 			}
 		});
@@ -87,7 +122,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>
