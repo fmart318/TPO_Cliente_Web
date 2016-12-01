@@ -82,15 +82,11 @@
 									</div>
 								</form>
 							<br />
-							<small>2. Generar Nuevo Envio: (Apretar Controlar Estado de Envios una vez)</small>
-							<br />
-							<small>3. Controlar LLegada de Envio a Sucursal Intermediario:(Apretar Controlar Estado de Envios una vez)</small>
-							<br />
-							<small>4. Controlar LLegada de Envio a Sucursal Destino:(Apretar Controlar Estado de Envios una vez)</small>
+							<small>2. Apretar Boton de actualizacion hasta que aparezca el mensaje: "Actualizacion Finalizada"</small>
 							<br />
 							<form action="./ControlarEstadoDeEnvios" method="post">
 									<div class="form-actions">
-											<input type="submit" value="Controlar Estado Envios" />
+											<input type="submit" value="Actualizar Estado Envios" />
 									</div>
 							</form>
 						</div>

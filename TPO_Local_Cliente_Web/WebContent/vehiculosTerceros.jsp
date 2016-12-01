@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>V. Terceros | TPO AD</title>
+<title>Vehiculos Terceros | TPO AD</title>
 <link href="./css/styles.css" rel="stylesheet" type="text/css" />
 <!-- Include one of jTable styles. -->
 <link href="css/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#PrecioVehiculoTableContainer').jtable({
+		$('#VehiculosTercerosTableContainer').jtable({
 			title : 'Lista de Vehiculos Terceros',
 			actions : {
 				listAction : 'CrudVTercero?action=list',
@@ -23,7 +23,7 @@
 				deleteAction : 'CrudVTercero?action=delete'
 			},
 			fields : {
-				idPrecioVehiculo : {
+				idVehiculoTercero : {
 					title : 'id',
 					width : '1%',
 					key : true,
@@ -40,10 +40,20 @@
 					title : 'Precio',
 					width : '5%',
 					edit : true
+				},
+				estado : {
+					title : 'Estado',
+					width : '5%',
+					edit : true
+				},
+				fechaLlegada : {
+					title : 'Fecha Llegada',
+					width : '5%',
+					edit : true
 				}
 			}
 		});
-		$('#PrecioVehiculoTableContainer').jtable('load');
+		$('#VehiculosTercerosTableContainer').jtable('load');
 	});
 </script>
 
@@ -84,7 +94,7 @@
 					<div class="feat-content">
 
 						<div class="entry">
-							<div id="PrecioVehiculoTableContainer" class="table"></div>
+							<div id="VehiculosTercerosTableContainer" class="table"></div>
 						</div>
 						<div class="fix"></div>
 					</div>

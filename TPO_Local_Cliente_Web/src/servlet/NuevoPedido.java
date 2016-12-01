@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -100,7 +101,7 @@ public class NuevoPedido extends HttpServlet {
 		}
 
 		if (request.getParameter("fechaCarga") != null) {
-			Date fechaCarga = java.sql.Date.valueOf(request.getParameter("fechaCarga"));
+			Timestamp fechaCarga = java.sql.Timestamp.valueOf(request.getParameter("fechaCarga"));
 			pedidoDto.setFechaCarga(fechaCarga);
 		}
 		if (request.getParameter("horaInicio") != null) {
@@ -112,7 +113,7 @@ public class NuevoPedido extends HttpServlet {
 			pedidoDto.setHoraInicio(horaFin);
 		}
 		if (request.getParameter("fechaMaxima") != null) {
-			Date fechaMaxima = java.sql.Date.valueOf(request.getParameter("fechaMaxima"));
+			Timestamp fechaMaxima = java.sql.Timestamp.valueOf(request.getParameter("fechaMaxima"));
 			pedidoDto.setFechaMaxima(fechaMaxima);
 		}
 		if (request.getParameter("precio") != null) {
