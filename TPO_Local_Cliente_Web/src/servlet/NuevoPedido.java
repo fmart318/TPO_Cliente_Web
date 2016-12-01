@@ -141,6 +141,7 @@ public class NuevoPedido extends HttpServlet {
 				b = true;
 			pedidoDto.setSolicitaAvionetaParticular(b);
 		}
+		pedidoDto.setEstado("Pendiente");
 		pedidoDto.setCliente(clienteDto);
 		pedidoDto.setDireccionCarga(direccionOrigen);
 		pedidoDto.setDireccionDestino(direccionDestino);

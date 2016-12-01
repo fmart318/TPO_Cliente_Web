@@ -11,7 +11,7 @@
 <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="js/jquery.jtable.js" type="text/javascript"></script>
-
+<script src=./scripts/popup.js type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#VehiculosTableContainer').jtable({
@@ -34,53 +34,125 @@
 				tipo : {
 					title : 'Tipo',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="tipo" style="width:200px" value="' + data.record.tipo + '" />';
+						} else {
+							return '<input type="text" name="tipo" style="width:200px" value="Camion" />';
+						}
+					}
 				},
 				volumen : {
 					title : 'Volumen',
 					width : '5%',
-					edit : true
+					edit : true,
+					create: false,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="volumen" style="width:200px" value="' + data.record.volumen + '" />';
+						} else {
+							return '<input type="text" name="volumen" style="width:200px" value="60" />';
+						}
+					}
 				},
 				peso : {
 					title : 'Peso',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="peso" style="width:200px" value="' + data.record.peso + '" />';
+						} else {
+							return '<input type="text" name="peso" style="width:200px" value="4000" />';
+						}
+					}
+					
 				},
 				ancho : {
 					title : 'Ancho',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="ancho" style="width:200px" value="' + data.record.ancho + '" />';
+						} else {
+							return '<input type="text" name="ancho" style="width:200px" value="3" />';
+						}
+					}
 				},
 				alto : {
 					title : 'Alto',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="alto" style="width:200px" value="' + data.record.alto + '" />';
+						} else {
+							return '<input type="text" name="alto" style="width:200px" value="2" />';
+						}
+					}
 				},
 				profundidad : {
 					title : 'Profundidad',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="profundidad" style="width:200px" value="' + data.record.profundidad + '" />';
+						} else {
+							return '<input type="text" name="profundidad" style="width:200px" value="10" />';
+						}
+					}
 				},
 				tara : {
 					title : 'Tara',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="tara" style="width:200px" value="' + data.record.tara + '" />';
+						} else {
+							return '<input type="text" name="tara" style="width:200px" value="800" />';
+						}
+					}
 				},
 				kilometraje : {
 					title : 'Kilometraje',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="kilometraje" style="width:200px" value="' + data.record.kilometraje + '" />';
+						} else {
+							return '<input type="text" name="kilometraje" style="width:200px" value="5000" />';
+						}
+					}
 				},
 				estado : {
 					title : 'Estado',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="estado" style="width:200px" value="' + data.record.estado + '" />';
+						} else {
+							return '<input type="text" name="estado" style="width:200px" value="Libre" />';
+						}
+					}
 				},
 				trabajoEspecifico : {
 					title : 'Trabajo Específico',
 					width : '5%',
+					input : function(data) {
+						if (data.record) {
+							return '<input name="trabajoEspecifico" style="width:200px" type="checkbox" value="' + data.record.trabajoEspecifico + '">';
+						} else {
+							return '<input name="trabajoEspecifico" style="width:200px" value="false" type="checkbox">';
+						}
+					},
 					display: function (data) {
-			            if (data.record.trabajoEspecifico == true)
+			            if (data.record.trabajoEspecifico)
 			            {
 			                return '<input type="checkbox" checked>';
 			            }
@@ -95,8 +167,15 @@
 				enGarantia : {
 					title : 'En Garantia/Epsecificación',
 					width : '2%',
+					input : function(data) {
+						if (data.record) {
+							return '<input name="enGarantia" style="width:200px" type="checkbox" value="' + data.record.enGarantia + '">';
+						} else {
+							return '<input name="enGarantia" style="width:200px" value="true" type="checkbox">';
+						}
+					},
 					display: function (data) {
-			            if (data.record.enGarantia == true)
+			            if (data.record.enGarantia)
 			            {
 			                return '<input type="checkbox" checked>';
 			            }
@@ -109,19 +188,26 @@
 					edit: true
 				},
 				fechaUltimoControl : {
-					title : 'Fecha Ultimo Control',
+					title : 'Fecha Ultima Control',
 					width : '5%',
 					list: true,
-					edit : true
+					edit : true,
+					type : 'date',
+					displayFormat : 'yy-mm-dd'
 				},
 				idPlanDeMantenimiento : {
 					title : 'idPlanDeMantenimiento',
 					width : '1%',
 					list: true,
-					edit : true
+					edit : true,
+					display:function(data){
+						if(data.record.planDeMantenimiento)
+                            return $('<a href="verPlanDeMantenimiento.jsp?idPlanDeMantenimiento=' +data.record.planDeMantenimiento.idPlanDeMantenimiento+'"onClick="return popup(this)">'+data.record.planDeMantenimiento.idPlanDeMantenimiento+'</a>');
+		        	}
 				}
 			}
 		});
+		$("fechaUltimoControl").datepicker();
 		$('#VehiculosTableContainer').jtable('load');
 	});
 </script>
@@ -151,7 +237,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

@@ -48,16 +48,9 @@
 					edit : true,
 					create: true,
 					display:function(data){
-						if(data.record.direccion)
-                            return $('<a href="verDireccion.jsp?idDireccion=' +data.record.direccion.idDireccion+'"onClick="return popup(this)">'+data.record.direccion.idDireccion+'</a>');
-		        	},
-		        	input: function (data) {
-				        if (data.record.direccion) {
-				            return '<input type="text" name="idDireccion" style="width:200px" value="' +data.record.direccion.idDireccion+ '" />';
-				        } else {
-				            return '<input type="text" name="idDireccion" style="width:200px" value="" />';
-				        }
-				    }
+						if(data.record.ubicacion)
+                            return $('<a href="verDireccion.jsp?idDireccion=' +data.record.ubicacion.idDireccion+'"onClick="return popup(this)">'+data.record.ubicacion.idDireccion+'</a>');
+		        	}
 				},
 				verPedido  : {
 					title : 'Pedidos',
@@ -67,7 +60,7 @@
 					edit: false,
 					display:function(data){
 						if(data.record)
-                            return $('<a href="verPedido.jsp?idSucursal=' +data.record.idSucursal+'"onClick="return popup(this)">Pedidos</a>');
+                            return $('<a href="verPedidos.jsp?idSucursal=' +data.record.idSucursal+'"onClick="return popup(this)">Pedidos</a>');
 		        	}
 				}
 			}
@@ -101,7 +94,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

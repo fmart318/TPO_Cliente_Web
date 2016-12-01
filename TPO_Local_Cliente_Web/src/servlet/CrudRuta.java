@@ -45,7 +45,7 @@ public class CrudRuta extends HttpServlet {
 					}.getType());
 					JsonArray jsonArray = element.getAsJsonArray();
 					String listData = jsonArray.toString();
-
+					System.out.println(listData);
 					// Return Json in the format required by jTable plugin
 					listData = "{\"Result\":\"OK\",\"Records\":" + listData + "}";
 					response.getWriter().print(listData);
@@ -67,23 +67,7 @@ public class CrudRuta extends HttpServlet {
 
 				// TODO Hace falta levantar el listado de direcciones y viajes
 				// de la sucursales aca
-				if (request.getParameter("idSucursalDestino") != null) {
-					int idSucursalDestino = Integer.parseInt(request.getParameter("idSucursalDestino"));
-					DireccionDTO direccionSucursalDestino = new DireccionDTO(1, "Calle 16", 5403, 2, "F", "1884");
-					SucursalDTO sucursalDestino = new SucursalDTO(idSucursalDestino, "Felipe", direccionSucursalDestino,
-							null);
-					ruta.setSucursalDestino(sucursalDestino);
-				}
-
-				// TODO Hace falta levantar el listado de direcciones y viajes
-				// de la sucursales aca
-				if (request.getParameter("idSucursalOrigen") != null) {
-					int idSucursalOrigen = Integer.parseInt(request.getParameter("idSucursalOrigen"));
-					DireccionDTO direccionSucursalOrigen = new DireccionDTO(1, "Calle 16", 5403, 2, "F", "1884");
-					SucursalDTO sucursalOrigen = new SucursalDTO(idSucursalOrigen, "Felipe", direccionSucursalOrigen,
-							null);
-					ruta.setSucursalOrigen(sucursalOrigen);
-				}
+				
 
 				// TODO Hace falta levantar el listado de trayectos
 

@@ -76,7 +76,7 @@ public class CrudSucursal extends HttpServlet {
 				try {
 					if (action.equals("create")) {
 
-						sucursal.setIdSucursal(list.size() + 1);
+						//sucursal.setIdSucursal(list.size() + 1);
 						// Create new record
 						Administrador.getInstance().altaSucursal(sucursal);
 

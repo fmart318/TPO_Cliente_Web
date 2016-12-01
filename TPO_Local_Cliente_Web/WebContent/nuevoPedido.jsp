@@ -56,10 +56,16 @@
 				  <label for="idCliente">Cliente</label>
 						<select class="selectpicker" name="idCliente" data-live-search="true" required>
 							<%
-							List <ClienteDTO> clientes = Administrador.getInstance().obtenerClientes();
-					 		for (ClienteDTO c : clientes) {
+							List <EmpresaDTO> empresas = Administrador.getInstance().listarClientesEmpresa();
+					 		for (EmpresaDTO c : empresas) {
 					        %>
-						  <option  data-tokens="<%= c.getIdCliente()+" "+c.getNombre() %>" value="<%= c.getIdCliente() %>"><%= c.getNombre() %></option>
+						  <option  data-tokens="<%= c.getNombre() %>" value="<%= c.getIdCliente() %>"><%= c.getNombre() %></option>
+							<%}%>
+							<%
+							List <ParticularDTO> particulares = Administrador.getInstance().listarClientesParticular();
+					 		for (ParticularDTO c : particulares) {
+					        %>
+						  <option  data-tokens="<%= c.getNombre()  +" "+c.getApellido() %>" value="<%= c.getIdCliente() %>"><%= c.getApellido() +", "+c.getNombre() %></option>
 							<%}%>
 						</select>
 				</div>
@@ -92,7 +98,7 @@
 				</div>
 				<div class="form-group">
 				  <label for="fechaCarga">Fecha Carga</label>
-				  <input type="date" id="fechaCarga" name="fechaCarga" class="form-control" value="2016-11-17" required/>
+				  <input type="date" id="fechaCarga" name="fechaCarga" class="form-control" value="2016-12-01" required/>
 				</div>
 				<div class="form-group">
 				  <label for="fechaCarga">horaInicio</label>
@@ -110,15 +116,31 @@
 				  <label for="precio">Precio</label>
 				  <input type="text" name="precio" class="form-control" placeholder="Precio" value="150"/>
 				</div>
-				<div class="form-group">
+				
+				<div class="form-group">				
 				  <label for="sucursalOrigen">Sucursal Origen</label>
-				  <input type="text" name="sucursalOrigen" class="form-control" placeholder="Sucursal Origen" value="Quilmes"/>
-				</div>
-				<div class="form-group">
-				  <label for="sucursalDestino">Sucursal Destino</label>
-				  <input type="text" name="sucursalDestino" class="form-control" placeholder="Sucursal Destino" value="Berazategui"/>
+						<select class="selectpicker" name="sucursalOrigen" data-live-search="true" required>
+							<%
+							List <SucursalDTO> sucursales = Administrador.getInstance().listarSucursales();
+					 		for (SucursalDTO s : sucursales) {
+					        %>
+						  <option  data-tokens="<%= s.getNombre() %>" value="<%= s.getIdSucursal() %>"><%= s.getNombre() %></option>
+							<%}%>
+						</select>
 				</div>
 				
+				<div class="form-group">				
+				  <label for="sucursalDestino">Sucursal Destino</label>
+						<select class="selectpicker" name="sucursalDestino" data-live-search="true" required>
+							<%
+							List <SucursalDTO> sdestinos = Administrador.getInstance().listarSucursales();
+					 		for (SucursalDTO s : sdestinos) {
+					        %>
+						  <option  data-tokens="<%= s.getNombre() %>" value="<%= s.getIdSucursal() %>"><%= s.getNombre() %></option>
+							<%}%>
+						</select>
+				</div>
+								
 				<div class="form-group">
 				  <label for="solicitaTransporteDirecto">solicitaTransporteDirecto</label>
 				  <span class="input-group-addon">
@@ -137,7 +159,7 @@
 			 	<div class="row">
 					<div class="col-xs-12">
 						<div class="form-actions">
-											<input type="submit" id=add value="Generar Envío"  />
+											<input type="submit" id=add value="Generar Pedido"  />
 						</div>
 				</div>
 				</div>

@@ -148,6 +148,14 @@ public class Administrador {
 		return null;
 	}
 
+	public SucursalDTO obtenerSucursalPorId(int idSucursal) {
+		try {
+			return ir.obtenerSucursalPorId(idSucursal);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public void altaSucursal(SucursalDTO sucursalDto) {
 		try {
 			ir.altaSucursal(sucursalDto);
@@ -401,7 +409,16 @@ public class Administrador {
 		}
 		return null;
 	}
-
+	
+	
+	public PlanDeMantenimientoDTO obtenerPlanDeMantenimientoPorID(int idPlanDeMantenimiento){
+		try {
+			return ir.obtenerPlanDeMantenimientoPorId(idPlanDeMantenimiento);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public void altaPlanDeMantenimiento(PlanDeMantenimientoDTO plan) {
 		try {
 			ir.altaPlanMantenimiento(plan);

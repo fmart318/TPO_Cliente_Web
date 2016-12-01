@@ -34,33 +34,67 @@
 				tiempo : {
 					title : 'Tiempo',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="tiempo" style="width:200px" value="' + data.record.tiempo + '" />';
+						} else {
+							return '<input type="text" name="tiempo" style="width:200px" value="4" />';
+						}
+					}
 				},
 				km : {
 					title : 'Kilómetro',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="km" style="width:200px" value="' + data.record.km + '" />';
+						} else {
+							return '<input type="text" name="km" style="width:200px" value="40" />';
+						}
+					}
 				},
 				precio : {
 					title : 'Precio',
 					width : '5%',
-					edit : true
-				},
-				idSucursalDestino : {
-					title : 'idSucursalDestino',
-					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="precio" style="width:200px" value="' + data.record.precio + '" />';
+						} else {
+							return '<input type="text" name="precio" style="width:200px" value="400" />';
+						}
+					}
 				},
 				idSucursalOrigen : {
 					title : 'idSucursalOrigen',
 					width : '5%',
-					edit : true
+					edit : true,
+					display:function(data){
+						if(data.record)
+	                        return $('<a href="verSucursal.jsp?idSucursal=' +data.record.idSucursalDestino+'"onClick="return popup(this)">'+data.record.idSucursalDestino+'</a>');
+		        	}
 				},
+				idSucursalDestino : {
+					title : 'idSucursalDestino',
+					width : '5%',
+					edit : true,
+					display:function(data){
+						if(data.record)
+	                        return $('<a href="verRuta.jsp?idRuta=' +data.record.idSucursalDestino+'"onClick="return popup(this)">'+data.record.idSucursalDestino+'</a>');
+		        	}
+				}/* ,
+				
 				idRuta : {
 					title : 'idRuta',
 					width : '5%',
-					edit : true
-				}
+					edit : true,
+					display:function(data){
+						if(data.record.ruta)
+	                        return $('<a href="verRuta.jsp?idRuta=' +data.record.ruta.idRuta+'"onClick="return popup(this)">'+data.record.ruta.idRuta+'</a>');
+		        	}
+				} */
 			}
 		});
 		$('#TrayectosTableContainer').jtable('load');
@@ -92,7 +126,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

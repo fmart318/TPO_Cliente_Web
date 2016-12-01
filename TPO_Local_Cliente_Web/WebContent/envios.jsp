@@ -42,7 +42,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>
@@ -84,10 +84,32 @@
 									<td><input type="checkbox" <%=checkA %>></td>
 									<td><%= e.getEstado() %></td>
 									<td><%= e.getPrioridad() %></td>
+									
+									<%
+										if (e.getSucursalOrigen() != null) {
+									%>
 									<td><%= e.getSucursalOrigen().getNombre() %></td>
+									<%
+										} else {
+									%>
+									<td><%= e.getSucursalOrigen().getIdSucursal() %></td>
+									<%
+										}
+									%>
+									<%
+										if (e.getSucursalDestino() != null) {
+									%>
 									<td><%= e.getSucursalDestino().getNombre() %></td>
+									<%
+										} else {
+									%>
+									<td><%= e.getSucursalDestino().getIdSucursal() %></td>
+									<%
+										}
+									%>
+									
 									<td><a
-										href="verPedidos.jsp?idPedido=<%=e.getPedidos().get(0).getIdPedido() %>"
+										href="verPedidos.jsp?idEnvio=<%=e.getIdEnvio() %>"
 										onClick="return popup(this, 'cargas')">Ver Pedidos</a></td>
 								</tr>
 								<% } %>

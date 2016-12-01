@@ -34,17 +34,38 @@
 				diasProxControl : {
 					title : 'Días Próximo Control',
 					width : '7%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="diasProxControl" style="width:200px" value="' + data.record.diasProxControl + '" />';
+						} else {
+							return '<input type="text" name="diasProxControl" style="width:200px" value="30" />';
+						}
+					}
 				},
 				diasDemora : {
 					title : 'Días De Demora',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="diasDemora" style="width:200px" value="' + data.record.diasDemora + '" />';
+						} else {
+							return '<input type="text" name="diasDemora" style="width:200px" value="1" />';
+						}
+					}
 				},
 				kmProxControl : {
 					title : 'Km del Próximo Control',
 					width : '7%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="kmProxControl" style="width:200px" value="' + data.record.kmProxControl + '" />';
+						} else {
+							return '<input type="text" name="kmProxControl" style="width:200px" value="10000" />';
+						}
+					}
 				}		
 			}
 		});
@@ -78,7 +99,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

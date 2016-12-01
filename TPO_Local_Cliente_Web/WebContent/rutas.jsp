@@ -34,17 +34,36 @@
 				precio : {
 					title : 'Precio',
 					width : '5%',
-					edit : true
+					edit : true,
+					input : function(data) {
+						if (data.record) {
+							return '<input type="text" name="precio" style="width:200px" value="' + data.record.precio + '" />';
+						} else {
+							return '<input type="text" name="precio" style="width:200px" value="400" />';
+						}
+					}
 				},
-				idSucursalOrigen : {
-					title : 'idSucursalOrigen',
+				trayectos  : {
+					title : 'Sucursales',
 					width : '5%',
-					edit : true
+					list: true,
+					create: false,
+					edit: false,
+					display:function(data){
+						if(data.record)
+                            return $('<a href="verTrayectos.jsp?idRuta=' +data.record.idRuta+'"onClick="return popup(this)">Trayectos</a>');
+		        	}
 				},
-				idSucursalDestino : {
-					title : 'idSucursalDestino',
+				sucursales  : {
+					title : 'Sucursales',
 					width : '5%',
-					edit : true
+					list: true,
+					create: false,
+					edit: false,
+					display:function(data){
+						if(data.record)
+                            return $('<a href="verSucursales.jsp?idRuta=' +data.record.idRuta+'"onClick="return popup(this)">Sucursales</a>');
+		        	}
 				}
 			}
 		});
@@ -77,7 +96,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>

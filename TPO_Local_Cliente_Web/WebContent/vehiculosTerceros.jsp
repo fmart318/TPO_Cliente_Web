@@ -56,7 +56,7 @@
 					}
 				},
 				estado : {
-					title : 'Ancho',
+					title : 'Estado',
 					width : '5%',
 					edit : true,
 					input : function(data) {
@@ -84,7 +84,7 @@
 					edit: false,
 					display:function(data){
 						if(data.record)
-                            return $('<a href="verPedidosVTerecero.jsp?idVehiculoTercero=' +data.record.idVehiculoTercero+'"onClick="return popup(this)">Pedidos</a>');
+                            return $('<a href="verPedidos.jsp?idVehiculoTercero=' +data.record.idVehiculoTercero+'"onClick="return popup(this)">Pedidos</a>');
 		        	}
 				}
 
@@ -121,7 +121,7 @@
 					<li><a href="sucursales.jsp">Sucursales</a></li>
 					<li><a href="rutas.jsp">Rutas</a></li>
 					<li><a href="trayectos.jsp">Trayectos</a></li>
-					<li><a href="./pedidos">Pedidos</a></li>
+					<li><a href="pedidos.jsp">Pedidos</a></li>
 					<li><a href="remitos.jsp">Remitos</a></li>
 					<li><a href="envios.jsp">Envíos</a></li>				
 					<li><a href="facturas.jsp">Facturas</a></li>
