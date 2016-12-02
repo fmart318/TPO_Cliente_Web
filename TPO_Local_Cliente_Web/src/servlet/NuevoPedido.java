@@ -1,9 +1,10 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +30,7 @@ public class NuevoPedido extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		PedidoDTO pedidoDto = new PedidoDTO();
 		ClienteDTO clienteDto = new ClienteDTO();
 		DireccionDTO direccionOrigen = new DireccionDTO();
@@ -99,10 +100,20 @@ public class NuevoPedido extends HttpServlet {
 			String cp = request.getParameter("cp2");
 			direccionDestino.setCP(cp);
 		}
-
 		if (request.getParameter("fechaCarga") != null) {
-			Timestamp fechaCarga = java.sql.Timestamp.valueOf(request.getParameter("fechaCarga"));
-			pedidoDto.setFechaCarga(fechaCarga);
+
+			String startDateStr = request.getParameter("fechaCarga");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			// surround below line with try catch block as below code
+			// throws checked exception
+			Date startDate;
+			try {
+				startDate = sdf.parse(startDateStr);
+				pedidoDto.setFechaCarga(startDate);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if (request.getParameter("horaInicio") != null) {
 			int horaInicio = Integer.valueOf(request.getParameter("horaInicio"));
@@ -112,10 +123,23 @@ public class NuevoPedido extends HttpServlet {
 			int horaFin = Integer.valueOf(request.getParameter("horaFin"));
 			pedidoDto.setHoraInicio(horaFin);
 		}
+
 		if (request.getParameter("fechaMaxima") != null) {
-			Timestamp fechaMaxima = java.sql.Timestamp.valueOf(request.getParameter("fechaMaxima"));
-			pedidoDto.setFechaMaxima(fechaMaxima);
+
+			String startDateStr = request.getParameter("fechaMaxima");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			// surround below line with try catch block as below code
+			// throws checked exception
+			Date startDate;
+			try {
+				startDate = sdf.parse(startDateStr);
+				pedidoDto.setFechaMaxima(startDate);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+
 		if (request.getParameter("precio") != null) {
 			int precio = Integer.valueOf(request.getParameter("precio"));
 			pedidoDto.setPrecio(precio);
@@ -123,10 +147,11 @@ public class NuevoPedido extends HttpServlet {
 		if (request.getParameter("sucursalOrigen") != null) {
 			int sucursalOrigenId = Integer.valueOf(request.getParameter("sucursalOrigen"));
 			pedidoDto.setSucursalOrigenId(sucursalOrigenId);
+			pedidoDto.setSucursalActualId(sucursalOrigenId);
 		}
-		if (request.getParameter("sucursalDestino") != null) {
+		if (request.getParameter("sucursalDestino") != "") {
 			int sucursalDestinoId = Integer.valueOf(request.getParameter("sucursalDestino"));
-			pedidoDto.setSucursalOrigenId(sucursalDestinoId);
+			pedidoDto.setSucursalDestinoId(sucursalDestinoId);
 		}
 		if (request.getParameter("solicitaTransporteDirecto") != null) {
 			String solicitaTransporteDirecto = request.getParameter("solicitaTransporteDirecto");
@@ -142,12 +167,19 @@ public class NuevoPedido extends HttpServlet {
 				b = true;
 			pedidoDto.setSolicitaAvionetaParticular(b);
 		}
-		pedidoDto.setEstado("Pendiente");
+		pedidoDto.setEstado("pendiente");
 		pedidoDto.setCliente(clienteDto);
 		pedidoDto.setDireccionCarga(direccionOrigen);
 		pedidoDto.setDireccionDestino(direccionDestino);
 		Administrador.getInstance().crearPedido(pedidoDto);
 
+//		PedidoDTO pedido2 = new PedidoDTO(pedidoDto.getIdPedido(), pedidoDto.getDireccionCarga(),
+//				pedidoDto.getDireccionDestino(), pedidoDto.getFechaCarga(), pedidoDto.getHoraInicio(),
+//				pedidoDto.getHoraFin(), pedidoDto.getFechaMaxima(), pedidoDto.getCargas(), pedidoDto.getPrecio(), pedidoDto.getSucursalDestinoId(), pedidoDto.getSucursalOrigenId(),
+//				pedidoDto.getSucursalActualId(),false, false, pedidoDto.getCliente(), pedidoDto.getEstado());
+
+//		Administrador.getInstance().crearPedido(pedido2);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("nuevoPedido.jsp");
 		dispatcher.forward(request, response);
 

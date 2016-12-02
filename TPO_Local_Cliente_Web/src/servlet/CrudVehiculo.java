@@ -79,6 +79,11 @@ public class CrudVehiculo extends HttpServlet {
 					int profundidad = Integer.valueOf(request.getParameter("profundidad"));
 					vehiculo.setProfundidad(profundidad);
 				}
+				
+				if (request.getParameter("sucursalIdActual") != null) {
+					int sucursalIdActual = Integer.valueOf(request.getParameter("sucursalIdActual"));
+					vehiculo.setSucursalIdActual(sucursalIdActual);
+				}
 				if (request.getParameter("volumen") != null) {
 					//float volumen = Float.valueOf(request.getParameter("volumen"));
 					vehiculo.setVolumen(vehiculo.getAlto()*vehiculo.getAlto()*vehiculo.getProfundidad());

@@ -1,4 +1,5 @@
 <%@ page import="dto.*"%>
+<%@ page import="Negocio.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
 
@@ -39,7 +40,7 @@
 									<th>Tratamiento</th>
 								</tr>
 								<%
-	   	List <PedidoDTO> pedidos = (List <PedidoDTO>) request.getSession().getAttribute("pedidos");
+	   	List <PedidoDTO> pedidos = Administrador.getInstance().obtenerPedidos();
  		Iterator <PedidoDTO> it = pedidos.iterator();
  		boolean encontrado = false;
  		PedidoDTO pedido = null;

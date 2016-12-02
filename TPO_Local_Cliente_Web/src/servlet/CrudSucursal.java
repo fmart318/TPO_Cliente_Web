@@ -59,6 +59,10 @@ public class CrudSucursal extends HttpServlet {
 			} else if (action.equals("create") || action.equals("update")) {
 
 				SucursalDTO sucursal = new SucursalDTO();
+				if (request.getParameter("idSucural") != null) {
+					int idSucural = Integer.valueOf(request.getParameter("idSucural"));
+					sucursal.setIdSucursal(idSucural);
+				}
 
 				if (request.getParameter("nombre") != null) {
 					String nombre = request.getParameter("nombre");

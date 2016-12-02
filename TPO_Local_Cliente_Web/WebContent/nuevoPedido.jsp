@@ -110,7 +110,7 @@
 				</div>
 				<div class="form-group">
 				  <label for="fechaMaxima">Fecha Máxima</label>
-				  <input type="date" id="fechaMaxima" name="fechaMaxima" class="form-control" value='2016-11-18' required />
+				  <input type="date" id="fechaMaxima" name="fechaMaxima" class="form-control" value='2016-12-07' required />
 				</div>
 				<div class="form-group">
 				  <label for="precio">Precio</label>
@@ -124,7 +124,7 @@
 							List <SucursalDTO> sucursales = Administrador.getInstance().listarSucursales();
 					 		for (SucursalDTO s : sucursales) {
 					        %>
-						  <option  data-tokens="<%= s.getNombre() %>" value="<%= s.getIdSucursal() %>"><%= s.getNombre() %></option>
+						  <option  data-tokens="<%= s.getNombre() %>" value="<%= s.getIdSucursal() %>"><%= s.getIdSucursal()+","+s.getNombre() %></option>
 							<%}%>
 						</select>
 				</div>
@@ -134,9 +134,9 @@
 						<select class="selectpicker" name="sucursalDestino" data-live-search="true" required>
 							<%
 							List <SucursalDTO> sdestinos = Administrador.getInstance().listarSucursales();
-					 		for (SucursalDTO s : sdestinos) {
+					 		for (SucursalDTO sd : sdestinos) {
 					        %>
-						  <option  data-tokens="<%= s.getNombre() %>" value="<%= s.getIdSucursal() %>"><%= s.getNombre() %></option>
+						  <option  data-tokens="<%= sd.getNombre() %>" value="<%= sd.getIdSucursal() %>"><%=sd.getIdSucursal()+","+ sd.getNombre() %></option>
 							<%}%>
 						</select>
 				</div>

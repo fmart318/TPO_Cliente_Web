@@ -168,7 +168,7 @@
 				despachado : {
 					title : 'Despachado',
 					width : '5%',
-					edit : true,
+					edit : false,
 					list: true,
 					create: false,
 					input : function(data) {
