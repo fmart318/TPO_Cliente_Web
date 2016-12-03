@@ -204,16 +204,6 @@
 						if(data.record.planDeMantenimiento)
                             return $('<a href="verPlanDeMantenimiento.jsp?idPlanDeMantenimiento=' +data.record.planDeMantenimiento.idPlanDeMantenimiento+'"onClick="return popup(this)">'+data.record.planDeMantenimiento.idPlanDeMantenimiento+'</a>');
 		        	}
-				},
-				sucursalIdActual : {
-					title : 'sucursalIdActual',
-					width : '1%',
-					list: true,
-					edit : true,
-					display:function(data){
-						if(data.record)
-                            return $('<a href="verSucursal.jsp?idPlanDeMantenimiento=' +data.record.sucursalIdActual+'"onClick="return popup(this)">'+data.record.sucursalIdActual+'</a>');
-		        	}
 				}
 			}
 		});

@@ -82,11 +82,11 @@
 
 										}
 									}
-									if (request.getParameter("idVehiculoTercero") != null) {
-										List<VehiculoTerceroDTO> vehiculosT = Administrador.getInstance().listarVTerceros();
-										for (VehiculoTerceroDTO v : vehiculosT) {
-											if (v.getIdVehiculoTercero() == Integer.valueOf(request.getParameter("idVehiculoTercero"))) {
-												for (PedidoDTO pedido : v.getPedidos()) {
+									if(request.getParameter("idVehiculoTercero")!=null){
+										List<VehiculoTerceroDTO> vehiculosT=Administrador.getInstance().listarVTerceros();
+										for (VehiculoTerceroDTO v: vehiculosT){
+											if(v.getIdVehiculoTercero()==Integer.valueOf(request.getParameter("idVehiculoTercero"))){
+												for (PedidoDTO pedido:v.getPedidos()){
 
 													String checkA = "false";
 													String checkB = "false";
@@ -94,29 +94,29 @@
 														checkA = "checked";
 													if (pedido.isSolicitaAvionetaParticular())
 														checkB = "checked";
-								%>
-								<tr>
-									<td><%=pedido.getIdPedido()%></td>
-									<td><%=pedido.getCliente().getIdCliente()%></td>
-									<td><%=pedido.getDireccionCarga().getIdDireccion()%></td>
-									<td><%=pedido.getDireccionDestino().getIdDireccion()%></td>
-									<td><%=pedido.getFechaCarga()%></td>
-									<td><%=pedido.getHoraInicio()%></td>
-									<td><%=pedido.getHoraFin()%></td>
-									<td><%=pedido.getFechaMaxima()%></td>
-									<td><%=pedido.getPrecio()%></td>
-									<td><%=pedido.getSucursalOrigenId()%></td>
-									<td><%=pedido.getSucursalDestinoId()%></td>
-									<td><input type="checkbox" <%=checkA%>></td>
-									<td><input type="checkbox" <%=checkB%>></td>
-									<td><a
-										href="verCargas.jsp?idPedido=<%=pedido.getIdPedido()%>"
-										onClick="return popup(this, 'cargas')">Ver Cargas</a></td>
+									%>
+									<tr>
+										<td><%=pedido.getIdPedido()%></td>
+										<td><%=pedido.getCliente().getIdCliente()%></td>
+										<td><%=pedido.getDireccionCarga().getIdDireccion()%></td>
+										<td><%=pedido.getDireccionDestino().getIdDireccion()%></td>
+										<td><%=pedido.getFechaCarga()%></td>
+										<td><%=pedido.getHoraInicio()%></td>
+										<td><%=pedido.getHoraFin()%></td>
+										<td><%=pedido.getFechaMaxima()%></td>
+										<td><%=pedido.getPrecio()%></td>
+										<td><%=pedido.getSucursalOrigenId()%></td>
+										<td><%=pedido.getSucursalDestinoId()%></td>
+										<td><input type="checkbox" <%=checkA%>></td>
+										<td><input type="checkbox" <%=checkB%>></td>
+										<td><a
+											href="verCargas.jsp?idPedido=<%=pedido.getIdPedido()%>"
+											onClick="return popup(this, 'cargas')">Ver Cargas</a></td>
 
 
-								</tr>
-								<%
-									}
+									</tr>
+									<%
+												}
 											}
 										}
 									}
@@ -124,6 +124,7 @@
 										List<PedidoDTO> pedidos = Administrador.getInstance().obtenerPedidos();
 
 										for (PedidoDTO pedido : pedidos) {
+											
 											if (pedido.getSucursalActualId() == Integer.valueOf(request.getParameter("idSucursal"))) {
 
 												String checkA = "false";
@@ -144,7 +145,10 @@
 									<td><%=pedido.getFechaMaxima()%></td>
 									<td><%=pedido.getPrecio()%></td>
 									<td><%=pedido.getSucursalOrigenId()%></td>
+									<td><%=pedido.getSucursalActualId()%></td>
 									<td><%=pedido.getSucursalDestinoId()%></td>
+									<td><%=pedido.getEstado()%></td>
+									<td><%=pedido.getVolumenoTotalCargas()%></td>
 									<td><input type="checkbox" <%=checkA%>></td>
 									<td><input type="checkbox" <%=checkB%>></td>
 									<td><a
@@ -155,6 +159,7 @@
 								</tr>
 								<%
 									}
+											
 
 										}
 									}
