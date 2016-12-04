@@ -44,7 +44,7 @@
 					}
 				},
 				trayectos  : {
-					title : 'Sucursales',
+					title : 'Trayectos',
 					width : '5%',
 					list: true,
 					create: false,
