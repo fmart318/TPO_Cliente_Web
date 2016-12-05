@@ -44,7 +44,7 @@
 					}
 				},
 				km : {
-					title : 'Kilómetro',
+					title : 'Kilómetros',
 					width : '5%',
 					edit : true,
 					input : function(data) {
@@ -66,35 +66,7 @@
 							return '<input type="text" name="precio" style="width:200px" value="400" />';
 						}
 					}
-				},
-				idSucursalOrigen : {
-					title : 'idSucursalOrigen',
-					width : '5%',
-					edit : true,
-					display:function(data){
-						if(data.record)
-	                        return $('<a href="verSucursal.jsp?idSucursal=' +data.record.idSucursalDestino+'"onClick="return popup(this)">'+data.record.idSucursalDestino+'</a>');
-		        	}
-				},
-				idSucursalDestino : {
-					title : 'idSucursalDestino',
-					width : '5%',
-					edit : true,
-					display:function(data){
-						if(data.record)
-	                        return $('<a href="verRuta.jsp?idRuta=' +data.record.idSucursalDestino+'"onClick="return popup(this)">'+data.record.idSucursalDestino+'</a>');
-		        	}
-				}/* ,
-				
-				idRuta : {
-					title : 'idRuta',
-					width : '5%',
-					edit : true,
-					display:function(data){
-						if(data.record.ruta)
-	                        return $('<a href="verRuta.jsp?idRuta=' +data.record.ruta.idRuta+'"onClick="return popup(this)">'+data.record.ruta.idRuta+'</a>');
-		        	}
-				} */
+				}
 			}
 		});
 		$('#TrayectosTableContainer').jtable('load');
