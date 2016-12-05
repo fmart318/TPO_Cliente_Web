@@ -42,28 +42,6 @@
 							return '<input type="text" name="precio" style="width:200px" value="400" />';
 						}
 					}
-				},
-				trayectos  : {
-					title : 'Sucursales',
-					width : '5%',
-					list: true,
-					create: false,
-					edit: false,
-					display:function(data){
-						if(data.record)
-                            return $('<a href="verTrayectos.jsp?idRuta=' +data.record.idRuta+'"onClick="return popup(this)">Trayectos</a>');
-		        	}
-				},
-				sucursales  : {
-					title : 'Sucursales',
-					width : '5%',
-					list: true,
-					create: false,
-					edit: false,
-					display:function(data){
-						if(data.record)
-                            return $('<a href="verSucursales.jsp?idRuta=' +data.record.idRuta+'"onClick="return popup(this)">Sucursales</a>');
-		        	}
 				}
 			}
 		});
